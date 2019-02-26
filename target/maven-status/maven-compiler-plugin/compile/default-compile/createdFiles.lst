@@ -2,4 +2,6 @@ NewMain.class
 database\Database.class
 database\DAOException.class
 DAO\TestDAO.class
+models\Purchase_Order.class
+DAO\PurchaseOrderDAO.class
 models\CustomerEntity.class

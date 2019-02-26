@@ -18,20 +18,13 @@ public class Purchase_Order {
     int quantity;
     float shipping_cost;
     Date sales_date;
-    Date dshipping_date;
+    Date shipping_date;
     String freight_company;
 
-    public Purchase_Order(int order_num, int custumer_ID, int product_ID, int quantity, float shipping_cost, Date sales_date, Date dshipping_date, String freight_company) {
-        this.order_num = order_num;
-        this.custumer_ID = custumer_ID;
-        this.product_ID = product_ID;
-        this.quantity = quantity;
-        this.shipping_cost = shipping_cost;
-        this.sales_date = sales_date;
-        this.dshipping_date = dshipping_date;
-        this.freight_company = freight_company;
-    }
-
+  
+   public Purchase_Order (){
+       
+   }
     public int getOrder_num() {
         return order_num;
     }
@@ -56,8 +49,8 @@ public class Purchase_Order {
         return sales_date;
     }
 
-    public Date getDshipping_date() {
-        return dshipping_date;
+    public Date getshipping_date() {
+        return shipping_date;
     }
 
     public String getFreight_company() {
@@ -88,8 +81,8 @@ public class Purchase_Order {
         this.sales_date = sales_date;
     }
 
-    public void setDshipping_date(Date dshipping_date) {
-        this.dshipping_date = dshipping_date;
+    public void setshipping_date(Date dshipping_date) {
+        this.shipping_date = dshipping_date;
     }
 
     public void setFreight_company(String freight_company) {
