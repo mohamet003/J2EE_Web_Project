@@ -29,11 +29,11 @@ public class NewMain {
      
         TestDAO dao = new TestDAO(Database.getDataSource());
         CustomerEntity cust =  dao.findCustomer(2);
-        System.out.println("test  "+cust.getName());
+        System.out.println("test"+cust.getName());
        
         PurchaseOrderDAO achatDAO = new PurchaseOrderDAO(Database.getDataSource());
         Purchase_Order order = achatDAO.GetPurchaseOrderByID(10398001);
-        System.out.println(order);
+        System.out.println("resulat"+ order);
     }
     
     

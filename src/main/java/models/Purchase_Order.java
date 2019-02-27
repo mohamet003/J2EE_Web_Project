@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Purchase_Order {
     int order_num;
-    int custumer_ID;
+    int customer_ID;
     int product_ID;
     int quantity;
     float shipping_cost;
@@ -29,8 +29,8 @@ public class Purchase_Order {
         return order_num;
     }
 
-    public int getCustumer_ID() {
-        return custumer_ID;
+    public int getCustomer_ID() {
+        return customer_ID;
     }
 
     public int getProduct_ID() {
@@ -61,8 +61,8 @@ public class Purchase_Order {
         this.order_num = order_num;
     }
 
-    public void setCustumer_ID(int custumer_ID) {
-        this.custumer_ID = custumer_ID;
+    public void setCustomer_ID(int custumer_ID) {
+        this.customer_ID = custumer_ID;
     }
 
     public void setProduct_ID(int product_ID) {

@@ -41,7 +41,7 @@ Purchase_Order order = new Purchase_Order();
 				if (rs.next()) { // On a trouvé
 
 					order.setOrder_num(rs.getInt(order_num));
-                                        order.setCustumer_ID(rs.getInt("CUSTOMER_ID"));
+                                        order.setCustomer_ID(rs.getInt("CUSTOMER_ID"));
                                         order.setProduct_ID(rs.getInt("PRODUCT_ID"));
                                         order.setShipping_cost(rs.getFloat("SHIPPING_COST"));
                                         order.setQuantity(rs.getInt("QUANTITY"));
