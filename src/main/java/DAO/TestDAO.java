@@ -82,8 +82,9 @@ public class TestDAO {
 				if (rs.next()) { // On a trouvé
 					String name = rs.getString("NAME");
 					String address = rs.getString("ADDRESSLINE1");
+                                         String email = rs.getString("EMAIL");
 					// On crée l'objet "entity"
-					result = new CustomerEntity(customerID, name, address);
+					result = new CustomerEntity(customerID, name, address,email);
 				} // else on n'a pas trouvé, on renverra null
 			}
 		}  catch (SQLException ex) {
@@ -94,6 +95,31 @@ public class TestDAO {
 		return result;
 	}
 
+
+	public CustomerEntity findCustomerByLoginAndPwd(int customerID, String email) throws DAOException {
+		CustomerEntity result = null;
+
+		String sql = "SELECT * FROM CUSTOMER WHERE CUSTOMER_ID = ? AND EMAIL = ?";
+		try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
+			PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+			stmt.setInt(1, customerID);
+                        stmt.setString(2, email);
+			try (ResultSet rs = stmt.executeQuery()) {
+				if (rs.next()) { // On a trouvé
+					String name = rs.getString("NAME");
+					String address = rs.getString("ADDRESSLINE1");
+					// On crée l'objet "entity"
+					result = new CustomerEntity(customerID, name, address,email);
+				} // else on n'a pas trouvé, on renverra null
+			}
+		}  catch (SQLException ex) {
+			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+			throw new DAOException(ex.getMessage());
+		}
+
+		return result;
+	}
 	/**
 	 * Liste des clients localisés dans un état des USA
 	 *

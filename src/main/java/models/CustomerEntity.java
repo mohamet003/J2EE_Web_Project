@@ -8,11 +8,13 @@ public class CustomerEntity {
 	private int customerId;
 	private String name;
 	private String addressLine1;
+        private String email;
 
-	public CustomerEntity(int customerId, String name, String addressLine1) {
+	public CustomerEntity(int customerId, String name, String addressLine1,String email) {
 		this.customerId = customerId;
 		this.name = name;
 		this.addressLine1 = addressLine1;
+                this.email = email;
 	}
 
 	/**
@@ -42,5 +44,14 @@ public class CustomerEntity {
 		return addressLine1;
 	}
 
+        public void setEmail(String email){
+          
+             this.email = email;
+
+        }
+
+        public String getEmail (){
+            return this.email;
+        }
 
 }
