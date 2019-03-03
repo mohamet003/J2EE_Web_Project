@@ -9,7 +9,9 @@ import models.Purchase_Order;
 import DAO.ProductDAO;
 import java.util.LinkedList;
 import java.util.List;
+import jdk.nashorn.internal.parser.JSONParser;
 import models.Product;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -41,11 +43,26 @@ public class NewMain {
 
         ProductDAO daop = new ProductDAO(Database.getDataSource()); 
             List<Product> Lproducts = daop.GetAllProduct();
+            List<List<Product>> products = new  LinkedList<>();
+            
+            int cpt = 0;
+            List<Product> By4products = new  LinkedList<>();
             
             for (Product p : Lproducts){
-                System.out.println("test" + p.getProduct_code());
+              
+                if (cpt == 4) {
+                    cpt = 0;
+                    By4products = new  LinkedList<>();
+                    products.add(By4products);
+                }
+                cpt++;
+                By4products.add(p);   
+                
+
             }
+            
+            System.out.println("test " + products.get(0).get(4).getDescription());
+            
     }
-    
-    
+   
 }

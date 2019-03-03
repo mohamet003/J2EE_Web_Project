@@ -23,6 +23,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--Custom-Theme-files-->
 <!--theme-style-->
 <link href="client/css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -58,7 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 
                             <form style="margin-left:20vw" action="LoginController" method="post" >
                            <label for="deconnexion" style="color:white; text-transform: uppercase" >${user.name}</label>
-                           <button name="connexion" value="deconnexion" class="btn btn-outline-success my-2 my-sm-0" type="submit">Déconnexion</button>
+                            <button name="connexion" value="deconnexion" class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fas fa-sign-out-alt"></i></button>
                         </form>
                          </div>
 
@@ -69,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!--start-logo-->
 	<div class="logo">
-		<a href="client/index.html"><h1>Luxury Watches</h1></a>
+		<a href="client/index.jsp"><h1>Luxury Watches</h1></a>
 	</div>
 	<!--start-logo-->
 
@@ -227,116 +228,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="product"> 
 		<div class="container">
 			<div class="product-top">
-				<div class="product-one">
-					<div class="col-md-3 product-left">
+                            
+                     <c:forEach items="${products}" var="product4">   
+                        <div class="product-one">
+                                    
+                             <c:forEach items="${product4}" var="product">
+                                        
+   				<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
 							<a href="client/single.html" class="mask"><img class="img-responsive zoom-img" src="client/images/p-1.png" alt="" /></a>
 							<div class="product-bottom">
-								<h3>Smart Watches</h3>
+                                                            <h3>${ product.getDescription() }</h3>
 								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">€ ${ product.getPurchase_cost() }</span></h4>
 							</div>
 							<div class="srch">
 								<span>-50%</span>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="client/single.html" class="mask"><img class="img-responsive zoom-img" src="client/images/p-2.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="client/single.html" class="mask"><img class="img-responsive zoom-img" src="client/images/p-3.png"  alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="client/single.html" class="mask"><img class="img-responsive zoom-img" src="client/images/p-4.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="product-one">
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="client/single.html" class="mask"><img class="img-responsive zoom-img" src="client/images/p-5.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="client/single.html" class="mask"><img class="img-responsive zoom-img" src="client/images/p-6.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="client/single.html" class="mask"><img class="img-responsive zoom-img" src="client/images/p-7.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="client/single.html" class="mask"><img class="img-responsive zoom-img" src="client/images/p-8.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>					
+                                       
+                                </c:forEach>
+                            
+                              <div class="clearfix"></div>
+                        </div>
+                        <br>
+                     </c:forEach>
+                         
 			</div>
 		</div>
 	</div>
