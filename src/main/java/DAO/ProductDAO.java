@@ -10,11 +10,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 import models.Product;
-import models.Purchase_Order;
+
 
 /**
  *
@@ -27,16 +29,16 @@ public class ProductDAO {
         this.myDataSource = myDataSource;
     }
 
-	public Product GetAllProduct() throws DAOException {
-                Product P = new Product();
+	public List<Product> GetAllProduct() throws DAOException {
+                List<Product> LProduits = new LinkedList<>();
 		String sql = "SELECT * FROM PRODUCT ";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
-
+                       
 			try (ResultSet rs = stmt.executeQuery()) {
-				if (rs.next()) { // On a trouvé
-
+				while (rs.next()) { // On a trouvé
+                                        Product P = new Product();
 					P.setProduct_ID(rs.getInt("PRODUCT_ID"));
                                         P.setPurchase_cost(rs.getInt("PURCHASE_COST"));
                                         P.setProduct_code(rs.getString("PRODUCT_CODE"));
@@ -45,6 +47,7 @@ public class ProductDAO {
 					P.setMarkup(rs.getFloat("MARKUP"));
                                         P.setAvailable(rs.getBoolean("AVAILABLE"));
                                         P.setDescription(rs.getString("DESCRIPTION"));
+                                        LProduits.add(P);
 					// On crée l'objet "entity"
 				
 				} // else on n'a pas trouvé, on renverra null
@@ -54,6 +57,6 @@ public class ProductDAO {
 			throw new DAOException(ex.getMessage());
 		}
 
-		return P;
+		return LProduits;
 	} 
 }

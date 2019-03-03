@@ -6,6 +6,10 @@ import database.Database;
 import javax.sql.DataSource;
 import models.CustomerEntity;
 import models.Purchase_Order;
+import DAO.ProductDAO;
+import java.util.LinkedList;
+import java.util.List;
+import models.Product;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,10 +34,17 @@ public class NewMain {
         TestDAO dao = new TestDAO(Database.getDataSource());
         CustomerEntity cust =  dao.findCustomer(2);
         System.out.println("test"+cust.getName());
-       
+    /*   
         PurchaseOrderDAO achatDAO = new PurchaseOrderDAO(Database.getDataSource());
         Purchase_Order order = achatDAO.GetPurchaseOrderByID(10398001);
-        System.out.println("resulat"+ order);
+        System.out.println("resulat"+ order);*/
+
+        ProductDAO daop = new ProductDAO(Database.getDataSource()); 
+            List<Product> Lproducts = daop.GetAllProduct();
+            
+            for (Product p : Lproducts){
+                System.out.println("test" + p.getProduct_code());
+            }
     }
     
     
