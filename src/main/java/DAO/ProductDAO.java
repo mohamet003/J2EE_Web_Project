@@ -48,8 +48,6 @@ public class ProductDAO {
                                         P.setAvailable(rs.getBoolean("AVAILABLE"));
                                         P.setDescription(rs.getString("DESCRIPTION"));
                                         LProduits.add(P);
-                                        
-					// On crée l'objet "entity"
 				
 				} // else on n'a pas trouvé, on renverra null
 			}
