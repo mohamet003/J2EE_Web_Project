@@ -18,6 +18,10 @@ public class Discount_Code {
         this.rate = rate;
     }
 
+    public Discount_Code() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public char getDiscount_code() {
         return discount_code;
     }

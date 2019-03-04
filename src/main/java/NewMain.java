@@ -1,4 +1,5 @@
 
+import DAO.DiscountDAO;
 import DAO.PurchaseOrderDAO;
 import DAO.TestDAO;
 import database.DAOException;
@@ -10,6 +11,7 @@ import DAO.ProductDAO;
 import java.util.LinkedList;
 import java.util.List;
 import jdk.nashorn.internal.parser.JSONParser;
+import models.Discount_Code;
 import models.Product;
 
 
@@ -24,7 +26,6 @@ import models.Product;
  * @author Mohamet Kone
  */
 public class NewMain {
-
     /**
      * @param args the command line arguments
      */
@@ -37,9 +38,9 @@ public class NewMain {
         CustomerEntity cust =  dao.findCustomer(2);
         System.out.println("test"+cust.getName());*/
       
-        PurchaseOrderDAO achatDAO = new PurchaseOrderDAO(Database.getDataSource());
-        Purchase_Order order = achatDAO.GetPurchaseOrderByID(10398001);
-        System.out.println("resulat"+ order.getCustomer_ID());
+        DiscountDAO dDAO = new DiscountDAO (Database.getDataSource());
+        Discount_Code d = dDAO.GetDiscountByID('H');
+        System.out.println("resulat"+ d.getRate());
 
         
     }
