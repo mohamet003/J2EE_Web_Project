@@ -39,8 +39,8 @@ Purchase_Order order = new Purchase_Order();
 			stmt.setInt(1, order_num);
 			try (ResultSet rs = stmt.executeQuery()) {
 				if (rs.next()) { // On a trouvé
-
-					order.setOrder_num(rs.getInt(order_num));
+                                        System.out.println("tesst");
+					order.setOrder_num(order_num);
                                         order.setCustomer_ID(rs.getInt("CUSTOMER_ID"));
                                         order.setProduct_ID(rs.getInt("PRODUCT_ID"));
                                         order.setShipping_cost(rs.getFloat("SHIPPING_COST"));

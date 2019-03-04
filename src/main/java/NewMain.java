@@ -33,36 +33,15 @@ public class NewMain {
         // TODO code application logic here
         
      
-        TestDAO dao = new TestDAO(Database.getDataSource());
+        /*TestDAO dao = new TestDAO(Database.getDataSource());
         CustomerEntity cust =  dao.findCustomer(2);
-        System.out.println("test"+cust.getName());
-    /*   
+        System.out.println("test"+cust.getName());*/
+      
         PurchaseOrderDAO achatDAO = new PurchaseOrderDAO(Database.getDataSource());
         Purchase_Order order = achatDAO.GetPurchaseOrderByID(10398001);
-        System.out.println("resulat"+ order);*/
+        System.out.println("resulat"+ order.getCustomer_ID());
 
-        ProductDAO daop = new ProductDAO(Database.getDataSource()); 
-            List<Product> Lproducts = daop.GetAllProduct();
-            List<List<Product>> products = new  LinkedList<>();
-            
-            int cpt = 0;
-            List<Product> By4products = new  LinkedList<>();
-            
-            for (Product p : Lproducts){
-              
-                if (cpt == 4) {
-                    cpt = 0;
-                    By4products = new  LinkedList<>();
-                    products.add(By4products);
-                }
-                cpt++;
-                By4products.add(p);   
-                
-
-            }
-            
-            System.out.println("test " + products.get(0).get(4).getDescription());
-            
+        
     }
    
 }
