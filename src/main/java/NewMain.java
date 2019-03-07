@@ -36,12 +36,27 @@ public class NewMain {
      
         /*TestDAO dao = new TestDAO(Database.getDataSource());
         CustomerEntity cust =  dao.findCustomer(2);
-        System.out.println("test"+cust.getName());*/
+        System.out.println("test"+cust.getName());
+      
       
         DiscountDAO dDAO = new DiscountDAO (Database.getDataSource());
         Discount_Code d = dDAO.GetDiscountByID('H');
         System.out.println("resulat"+ d.getRate());
-
+*/
+        
+        PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
+        Purchase_Order order = new Purchase_Order();
+        
+        order.setCustomer_ID(3);
+        order.setProduct_ID(986710);
+        order.setFreight_company("IISISIS");
+        order.setQuantity(230);
+        order.setShipping_cost(2300);
+        order.setOrder_num(5);
+      
+        dao.AddPurchaseOrder(order);
+        
+        //System.out.println("test"+cust.getName());
         
     }
    

@@ -27,7 +27,7 @@ public class DiscountDAO {
         this.myDataSource = myDataSource;
     }
      public Discount_Code GetDiscountByID(char discount_code) throws DAOException {
- Discount_Code d = new Discount_Code();
+                Discount_Code d = new Discount_Code();
 		String sql = "SELECT * FROM PURCHASE_ORDER WHERE ORDER_NUM = ? ";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête

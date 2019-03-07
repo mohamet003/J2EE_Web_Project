@@ -61,8 +61,9 @@ Purchase_Order order = new Purchase_Order();
 		return order;
 	} 
 	
-   public Purchase_Order GetPurchaseOrderByCustomer(int customer_ID) throws DAOException {
-Purchase_Order order = new Purchase_Order();
+   public List<Purchase_Order> GetPurchaseOrderByCustomer(int customer_ID) throws DAOException {
+
+List<Purchase_Order> orders = new LinkedList<>();
 		String sql = "SELECT * FROM PURCHASE_ORDER WHERE CUSTOMER_ID = ? ";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
@@ -70,7 +71,8 @@ Purchase_Order order = new Purchase_Order();
 
 			stmt.setInt(1, customer_ID);
 			try (ResultSet rs = stmt.executeQuery()) {
-				if (rs.next()) { // On a trouvé
+				while (rs.next()) { 
+                                        Purchase_Order order = new Purchase_Order();
 					order.setCustomer_ID(customer_ID);
                                         order.setOrder_num(rs.getInt("ORDER_NUM"));
                                         order.setProduct_ID(rs.getInt("PRODUCT_ID"));
@@ -79,6 +81,7 @@ Purchase_Order order = new Purchase_Order();
 					order.setSales_date(rs.getDate("SALES_DATE"));
                                         order.setshipping_date(rs.getDate("SHIPPING_DATE"));
                                         order.setFreight_company(rs.getString("FREIGHT_COMPANY"));
+                                        orders.add(order);
 					// On crée l'objet "entity"
 				
 				} // else on n'a pas trouvé, on renverra null
@@ -88,11 +91,11 @@ Purchase_Order order = new Purchase_Order();
 			throw new DAOException(ex.getMessage());
 		}
 
-		return order;
+		return orders;
 	}
    
-   public Purchase_Order GetPurchaseOrderByProduct (int product_ID) throws DAOException {
-Purchase_Order order = new Purchase_Order();
+   public List <Purchase_Order> GetPurchaseOrderByProduct (int product_ID) throws DAOException {
+  List <Purchase_Order> orders = new  LinkedList<>();
 		String sql = "SELECT * FROM PURCHASE_ORDER WHERE PRODUCT_ID = ? ";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
@@ -100,7 +103,8 @@ Purchase_Order order = new Purchase_Order();
 
 			stmt.setInt(1, product_ID);
 			try (ResultSet rs = stmt.executeQuery()) {
-				if (rs.next()) { // On a trouvé
+                            Purchase_Order order = new Purchase_Order();
+				if (rs.next()) { 
 					order.setProduct_ID(product_ID);
                                         order.setOrder_num(rs.getInt("ORDER_NUM"));
                                         order.setCustomer_ID(rs.getInt("CUSTOMER_ID"));
@@ -109,43 +113,45 @@ Purchase_Order order = new Purchase_Order();
 					order.setSales_date(rs.getDate("SALES_DATE"));
                                         order.setshipping_date(rs.getDate("SHIPPING_DATE"));
                                         order.setFreight_company(rs.getString("FREIGHT_COMPANY"));
-					// On crée l'objet "entity"
-				
-				} // else on n'a pas trouvé, on renverra null
-			}
-		}  catch (SQLException ex) {
-			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
-			throw new DAOException(ex.getMessage());
-		}
-
-		return order;
-	}
-   public Purchase_Order AddPurchaseOrder () throws DAOException {
-      List<Purchase_Order> ListOrder = new LinkedList<>();
-		String sql = "INSERT INTO PURCHASE_ORDER VALUES() ";
-		
-	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
-			PreparedStatement stmt = connection.prepareStatement(sql)) {
-
-			try (ResultSet rs = stmt.executeQuery()) {
-				while (rs.next()) { // On a trouvé
-                                      Purchase_Order order = new Purchase_Order();
-					order.getCustomer_ID();
-                                        order.getOrder_num();
-                                        order.getCustomer_ID();
-                                        order.getShipping_cost();
-                                        order.getQuantity();
-					order.getSales_date();
-                                        order.getshipping_date();
-                                        order.getFreight_company();
-                                    ListOrder.add(order);
+					orders.add(order);
 				} 
 			}
 		}  catch (SQLException ex) {
 			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
 			throw new DAOException(ex.getMessage());
 		}
-     return null;
+
+		return orders;
+	}
+   public void AddPurchaseOrder (Purchase_Order order ) throws DAOException {
+		
+        String sql = "INSERT INTO PURCHASE_ORDER VALUES (?,?,?,?,?,?,?,?)";
+	
+	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
+			PreparedStatement stmt = connection.prepareStatement(sql)) {
+            
+                         
+                        stmt.setInt(1, order.getOrder_num());                     
+                        stmt.setInt(2, order.getCustomer_ID());
+                        stmt.setInt(3, order.getProduct_ID());
+                        stmt.setInt(4, order.getQuantity());
+                        stmt.setFloat(5, order.getShipping_cost());          
+                        stmt.setString(6, "2019-10-21");
+                        stmt.setString(7, "2019-10-21");
+                        stmt.setString(8, order.getFreight_company());
+
+			
+                            int rs = stmt.executeUpdate();
+                          
+                            
+                            if (rs==1) {
+                  System.out.println("okay");
+            }
+		
+		}  catch (SQLException ex) {
+			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+			throw new DAOException(ex.getMessage());
+		}
 	}
 }   
 
