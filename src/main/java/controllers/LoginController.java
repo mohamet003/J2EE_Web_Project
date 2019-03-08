@@ -44,7 +44,7 @@ public class LoginController extends HttpServlet {
     throws ServletException, IOException, DAOException {
         response.setContentType("text/html;charset=UTF-8");
         
-            //Résupération des produits 
+            //Récupération des produits 
         
             request.setAttribute("products" ,productOrganize(daop.GetAllProduct()));
         
@@ -52,6 +52,8 @@ public class LoginController extends HttpServlet {
             String email = "";
             int pwd = 0;
             String action = "";
+            String adminLog = "admin@admin.com";
+            int  adminPwd = 123;
            
 
        try {
@@ -69,13 +71,18 @@ public class LoginController extends HttpServlet {
             switch (action){
                 
                 case "connexion":
+                    if(email==adminLog ||  pwd==adminPwd){
+                        request.getRequestDispatcher("Admin/index.html").forward(request, response);
+                    }
+                    else{
                         if (connexion(email, pwd ,request)) {
-                         CustomerEntity customerEntity = this.findUserInSession(request);
-                         request.setAttribute("user",customerEntity);	
-                         request.getRequestDispatcher("client/index.jsp").forward(request, response);
-                    }else{                         
-                        request.setAttribute("result","error");
+                            CustomerEntity customerEntity = this.findUserInSession(request);
+                            request.setAttribute("user",customerEntity);	
+                            request.getRequestDispatcher("client/index.jsp").forward(request, response);
+                        }else{                         
+                            request.setAttribute("result","error");
                         }
+                    }
                     break;
                 case "deconnexion":
                         if (deconnexion(request)) {	

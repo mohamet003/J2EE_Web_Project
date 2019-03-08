@@ -1,12 +1,12 @@
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\controllers\LoginController.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\models\CustomerEntity.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\database\DAOException.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\DAO\ProductDAO.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\DAO\PurchaseOrderDAO.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\models\Purchase_Order.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\NewMain.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\DAO\TestDAO.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\models\Discount_Code.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\models\Product.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\DAO\DiscountDAO.java
-C:\Users\KAMDOM Merveille\Documents\NetBeansProjects\J2EE_Web_Project\src\main\java\database\Database.java
+/Users/kevin/git/e_commerce/src/main/java/models/Product.java
+/Users/kevin/git/e_commerce/src/main/java/database/Database.java
+/Users/kevin/git/e_commerce/src/main/java/DAO/DiscountDAO.java
+/Users/kevin/git/e_commerce/src/main/java/NewMain.java
+/Users/kevin/git/e_commerce/src/main/java/controllers/LoginController.java
+/Users/kevin/git/e_commerce/src/main/java/DAO/ProductDAO.java
+/Users/kevin/git/e_commerce/src/main/java/models/Purchase_Order.java
+/Users/kevin/git/e_commerce/src/main/java/models/CustomerEntity.java
+/Users/kevin/git/e_commerce/src/main/java/database/DAOException.java
+/Users/kevin/git/e_commerce/src/main/java/DAO/TestDAO.java
+/Users/kevin/git/e_commerce/src/main/java/DAO/PurchaseOrderDAO.java
+/Users/kevin/git/e_commerce/src/main/java/models/Discount_Code.java
