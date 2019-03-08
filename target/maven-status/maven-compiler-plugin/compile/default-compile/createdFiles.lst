@@ -1,12 +1,13 @@
 NewMain.class
-DAO/PurchaseOrderDAO.class
 DAO/ProductDAO.class
 models/Product.class
 database/DAOException.class
-DAO/TestDAO.class
 database/Database.class
 DAO/DiscountDAO.class
 controllers/LoginController.class
+models/Purchase_Order.class
+DAO/PurchaseOrderDAO.class
+DAO/TestDAO.class
+controllers/ProductController.class
 models/Discount_Code.class
 models/CustomerEntity.class
-models/Purchase_Order.class
