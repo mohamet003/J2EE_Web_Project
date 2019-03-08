@@ -72,7 +72,7 @@ public class LoginController extends HttpServlet {
                 
                 case "connexion":
                     if(email==adminLog ||  pwd==adminPwd){
-                        request.getRequestDispatcher("Admin/index.html").forward(request, response);
+                        request.getRequestDispatcher("admin/index.jsp").forward(request, response);
                     }
                     else{
                         if (connexion(email, pwd ,request)) {

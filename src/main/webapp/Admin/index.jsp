@@ -1,173 +1,141 @@
 <%-- 
     Document   : index
-    Created on : 8 mars 2019, 10:12:07
+    Created on : 8 mars 2019, 23:26:21
     Author     : kevin
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<html lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
-        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-        <title>E_Commerce</title>
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina"
+    <title>E_commerce</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="admin/css/templatemo-style.css" type="text/css" media="all" />
+    <!--
+	Product Admin CSS Template
+	https://templatemo.com/tm-524-product-admin
+	-->
+</head>
 
-  <!-- Bootstrap core CSS -->
-        <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!--external css-->
-        <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <!-- Custom styles for this template -->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/style-responsive.css" rel="stylesheet">
-    </head>
-    <body>
-        <section id="container">
-        <!-- **********************************************************************************************************************************************************
-            TOP BAR CONTENT & NOTIFICATIONS
-         *********************************************************************************************************************************************************** -->
-        <!--header start-->
-            <header class="header black-bg">
-                <div class="sidebar-toggle-box">
-                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-                </div>
-        <!--logo start-->
-                <a href="index.html" class="logo"><b>E_COM<span>MERCE</span></b></a>
-        <!--logo end-->
-                <div class="nav notify-row" id="top_menu">
-                    <div class="top-menu">
-                        <ul class="top-menu" style="margin-left: 800%;">
-                            <li><a class="logout" href="#">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </header>
-        <!--header end-->
-        <!-- **********************************************************************************************************************************************************
-            MAIN SIDEBAR MENU
-            *********************************************************************************************************************************************************** -->
-        <!--sidebar start-->
-            <aside>
-                <div id="sidebar" class="nav-collapse">
-            <!-- sidebar menu start-->
-                    <ul class="sidebar-menu" id="nav-accordion">
-                        <p class="centered"><a href="#"><img src="img/ui-sam.png" class="img-circle" width="80"></a></p>
-                        <h5 class="centered"><i class="fa fa-circle" style="color:lightskyblue"></i> Admin</h5>
-                        <li class="mt">
-                            <a href="index.html">
-                                <i class="fa fa-th"></i>
-                                <span>Clients</span>
+<body id="reportsPage">
+    <div class="" id="home">
+        <nav class="navbar navbar-expand-xl">
+            <div class="container h-100">
+                <a class="navbar-brand" href="index.jsp">
+                    <h1 class="tm-site-title mb-0">COMMERCE</h1>
+                </a>
+                <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars tm-nav-icon"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto h-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin/products.html">
+                                <i class="fas fa-users"></i>
+                                Clients
                             </a>
                         </li>
-                        <li class="mt">
-                            <a href="graphiques.html">
-                            <i class="fa fa-bar-chart-o"></i>
-                            <span>Graphiques</span>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="admin/index.html">
+                                <i class="fas fa-chart-pie"></i>
+                                Graphiques
+                                <span class="sr-only">(current)</span>
                             </a>
                         </li>
                     </ul>
-            <!-- sidebar menu end-->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link d-block" href="login.jsp">
+                                Admin, <b>Déconexion</b>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </aside>
-        <!--sidebar end-->
-        <!-- **********************************************************************************************************************************************************
-            MAIN CONTENT
-            *********************************************************************************************************************************************************** -->
-        <!--main content start-->
-            <section id="main-content">
-                <section class="wrapper site-min-height">
-                    <h3><i class="fa fa-angle-right"></i> Liste des clients</h3>
-                        <section id="unseen">
-                            <table class="table table-striped table-advance table-hover">
-                                <hr>
-                                    <thead>
-                                        <tr>
-                                            <th><i class="fa fa-bullhorn"></i>Nom</th>
-                                            <th class="hidden-phone"><i class="fa fa-question-circle"></i>Téléphone</th>
-                                            <th><i class="fa fa-bookmark"></i> Prix</th>
-                                            <th><i class=" fa fa-edit"></i> Adress</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Kone</a>
-                                            </td>
-                                            <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                            <td>12000.00$ </td>
-                                            <td><span class="label label-info label-mini">Castres</span></td>
-                                            <td>
-                                                <button class="btn btn-primary btn-xs"><i class="fa fa-bar-chart-o"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Mohamet</a>
-                                            </td>
-                                            <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                            <td>17900.00$ </td>
-                                            <td><span class="label label-warning label-mini">Castres</span></td>
-                                            <td>
-                                                <button class="btn btn-primary btn-xs"><i class="fa fa-bar-chart-o"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Another</a>
-                                            </td>
-                                            <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                            <td>14400.00$ </td>
-                                            <td><span class="label label-success label-mini">Castres</span></td>
-                                            <td>
-                                                <button class="btn btn-primary btn-xs"><i class="fa fa-bar-chart-o"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Gelel</a>
-                                            </td>
-                                            <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                            <td>22000.50$ </td>
-                                            <td><span class="label label-success label-mini">Castres</span></td>
-                                            <td>
-                                                <button class="btn btn-primary btn-xs"><i class="fa fa-bar-chart-o"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Total</a>
-                                            </td>
-                                            <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                            <td>12120.00$ </td>
-                                            <td><span class="label label-warning label-mini">Castres</span></td>
-                                            <td>
-                                                <button class="btn btn-primary btn-xs"><i class="fa fa-bar-chart-o"></i></button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </section>    
-                        </section>
-        <!-- /wrapper -->
-                    </section>
-                </section>
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="lib/jquery.ui.touch-punch.min.js"></script>
-    <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="lib/jquery.scrollTo.min.js"></script>
-    <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
-    <!--common script for all pages-->
-    <script src="lib/common-scripts.js"></script>
-    <!--script for this page-->
+            </div>
+
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <br/><br/>
+                </div>
+            </div>
+            <!-- row -->
+            <div class="row tm-content-row">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block">
+                        <h2 class="tm-block-title">Latest Hits</h2>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block">
+                        <h2 class="tm-block-title">Performance</h2>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block tm-block-taller">
+                        <h2 class="tm-block-title">Storage Information</h2>
+                        <div id="pieChartContainer">
+                            <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
+                        </div>                        
+                    </div>
+                </div>     
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- https://jquery.com/download/ -->
+    <script src="admin/js/moment.min.js"></script>
+    <!-- https://momentjs.com/ -->
+    <script src="admin/js/Chart.min.js"></script>
+    <!-- http://www.chartjs.org/docs/latest/ -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- https://getbootstrap.com/ -->
+    <script src="admin/js/tooplate-scripts.js"></script>
+    <script>
+        Chart.defaults.global.defaultFontColor = 'white';
+        let ctxLine,
+            ctxBar,
+            ctxPie,
+            optionsLine,
+            optionsBar,
+            optionsPie,
+            configLine,
+            configBar,
+            configPie,
+            lineChart;
+        barChart, pieChart;
+        // DOM is ready
+        $(function () {
+            drawLineChart(); // Line Chart
+            drawBarChart(); // Bar Chart
+            drawPieChart(); // Pie Chart
+
+            $(window).resize(function () {
+                updateLineChart();
+                updateBarChart();                
+            });
+        })
+    </script>
 </body>
 
 </html>
