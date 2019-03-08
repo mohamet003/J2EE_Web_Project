@@ -32,12 +32,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <!--start-menu-->
+
 <script src="client/js/simpleCart.min.js"> </script>
 <link href="client/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="client/js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="client/js/jquery.easydropdown.js"></script>			
+<script src="client/js/jquery.easydropdown.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+<script src="client/js/script.js"> </script>
+
 </head>
 <body> 
 	<!--top-header-->
@@ -49,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="client/checkout.html">
 							 <div class="total">
 								<span class="simpleCart_total"></span></div>
-								<img src="images/cart-1.png" alt="" />
+								<img src="client/images/cart-1.png" alt="" />
 						</a>
                                             <p><a href="javascript:;" class="simpleCart_empty" style="text-align:center">Vider le Panier </a></p>
 						<div class="clearfix"> </div>
@@ -225,39 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--about-end-->
 	<!--product-starts-->
-	<div class="product"> 
-		<div class="container">
-			<div class="product-top">
-                            
-                     <c:forEach items="${products}" var="product4">   
-                        <div class="product-one">
-                                    
-                             <c:forEach items="${product4}" var="product">
-                                        
-   				<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="client/single.html" class="mask"><img class="img-responsive zoom-img" src="client/images/p-1.png" alt="" /></a>
-							<div class="product-bottom">
-                                                            <h3>${ product.getDescription() }</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">€ ${ product.getPurchase_cost() }</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-                                       
-                                </c:forEach>
-                            
-                              <div class="clearfix"></div>
-                        </div>
-                        <br>
-                     </c:forEach>
-                         
-			</div>
-		</div>
-	</div>
+        <div class="product" id="products">  </div>
 	<!--product-end-->
         
 	<!--information-starts-->

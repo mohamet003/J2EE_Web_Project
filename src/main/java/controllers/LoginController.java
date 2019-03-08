@@ -7,12 +7,9 @@
 package controllers;
 
 import DAO.TestDAO;
-import DAO.ProductDAO;
 import database.DAOException;
 import database.Database;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.CustomerEntity;
 import javax.servlet.http.HttpSession;
-import models.Product;
 
 /**
  *
@@ -31,7 +27,7 @@ import models.Product;
 @WebServlet(name="LoginController", urlPatterns={"/LoginController"})
 public class LoginController extends HttpServlet {
     TestDAO dao = new TestDAO(Database.getDataSource());
-    ProductDAO daop = new ProductDAO(Database.getDataSource());
+   
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -43,11 +39,6 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException, DAOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-            //Récupération des produits 
-        
-            request.setAttribute("products" ,productOrganize(daop.GetAllProduct()));
-        
 
             String email = "";
             int pwd = 0;
@@ -181,26 +172,5 @@ public class LoginController extends HttpServlet {
 	}
     
     
-    public List<List<Product>>  productOrganize(List<Product> Lproducts){
-        
-            List<List<Product>> products = new  LinkedList<>();
-            int cpt = 0;
-            List<Product> By4products = new  LinkedList<>();
-            
-            for (Product p : Lproducts){
-              
-                if (cpt == 4) {
-                    cpt = 0;
-                    By4products = new  LinkedList<>();
-                    products.add(By4products);
-                }
-                cpt++;
-                By4products.add(p);   
-                
-
-            }
-            
-            return products;
-    }
 
 }
