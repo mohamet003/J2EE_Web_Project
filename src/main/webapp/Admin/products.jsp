@@ -15,15 +15,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
-        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina"
-    <title>E_commerce</title>
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title> E_commerce </title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
     <!-- https://fonts.google.com/specimen/Roboto -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- https://fontawesome.com/ -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" type="text/css" href="admin/css/templatemo-style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="Admin/css/templatemo-style.css" media="all" />
     <!--
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
@@ -50,13 +50,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
                 <li class="nav-item">
-                    <a class="nav-link active" href="admin/products.html">
+                    <a class="nav-link active" href="AdminController?target=client">
                         <i class="fas fa-users"></i>
                         Clients
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="admin/index.html">
+                    <a class="nav-link" href="AdminController?target=graphiques">
                         <i class="fas fa-chart-pie"></i>
                         Graphiques
                         <span class="sr-only">(current)</span>
@@ -65,7 +65,7 @@
             </ul>
           <ul class="navbar-nav">
               <li class="nav-item">
-                  <a class="nav-link d-block" href="login.jsp">
+                  <a class="nav-link d-block" href="LoginController?connexion=deconnexion">
                       Admin, <b>Déconexion</b>
                   </a>
               </li>

@@ -2,6 +2,7 @@ NewMain.class
 DAO/ProductDAO.class
 models/Product.class
 database/DAOException.class
+controllers/AdminController.class
 database/Database.class
 DAO/DiscountDAO.class
 controllers/LoginController.class

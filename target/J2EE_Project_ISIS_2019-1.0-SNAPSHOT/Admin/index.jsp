@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Dashboard">
-        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina"
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <title>E_commerce</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
     <!-- https://fonts.google.com/specimen/Roboto -->
@@ -24,7 +24,7 @@
     <!-- https://fontawesome.com/ -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="admin/css/templatemo-style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="Admin/css/templatemo-style.css" type="text/css" media="all" />
     <!--
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
@@ -46,13 +46,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link" href="admin/products.html">
+                            <a class="nav-link" href="AdminController?target=client">
                                 <i class="fas fa-users"></i>
                                 Clients
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="admin/index.html">
+                            <a class="nav-link active" href="AdminController?target=graphiques">
                                 <i class="fas fa-chart-pie"></i>
                                 Graphiques
                                 <span class="sr-only">(current)</span>
@@ -61,10 +61,11 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link d-block" href="login.jsp">
-                                Admin, <b>Déconexion</b>
+                            <a class="nav-link d-block" href="LoginController?connexion=deconnexion">
+                                Admin, <b>Déconnexion</b>
                             </a>
                         </li>
+                            
                     </ul>
                 </div>
             </div>
@@ -104,13 +105,13 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- https://jquery.com/download/ -->
-    <script src="admin/js/moment.min.js"></script>
+    <script src="Admin/js/moment.min.js"></script>
     <!-- https://momentjs.com/ -->
-    <script src="admin/js/Chart.min.js"></script>
+    <script src="Admin/js/Chart.min.js"></script>
     <!-- http://www.chartjs.org/docs/latest/ -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- https://getbootstrap.com/ -->
-    <script src="admin/js/tooplate-scripts.js"></script>
+    <script src="Admin/js/tooplate-scripts.js"></script>
     <script>
         Chart.defaults.global.defaultFontColor = 'white';
         let ctxLine,
