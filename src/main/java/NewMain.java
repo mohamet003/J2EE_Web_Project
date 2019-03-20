@@ -32,6 +32,17 @@ public class NewMain {
 
     public static void main(String[] args) throws DAOException {
         // TODO code application logic here
+        PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
+        dao.DeletePurchaseOrder(5);
+        
+        /*order.setCustomer_ID(3);
+        order.setProduct_ID(986710);
+        order.setFreight_company("IISISIS");
+        order.setQuantity(230);
+        order.setShipping_cost(2300);
+        order.setOrder_num(5);
+      
+        dao.AddPurchaseOrder(order);
         
      
         /*TestDAO dao = new TestDAO(Database.getDataSource());
@@ -44,17 +55,6 @@ public class NewMain {
         System.out.println("resulat"+ d.getRate());
 */
         
-        PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
-        Purchase_Order order = new Purchase_Order();
-        
-        order.setCustomer_ID(3);
-        order.setProduct_ID(986710);
-        order.setFreight_company("IISISIS");
-        order.setQuantity(230);
-        order.setShipping_cost(2300);
-        order.setOrder_num(5);
-      
-        dao.AddPurchaseOrder(order);
         
         //System.out.println("test"+cust.getName());
         
