@@ -8,6 +8,7 @@ DAO/DiscountDAO.class
 controllers/LoginController.class
 models/Purchase_Order.class
 DAO/PurchaseOrderDAO.class
+controllers/OrderController.class
 DAO/TestDAO.class
 controllers/ProductController.class
 models/Discount_Code.class

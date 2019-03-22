@@ -32,18 +32,18 @@ public class NewMain {
 
     public static void main(String[] args) throws DAOException {
         // TODO code application logic here
-        
+        /*
      
-        /*TestDAO dao = new TestDAO(Database.getDataSource());
+        TestDAO dao = new TestDAO(Database.getDataSource());
         CustomerEntity cust =  dao.findCustomer(2);
-        System.out.println("test"+cust.getName());
+        System.out.println("test"+cust.getName()); */
       
       
         DiscountDAO dDAO = new DiscountDAO (Database.getDataSource());
         Discount_Code d = dDAO.GetDiscountByID('H');
         System.out.println("resulat"+ d.getRate());
-*/
-        
+
+      /*  
         PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
         Purchase_Order order = new Purchase_Order();
         
@@ -56,7 +56,7 @@ public class NewMain {
       
         dao.AddPurchaseOrder(order);
         
-        //System.out.println("test"+cust.getName());
+        //System.out.println("test"+cust.getName()); */
         
     }
    

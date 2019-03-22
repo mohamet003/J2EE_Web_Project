@@ -45,6 +45,12 @@ public class LoginController extends HttpServlet {
             String action = "";
             String adminLog = "admin@admin.com";
             int  adminPwd = 123;
+
+        // si l'utilisateur ne s'est pas déconnecté, on lui retourne la page d'accueil
+      
+       if(this.findUserInSession(request) != null){
+            request.getRequestDispatcher("client/index.jsp").forward(request, response);
+        }
            
 
        try {

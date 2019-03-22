@@ -19,7 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title>
 <link href="client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-<script src="client/js/jquery-1.11.0.min.js"></script>
+
 <!--Custom-Theme-files-->
 <!--theme-style-->
 <link href="client/css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -29,18 +29,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-<!--start-menu-->
-
-<script src="client/js/simpleCart.min.js"> </script>
 <link href="client/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="client/js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
-<!--dropdown-->
-<script src="client/js/jquery.easydropdown.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
-<script src="client/js/script.js"> </script>
+
 
 </head>
 <body> 
@@ -74,7 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!--start-logo-->
 	<div class="logo">
-		<a href="client/index.jsp"><h1>Luxury Watches</h1></a>
+		<a href="LoginController"><h1>Luxury Watches</h1></a>
 	</div>
 	<!--start-logo-->
 
@@ -84,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<div class="col-md-9 header-left">
 				<div class="top-nav">
-					<ul class="memenu skyblue"><li class="active"><a href="client/index.html">Home</a></li>
+					<ul class="memenu skyblue"><li class="active"><a href="LoginController"> Home</a></li>
 
 						<li class="grid"><a href="#">Catégories</a>
 							<div class="mepanel">
@@ -132,7 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</li>
 
 	
-						<li class="grid"><a href="client/typo.html">Blog</a>
+						<li class="grid"><a href="#" id="orders" >Commandes</a>
 						</li>
 						<li class="grid"><a href="client/contact.html">Contact</a>
 						</li>
@@ -143,7 +134,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 header-right"> 
 				<div class="search-bar">
 					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-					<input type="submit" value="">
 				</div>
 			</div>
 			<div class="clearfix"> </div>
@@ -151,6 +141,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--bottom-header-->
+        
+        <div id="globalContainer">
 	<!--banner-starts-->
 	<div class="bnr" id="home">
 		<div  id="top" class="callbacks_container">
@@ -169,29 +161,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"> </div>
 	</div>
 	<!--banner-ends--> 
-	<!--Slider-Starts-Here-->
-				<script src="client/js/responsiveslides.min.js"></script>
-			 <script>
-			    // You can also use "$(window).load(function() {"
-			    $(function () {
-			      // Slideshow 4
-			      $("#slider4").responsiveSlides({
-			        auto: true,
-			        pager: true,
-			        nav: true,
-			        speed:1000,
-			        namespace: "callbacks",
-			        before: function () {
-			          $('.events').append("<li>before event fired.</li>");
-			        },
-			        after: function () {
-			          $('.events').append("<li>after event fired.</li>");
-			        }
-			      });
-			
-			    });
-			  </script>
-			<!--End-slider-script-->
+
 	<!--about-starts-->
 	<div class="about"> 
 		<div class="container">
@@ -228,9 +198,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--about-end-->
-	<!--product-starts-->
-        <div class="product" id="products">  </div>
-	<!--product-end-->
+	            
+        </div>
+        <div class="product" id="container">  </div>
+	
         
 	<!--information-starts-->
 	<div class="information">
@@ -296,7 +267,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	<!--footer-end-->	
+        
+        
+	<!--footer-end-->
+   <script src="client/js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="client/js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+<!--dropdown-->
+<script src="client/js/jquery.easydropdown.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+<script src="client/js/script.js"> </script> 
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="client/js/simpleCart.min.js"> </script>
+
+	<!--Slider-Starts-Here-->
+				<script src="client/js/responsiveslides.min.js"></script>
+			 <script>
+			    // You can also use "$(window).load(function() {"
+			    $(function () {
+			      // Slideshow 4
+			      $("#slider4").responsiveSlides({
+			        auto: true,
+			        pager: true,
+			        nav: true,
+			        speed:1000,
+			        namespace: "callbacks",
+			        before: function () {
+			          $('.events').append("<li>before event fired.</li>");
+			        },
+			        after: function () {
+			          $('.events').append("<li>after event fired.</li>");
+			        }
+			      });
+			
+			    });
+                         
+
+			  </script>
+<!--End-slider-script-->
 </body>
 </html>
 

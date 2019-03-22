@@ -5,23 +5,45 @@
  */
 $(document).ready(function(){ 
 
+   
 function showProducts() {
-    // On fait un appel AJAX pour chercher les codes
     $.ajax({
         url: "ProductController",
         dataType: "json",
         success: 
                 function (result) {
-                    
                     $.get("client/products.jsp", function(template){
                     var processedTemplate = Mustache.to_html(template, result);
-                    $('#products').html(processedTemplate);
+                    $('#container').html(processedTemplate);
                     });
                     
                 }
     });
 }
 
+
+
+function showOrders() {
+    $.ajax({
+        url: "OrderController",
+        dataType: "json",
+        success: 
+                function (result) {
+              
+                    $.get("client/orders.jsp", function(template){
+                    var processedTemplate = Mustache.to_html(template, result);
+                    $("#globalContainer").hide();
+                    $('#container').html(processedTemplate);
+                    });
+                    
+                }
+    });
+}
+
+
+
+document.getElementById("orders").addEventListener("click",showOrders);
 showProducts();
+
 
 });
