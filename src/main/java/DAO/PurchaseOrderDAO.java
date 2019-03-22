@@ -49,9 +49,8 @@ Purchase_Order order = new Purchase_Order();
 					order.setSales_date(rs.getDate("SALES_DATE"));
                                         order.setshipping_date(rs.getDate("SHIPPING_DATE"));
                                         order.setFreight_company(rs.getString("FREIGHT_COMPANY"));
-					// On crée l'objet "entity"
 				
-				} // else on n'a pas trouvé, on renverra null
+				}
 			}
 		}  catch (SQLException ex) {
 			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
@@ -143,6 +142,28 @@ List<Purchase_Order> orders = new LinkedList<>();
 			
                             int rs = stmt.executeUpdate();
                           
+                            
+                            if (rs==1) {
+                  System.out.println("okay");
+            }
+		
+		}  catch (SQLException ex) {
+			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+			throw new DAOException(ex.getMessage());
+		}
+	}
+     public void DeletePurchaseOrder (int order_num ) throws DAOException {
+		
+        String sql = "DELETE FROM PURCHASE_ORDER WHERE ORDER_NUM =?";
+	
+	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
+			PreparedStatement stmt = connection.prepareStatement(sql)) {
+            
+                         Purchase_Order order = new Purchase_Order();
+                         
+                        stmt.setInt(1, order.getOrder_num());                     
+                        
+                            int rs = stmt.executeUpdate();
                             
                             if (rs==1) {
                   System.out.println("okay");
