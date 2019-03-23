@@ -35,7 +35,7 @@ public class ProductCodeDAO {
     }
     
     
-    public Product_Code GetProductCodeByID(int Prod_Code) throws DAOException {
+    public Product_Code GetProductCodeByID(String Prod_Code) throws DAOException {
             
         Product_Code pCode = new Product_Code();
 		String sql = "SELECT * FROM PRODUCT WHERE Prod_Code = ? ";
@@ -43,7 +43,7 @@ public class ProductCodeDAO {
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
                      
-			stmt.setInt(1, Prod_Code);
+			stmt.setString(1, Prod_Code);
 			try (ResultSet rs = stmt.executeQuery()) {
 				if (rs.next()) { // On a trouvé
                                 pCode.setDiscount_code(rs.getString("DISCOUNT_CODE"));
@@ -58,6 +58,35 @@ public class ProductCodeDAO {
 
 		return pCode;
 	} 
+    
+    
+    
+    public List<Product_Code> GetAllProductCodes() throws DAOException {
+                List<Product_Code> LProduitsCode = new LinkedList<>();
+		String sql = "SELECT * FROM PRODUCT_CODE ";
+		
+	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
+			PreparedStatement stmt = connection.prepareStatement(sql)) {
+                       
+			try (ResultSet rs = stmt.executeQuery()) {
+				while (rs.next()) { // On a trouvé
+                                        Product_Code PCode = new Product_Code();
+					PCode.setDiscount_code(rs.getString("DISCOUNT_CODE"));
+                                        PCode.setDescription(rs.getString("DESCRIPTION"));
+                                        LProduitsCode.add(PCode);
+				
+				} // else on n'a pas trouvé, on renverra null
+			}
+		}  catch (SQLException ex) {
+			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+			throw new DAOException(ex.getMessage());
+		}
+
+		return LProduitsCode;
+	} 
+    
+    
+    
 
 
 
