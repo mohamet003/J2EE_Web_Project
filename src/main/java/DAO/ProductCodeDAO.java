@@ -7,7 +7,6 @@ package DAO;
 
 import database.DAOException;
 import java.sql.Connection;
-import models.Product;
 import models.Product_Code;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +26,7 @@ import javax.sql.DataSource;
 public class ProductCodeDAO {
 
     protected  DataSource  myDataSource ;
-    /*    private final DataSource myDataSource;*/
+ 
     /*GetProductCodeByID(), GetAllProductCodes(),*/
     
     public ProductCodeDAO(DataSource myDataSource) {
@@ -38,7 +37,7 @@ public class ProductCodeDAO {
     public Product_Code GetProductCodeByID(String Prod_Code) throws DAOException {
             
         Product_Code pCode = new Product_Code();
-		String sql = "SELECT * FROM PRODUCT WHERE Prod_Code = ? ";
+		String sql = "SELECT * FROM PRODUCT_CODE WHERE Prod_Code = ? ";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
