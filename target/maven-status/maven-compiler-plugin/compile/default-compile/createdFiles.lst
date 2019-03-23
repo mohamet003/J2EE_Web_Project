@@ -4,8 +4,8 @@ models/Product.class
 database/DAOException.class
 controllers/AdminController.class
 database/Database.class
-DAO/DiscountDAO.class
 controllers/LoginController.class
+DAO/DiscountDAO.class
 models/Purchase_Order.class
 DAO/PurchaseOrderDAO.class
 controllers/OrderController.class
