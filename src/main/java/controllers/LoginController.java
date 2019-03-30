@@ -6,7 +6,7 @@
 
 package controllers;
 
-import DAO.TestDAO;
+import DAO.CustomerDAO;
 import database.DAOException;
 import database.Database;
 import java.io.IOException;
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name="LoginController", urlPatterns={"/LoginController"})
 public class LoginController extends HttpServlet {
-    TestDAO dao = new TestDAO(Database.getDataSource());
+    CustomerDAO dao = new CustomerDAO(Database.getDataSource());
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -44,14 +44,7 @@ public class LoginController extends HttpServlet {
             int pwd = 0;
             String action = "";
             String adminLog = "admin@admin.com";
-            int  adminPwd = 123;
-
-        // si l'utilisateur ne s'est pas déconnecté, on lui retourne la page d'accueil
-      
-       if(this.findUserInSession(request) != null){
-            request.getRequestDispatcher("client/index.jsp").forward(request, response);
-        }
-           
+            int  adminPwd = 123;    
 
        try {
             action = request.getParameter("connexion");
@@ -62,7 +55,11 @@ public class LoginController extends HttpServlet {
             if (email != null){
                 request.setAttribute("result","error");
             }
-            
+            // Si l'utilisateur est toujours connnecté, on le renvoie à la page principale 
+            if( this.findUserInSession(request) != null && action == null){
+                request.getRequestDispatcher("client/index.jsp").forward(request, response);
+            }
+
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
             switch (action){
@@ -87,8 +84,7 @@ public class LoginController extends HttpServlet {
                     }
                     break;
             }            
-
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        //request.getRequestDispatcher("login.jsp").forward(request, response);
     } 
 	// On continue vers la page JSP sélectionnée
 	//request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -175,7 +171,7 @@ public class LoginController extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 		return (session == null) ? null : (CustomerEntity) session.getAttribute("user");
-	}
+    }
     
     
 

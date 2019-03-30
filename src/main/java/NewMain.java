@@ -1,13 +1,16 @@
 
 import DAO.DiscountDAO;
-import DAO.PurchaseOrderDAO;
-import DAO.TestDAO;
+import DAO.CustomerDAO;
 import database.DAOException;
 import database.Database;
 import javax.sql.DataSource;
 import models.CustomerEntity;
 import models.Purchase_Order;
 import DAO.ProductDAO;
+import DAO.PurchaseOrderDAO;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import jdk.nashorn.internal.parser.JSONParser;
@@ -34,7 +37,7 @@ public class NewMain {
         // TODO code application logic here
 
         /*
-=======
+
         PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
         dao.DeletePurchaseOrder(5);
         
@@ -47,19 +50,22 @@ public class NewMain {
       
         dao.AddPurchaseOrder(order);
         
->>>>>>> 0a1c77df3e0b75643c30ecde5b79e822cae8e0b4
      
-        TestDAO dao = new TestDAO(Database.getDataSource());
+        CustomerDAO dao = new CustomerDAO(Database.getDataSource());
         CustomerEntity cust =  dao.findCustomer(2);
         System.out.println("test"+cust.getName()); */
       
-      
+      /*   
         DiscountDAO dDAO = new DiscountDAO (Database.getDataSource());
         Discount_Code d = dDAO.GetDiscountByID('H');
         System.out.println("resulat"+ d.getRate());
 
 
-      /*  
+   */  
+      //Date date = Calendar.getInstance().getTime();
+      
+
+        
         PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
         Purchase_Order order = new Purchase_Order();
         
@@ -67,16 +73,19 @@ public class NewMain {
         order.setProduct_ID(986710);
         order.setFreight_company("IISISIS");
         order.setQuantity(230);
+  
         order.setShipping_cost(2300);
-        order.setOrder_num(5);
+        order.setOrder_num(6);
       
         dao.AddPurchaseOrder(order);
+        //Purchase_Order order2 = dao.GetPurchaseOrderByID(10398001);
+        
+        System.out.println("pol "+order);
 
-*/
         
 
         
-        //System.out.println("test"+cust.getName()); */
+        //System.out.println("test"+cust.getName()); 
         
     }
    

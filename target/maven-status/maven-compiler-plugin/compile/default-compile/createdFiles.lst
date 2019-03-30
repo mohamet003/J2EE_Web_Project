@@ -5,11 +5,12 @@ database/DAOException.class
 controllers/AdminController.class
 database/Database.class
 DAO/DiscountDAO.class
+controllers/SingleProductController.class
 controllers/LoginController.class
 models/Purchase_Order.class
 DAO/PurchaseOrderDAO.class
+DAO/CustomerDAO.class
 controllers/OrderController.class
-DAO/TestDAO.class
 controllers/ProductController.class
 models/Discount_Code.class
 models/CustomerEntity.class

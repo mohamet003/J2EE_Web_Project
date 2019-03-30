@@ -22,7 +22,7 @@ import javax.sql.DataSource;
  *
  * @author Mohamet Kone
  */
-public class TestDAO {
+public class CustomerDAO {
 
 	protected final DataSource  myDataSource;
 
@@ -30,7 +30,7 @@ public class TestDAO {
 	 *
 	 * @param dataSource la source de données à utiliser
 	 */
-	public TestDAO(DataSource dataSource) {
+	public CustomerDAO(DataSource dataSource) {
 		this.myDataSource = dataSource;
 	}
 

@@ -6,12 +6,16 @@
 
 package controllers;
 
+import DAO.ProductDAO;
 import DAO.PurchaseOrderDAO;
 import com.google.gson.Gson;
 import database.DAOException;
 import database.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +24,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.CustomerEntity;
+import models.Product;
+import models.Purchase_Order;
+
 
 /**
  *
@@ -28,6 +37,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name="OrderController", urlPatterns={"/OrderController"})
 public class OrderController extends HttpServlet {
     PurchaseOrderDAO purcharseOrderDAO = new PurchaseOrderDAO(Database.getDataSource());
+    ProductDAO daop = new ProductDAO(Database.getDataSource());
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -40,10 +50,60 @@ public class OrderController extends HttpServlet {
     throws ServletException, IOException, DAOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            // On récupére l'utilisateur courant et ses commandes
+            CustomerEntity curentUser = findUserInSession(request);
+            List<Purchase_Order> lorders =  purcharseOrderDAO.GetPurchaseOrderByCustomer(curentUser.getCustomerId());
+
+           String action =  "";
+           int id = 0;
+           int qte = 0;
+
+           if(request.getParameter("target") != null) {
+
+            action =  request.getParameter("target");
+ 
+            System.out.println(action);
+
+        
+            switch (action){
+               
+                case "addorder":
+
+                    id = Integer.parseInt(request.getParameter("idProduct"));
+                    qte = Integer.parseInt(request.getParameter("qte"));
+                    Product p = daop.GetProductByID(id);
+                    Purchase_Order order = new Purchase_Order();
+                    order.setCustomer_ID(curentUser.getCustomerId());
+                    order.setProduct_ID(id);
+                    order.setQuantity(qte);
+                    order.setFreight_company("IISISIS");
+                    order.setShipping_cost(qte*p.getPurchase_cost());
+                    order.setOrder_num(lorders.size()+10);
+                    purcharseOrderDAO.AddPurchaseOrder(order);
+
+                    break;
+
+                case "updateOrder":
+                       	
+                         request.getRequestDispatcher("Admin/index.jsp").forward(request,response);
+                    
+                    break;
+                case "deleteOrder":
+                       	
+                         request.getRequestDispatcher("Admin/index.jsp").forward(request,response);
+                    
+                    break;
+            }
+
+           
+           } 
+  
+            
             /* TODO output your page here. You may use following sample code. */
             Properties resultat = new Properties();
-            resultat.put("orders",purcharseOrderDAO.GetPurchaseOrderByCustomer(1));
-
+            // On récupére les commandes de l'utilisateur courant 
+            resultat.put("orders",lorders);
             // Générer du JSON
             Gson gson = new Gson();
             out.println(gson.toJson(resultat));
@@ -93,5 +153,12 @@ public class OrderController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+        public CustomerEntity findUserInSession(HttpServletRequest request) {
+
+		HttpSession session = request.getSession(false);
+		return (session == null) ? null : (CustomerEntity) session.getAttribute("user");
+    }
+        
 
 }

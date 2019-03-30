@@ -29,35 +29,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="client/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 
 
 </head>
-<body> 
-	<!--top-header-->
+
+<body>
+    
+        <!--top-header-->
 	<div class="top-header">
 		<div class="container">
 			<div class="top-header-main">
 				<div class="col-md-6 top-header-left">
+					<div class="drop">
+						<div class="box">
+                                                 <a style="color:white; text-decoration: none;" href="LoginController?connexion=deconnexion">Déconnexion</a>
+						</div>
+						<div class="box1">
+                                                <label for="deconnexion" style="color:white; text-transform: uppercase" >${user.name}</label>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-6 top-header-left">
 					<div class="cart box_1">
-						<a href="client/checkout.html">
-							 <div class="total">
+						<a href="checkout.html">
+							<div class="total">
 								<span class="simpleCart_total"></span></div>
 								<img src="client/images/cart-1.png" alt="" />
 						</a>
-                                            <p><a href="javascript:;" class="simpleCart_empty" style="text-align:center">Vider le Panier </a></p>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
 					</div>
 				</div>
-                        <div class="col-md-6 top-header-left">
-                                
-                            <form style="margin-left:20vw" action="LoginController" method="post" >
-                           <label for="deconnexion" style="color:white; text-transform: uppercase" >${user.name}</label>
-                            <button name="connexion" value="deconnexion" class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fas fa-sign-out-alt"></i></button>
-                        </form>
-                         </div>
-
+				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
@@ -271,14 +277,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         
 	<!--footer-end-->
    <script src="client/js/jquery-1.11.0.min.js"></script>
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script type="text/javascript" src="client/js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+
 <!--dropdown-->
 <script src="client/js/jquery.easydropdown.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 <script src="client/js/script.js"> </script> 
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="client/js/simpleCart.min.js"> </script>
+
 
 	<!--Slider-Starts-Here-->
 				<script src="client/js/responsiveslides.min.js"></script>
@@ -300,9 +311,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			        }
 			      });
 			
-			    });
-                         
-
+			    });    
+                            
 			  </script>
 <!--End-slider-script-->
 </body>

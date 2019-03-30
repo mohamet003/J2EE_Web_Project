@@ -23,79 +23,60 @@
 	<div class="ckeckout">
 		<div class="container">
 			<div class="ckeck-top heading">
-				<h2>COMMANDE</h2>
+				<h2>COMMANDE(S)</h2>
 			</div>
 			<div class="ckeckout-top">
 			<div class="cart-items">
-			 <h3>My Shopping Bag (3)</h3>
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
-			<script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-						$('.cart-header1').fadeOut('slow', function(c){
-							$('.cart-header1').remove();
-						});
-						});	  
-					});
-			   </script>
-			   <script>$(document).ready(function(c) {
-					$('.close3').on('click', function(c){
-						$('.cart-header2').fadeOut('slow', function(c){
-							$('.cart-header2').remove();
-						});
-						});	  
-					});
-			   </script>
+			 <h3>My Shopping Bag </h3>
+
 				
 			<div class="in-check" >
+                            
+                            
 				<ul class="unit">
-					<li><span>Item</span></li>
-					<li><span>Product Name</span></li>		
-					<li><span>Unit Price</span></li>
-					<li><span>Delivery Details</span></li>
-					<li> </li>
+					<li><span></span></li>					
+					<li><span>QUANTITÉ</span></li>		
+					<li><span>MONTANT</span></li>
+					<li><span>DATE COMMANDE</span></li>
+                                        <li><span></span></li>
+                                        <li><span></span></li>
 					<div class="clearfix"> </div>
 				</ul>
-				<ul class="cart-header">
-					<div class="close1"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="client/images/c-1.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 290.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-					<div class="clearfix"> </div>
-				</ul>
-				<ul class=" cart-header1">
-					<div class="close2"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="client/images/c-2.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 300.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
-				<ul class="cart-header2">
-					<div class="close3"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="client/images/c-3.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 360.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
+                              
+                            
+                                {{#orders}}
+                                
+                                    <ul class="cart-header" id="{{order_num}}">
+                                            <div class="close1" data-id="{{order_num}}"> </div>
+                                                    <li class="ring-in">
+                                                    <a href="single.html" >
+                                                    <img src="client/images/order.png" style="width: 86px;" class="img-responsive" alt="">
+                                                    </a>
+                                                    </li>
+                                                    <li><span class="cost">{{quantity}}</span></li>
+                                                    <li><span class="cost">{{shipping_cost}} €</span></li>
+                                                    <li><span class="cost">{{shipping_date}}</li>
+                                                   
+                                                    
+                                            <div class="clearfix"> </div>
+                                    </ul>
+                                
+                                {{/orders}}
+                                
 			</div>
 			</div>  
 		 </div>
 		</div>
 	</div>
+        
+<script>$(document).ready(function(c) {
+$('.close1').on('click', function(c){
+    let id = $(this).data('id');
+        $('#'+id).fadeOut('slow', function(c){
+                $('#'+id).remove();
+        });
+        });	  
+});
+</script>
 
 
