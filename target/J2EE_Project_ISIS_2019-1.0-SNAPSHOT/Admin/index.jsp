@@ -46,13 +46,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link" href="AdminController?target=client">
+                            <a class="nav-link" id="client" href="#">
                                 <i class="fas fa-users"></i>
                                 Clients
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="AdminController?target=graphiques">
+                            <a class="nav-link active" class="graphique" id="graphique" href="#">
                                 <i class="fas fa-chart-pie"></i>
                                 Graphiques
                                 <span class="sr-only">(current)</span>
@@ -71,40 +71,15 @@
             </div>
 
         </nav>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <br/><br/>
-                </div>
-            </div>
-            <!-- row -->
-            <div class="row tm-content-row">
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Latest Hits</h2>
-                        <canvas id="lineChart"></canvas>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block">
-                        <h2 class="tm-block-title">Performance</h2>
-                        <canvas id="barChart"></canvas>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-                    <div class="tm-bg-primary-dark tm-block tm-block-taller">
-                        <h2 class="tm-block-title">Storage Information</h2>
-                        <div id="pieChartContainer">
-                            <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
-                        </div>                        
-                    </div>
-                </div>     
-            </div>
+        <div id="container">
+            
         </div>
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- https://jquery.com/download/ -->
+    <script src="Admin/js/routing.js"></script>
+    <!--gestion du routing -->
     <script src="Admin/js/moment.min.js"></script>
     <!-- https://momentjs.com/ -->
     <script src="Admin/js/Chart.min.js"></script>
@@ -112,6 +87,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- https://getbootstrap.com/ -->
     <script src="Admin/js/tooplate-scripts.js"></script>
+    <script>
+      $(function() {
+        $(".tm-product-name").on("click", function() {
+          window.location.href = "edit-product.html";
+        });
+      });
+    </script>
     <script>
         Chart.defaults.global.defaultFontColor = 'white';
         let ctxLine,
