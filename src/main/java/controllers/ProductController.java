@@ -7,7 +7,6 @@ package controllers;
 
 import DAO.ProductDAO;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import database.DAOException;
 import database.Database;
 import java.io.IOException;

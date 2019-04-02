@@ -25,7 +25,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h2 class="modal-title" id="exampleModalLabel">Commande effectuée avec succès</h2>
+                <h1 class="modal-title" id="exampleModalLabel">Étes-vous sure de vouloir supprimer cette commande ?</h1>
 
               </div>
               <div class="modal-body">
@@ -36,8 +36,8 @@
                   <a href="#" class="add-cart item_add" data-dismiss="modal" id="voirCommande"  >Voir Mes commandes</a>
                    <a href="#" class="add-cart item_add" data-dismiss="modal"  >Continuer Mes achats</a>
                       -->
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="del">Save changes</button>
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                 <button type="button" class="btn btn-danger" data-dismiss="modal" id="del">Supprimer</button>
               </div>
             </div>
           </div>
@@ -72,9 +72,9 @@
                                 {{#orders}}
                                 
                                     <ul class="cart-header" id="{{order_num}}">
-                                            <div class="close1" data-id="{{order_num}}"> </div>
+                                            <div class="close1" data-toggle="modal" data-target="#exampleModal"  data-id="{{order_num}}"> </div>
                                                     <li class="ring-in">
-                                                    <a href="single.html" >
+                                                    <a href="#">
                                                     <img src="client/images/order.png" style="width: 86px;" class="img-responsive" alt="">
                                                     </a>
                                                     </li>
@@ -94,17 +94,37 @@
 		</div>
 	</div>
         
-<script>$(document).ready(function(c) {
+<script>
+    
+    
+$(document).ready(function(c) {
+    
+   var id = 0;
 $('.close1').on('click', function(c){
-    
-    
-    
-    let id = $(this).data('id');
-        $('#'+id).fadeOut('slow', function(c){
-                $('#'+id).remove();
-        });
-        });	  
+    id = $(this).data('id');	  
 });
+
+$('#del').click(function() {
+    deleteOrder(id);
+    $('#'+id).fadeOut('slow', function(c){
+            $('#'+id).remove();
+    });
+});
+
+});
+
+
+function deleteOrder(id) {
+$.ajax({
+    url: "OrderController?target=deleteorder&idProduct="+id,
+    dataType: "json",
+    success: function () {
+
+    }
+});
+}
+
+
 </script>
 
 

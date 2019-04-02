@@ -75,9 +75,11 @@ public class NewMain {
         order.setQuantity(230);
   
         order.setShipping_cost(2300);
-        order.setOrder_num(6);
+        order.setOrder_num(62);
+        
+        dao.DeletePurchaseOrder(62);
       
-        dao.AddPurchaseOrder(order);
+        //dao.AddPurchaseOrder(order);
         //Purchase_Order order2 = dao.GetPurchaseOrderByID(10398001);
         
         System.out.println("pol "+order);

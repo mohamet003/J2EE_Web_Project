@@ -38,10 +38,9 @@ $(document).ready(function(){
     }
 
 
-$("#orders").click(showOrders);
 
 // Afficher les commandes de l'utilisateur
-//document.getElementById("orders").addEventListener("click",showOrders);
+$("#orders").click(showOrders);
 
 // afficher les produits
 showProducts();

@@ -86,12 +86,14 @@ public class OrderController extends HttpServlet {
 
                 case "updateOrder":
                        	
-                         request.getRequestDispatcher("Admin/index.jsp").forward(request,response);
+                         //request.getRequestDispatcher("Admin/index.jsp").forward(request,response);
                     
                     break;
-                case "deleteOrder":
-                       	
-                         request.getRequestDispatcher("Admin/index.jsp").forward(request,response);
+                case "deleteorder":
+                         
+                         id = Integer.parseInt(request.getParameter("idProduct"));
+                         System.out.println("teeeeeeeeeeeee "+id);
+                         purcharseOrderDAO.DeletePurchaseOrder(id);
                     
                     break;
             }

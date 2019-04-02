@@ -48,7 +48,6 @@ public class ProductDAO {
                     P.setAvailable(rs.getBoolean("AVAILABLE"));
                     P.setDescription(rs.getString("DESCRIPTION"));
                     LProduits.add(P);
-
                 }
             }
         } catch (SQLException ex) {

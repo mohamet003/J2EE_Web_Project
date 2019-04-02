@@ -49,7 +49,7 @@ public class PurchaseOrderDAO {
                                         order.setshipping_date(rs.getDate("SHIPPING_DATE"));
                                         order.setFreight_company(rs.getString("FREIGHT_COMPANY"));
                                         
-                                         System.out.println("DAO test "+ rs.getDate("SALES_DATE"));
+                                        System.out.println("DAO test "+ rs.getDate("SALES_DATE"));
 				
 				}
 			}
@@ -105,7 +105,7 @@ List<Purchase_Order> orders = new LinkedList<>();
 			try (ResultSet rs = stmt.executeQuery()) {
                             Purchase_Order order = new Purchase_Order();
 				if (rs.next()) { 
-                                    
+
                                         order.setProduct_ID(product_ID);
                                         order.setOrder_num(rs.getInt("ORDER_NUM"));
                                         order.setCustomer_ID(rs.getInt("CUSTOMER_ID"));
@@ -115,7 +115,6 @@ List<Purchase_Order> orders = new LinkedList<>();
                                         order.setshipping_date(rs.getDate("SHIPPING_DATE"));
                                         order.setFreight_company(rs.getString("FREIGHT_COMPANY"));
                                         
-                                       
                                         orders.add(order);
 				} 
 			}
@@ -160,20 +159,18 @@ List<Purchase_Order> orders = new LinkedList<>();
 	}
      public void DeletePurchaseOrder (int order_num ) throws DAOException {
 		
-        String sql = "DELETE FROM PURCHASE_ORDER WHERE ORDER_NUM =?";
+        String sql = "DELETE FROM PURCHASE_ORDER WHERE ORDER_NUM = ?";
 	
-	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
+	try (Connection connection = myDataSource.getConnection();
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
-            
-                         Purchase_Order order = new Purchase_Order();
-                         
-                        stmt.setInt(1, order.getOrder_num());                     
+
+                        stmt.setInt(1, order_num);                     
                         
-                            int rs = stmt.executeUpdate();
-                            
-                            if (rs==1) {
-                  System.out.println("okay");
-            }
+                        int rs = stmt.executeUpdate();
+
+                        if (rs==1) {
+                            System.out.println("okay");
+                        }
 		
 		}  catch (SQLException ex) {
 			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
