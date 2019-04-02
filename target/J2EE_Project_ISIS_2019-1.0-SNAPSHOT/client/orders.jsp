@@ -19,6 +19,31 @@
 		</div>
 	</div>
 	<!--end-breadcrumbs-->
+        
+                <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Commande effectuée avec succès</h2>
+
+              </div>
+              <div class="modal-body">
+               <img style="height:20vh;" class="img-responsive zoom-img" src="client/images/supprimer.jpeg" alt="" />
+              </div>
+              <div class="modal-footer">
+                    <!--start-single
+                  <a href="#" class="add-cart item_add" data-dismiss="modal" id="voirCommande"  >Voir Mes commandes</a>
+                   <a href="#" class="add-cart item_add" data-dismiss="modal"  >Continuer Mes achats</a>
+                      -->
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="del">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
 	<!--start-ckeckout-->
 	<div class="ckeckout">
 		<div class="container">
@@ -71,6 +96,9 @@
         
 <script>$(document).ready(function(c) {
 $('.close1').on('click', function(c){
+    
+    
+    
     let id = $(this).data('id');
         $('#'+id).fadeOut('slow', function(c){
                 $('#'+id).remove();

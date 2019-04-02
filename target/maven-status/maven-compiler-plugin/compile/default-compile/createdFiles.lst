@@ -1,16 +1,15 @@
 NewMain.class
 DAO/ProductDAO.class
+models/Product_Code.class
 models/Product.class
 database/DAOException.class
+DAO/ProductCodeDAO.class
 controllers/AdminController.class
 database/Database.class
-<<<<<<< HEAD
 DAO/DiscountDAO.class
 controllers/SingleProductController.class
-=======
->>>>>>> 5653a593cb16c7f95c0c8c17b88aa584d2510c38
 controllers/LoginController.class
-DAO/DiscountDAO.class
+models/Micro_Market.class
 models/Purchase_Order.class
 DAO/PurchaseOrderDAO.class
 DAO/CustomerDAO.class
@@ -18,3 +17,4 @@ controllers/OrderController.class
 controllers/ProductController.class
 models/Discount_Code.class
 models/CustomerEntity.class
+DAO/MicroMarketDAO.class

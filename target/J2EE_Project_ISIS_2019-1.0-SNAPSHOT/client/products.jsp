@@ -36,6 +36,15 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+
 <script>
     // Afficher un produit
 
@@ -43,6 +52,9 @@
     function showSingleProduct() {
 
         let id = $(this).data("idproduct");
+        
+        
+        
         $.ajax({
             url: "SingleProductController?idProduct=" + id,
             dataType: "json",

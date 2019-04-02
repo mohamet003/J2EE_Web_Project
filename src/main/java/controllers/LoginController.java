@@ -155,7 +155,7 @@ public class LoginController extends HttpServlet {
         try {
            
 
-            HttpSession session = request.getSession(false); // démarre la session
+            HttpSession session = request.getSession(false); // fermer la session
 
             if (session != null) session.invalidate();
             return true;
