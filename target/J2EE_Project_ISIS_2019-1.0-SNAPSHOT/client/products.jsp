@@ -58,11 +58,15 @@
         $.ajax({
             url: "SingleProductController?idProduct=" + id,
             dataType: "json",
-            success: function (result) {
+            success: function (data) {
 
                 $.get("client/single.jsp", function (template) {
-                    console.log(result);
-                    var processedTemplate = Mustache.to_html(template, result);
+                    data["txt_btn"]= "Commender"; 
+                    data["txt_alert"]= "Votre Commande a bien été enrégistrée !";
+                    data["qte"]= 1;
+                    data["action"]= "purchase";
+                    //console.log(data);
+                    var processedTemplate = Mustache.to_html(template, data);
                     $("#globalContainer").hide();
                     $('#container').html(processedTemplate);
                 });
