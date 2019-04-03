@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <div class="container mt-4">
     <div class="row">
         <div class="col">
@@ -33,8 +32,8 @@
                             <td>1,800</td>
                             <td>200</td>
                             <td>22 Feb 2019</td>
-                            <td>
-                                <a href="#" class="tm-product-delete-link">
+                            <td> 
+                                <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal" data-whatever="paul">
                                     <i class="fas fa-chart-area" style="color:orange"></i>
                                 </a>
                             </td>
@@ -46,7 +45,7 @@
                             <td>400</td>
                             <td>21 Jan 2019</td>
                             <td>
-                                <a href="#" class="tm-product-delete-link">
+                                <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal" data-whatever="jean">
                                     <i class="fas fa-chart-area" style="color:orange"></i>
                                 </a>
                             </td>
@@ -58,3 +57,30 @@
         </div>
     </div>
 </div>
+
+<!-- insertion d'une classe modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        <div id="myPieChart"/>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('chiffre affaire de ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
+<script src="Admin/js/graphiqueUser.js"></script>

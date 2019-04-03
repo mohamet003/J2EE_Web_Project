@@ -5,13 +5,17 @@
  */
 $(document).ready(function(){ 
 
-   
+  
 function showUsers() {
     $.ajax({
         url: "userControlleur",
         dataType: "json",
         success: 
                 function (result) {
+                    
+                    console.log(result);
+                    $("#graphique").removeClass("active");
+                    $("#client").addClass("active");
                     $.get("Admin/client.jsp", function(template){
                     var processedTemplate = Mustache.to_html(template, result);
                     $('#container').html(processedTemplate);
@@ -29,7 +33,8 @@ function showGraphique() {
         dataType: "json",
         success: 
                 function (result) {
-              
+                    $("#client").removeClass("active");
+                    $("#graphique").addClass("active");
                     $.get("Admin/graphiques.jsp", function(template){
                     var processedTemplate = Mustache.to_html(template, result);
                     $('#container').html(processedTemplate);
@@ -38,7 +43,7 @@ function showGraphique() {
                 }
     });
 }
-
-document.getElementById("client").addEventListener("click",showUsers);
+$("#graphique").click(showGraphique);
+$("#client").click(showUsers);
 showUsers();
 });
