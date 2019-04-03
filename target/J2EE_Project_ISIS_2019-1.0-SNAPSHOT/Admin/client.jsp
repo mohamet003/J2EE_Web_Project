@@ -33,8 +33,8 @@
                             <td>200</td>
                             <td>22 Feb 2019</td>
                             <td> 
-                                <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal" data-whatever="paul">
-                                    <i class="fas fa-chart-area" style="color:orange"></i>
+                                <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fas fa-chart-area" style="color:white"></i>
                                 </a>
                             </td>
                         </tr>
@@ -45,8 +45,8 @@
                             <td>400</td>
                             <td>21 Jan 2019</td>
                             <td>
-                                <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal" data-whatever="jean">
-                                    <i class="fas fa-chart-area" style="color:orange"></i>
+                                <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fas fa-chart-area" style="color:white"></i>
                                 </a>
                             </td>
                         </tr>
@@ -60,27 +60,43 @@
 
 <!-- insertion d'une classe modal -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
-        <div id="myPieChart"/>
+          <div class="col-lg-2 btn" role="group" aria-label="First group">
+            <a href="#" class="tm-product-delete-link" style="background: #3D4E62;">
+                <i class="fas fa-chart-area" style="color:white"></i>
+            </a>
+            <a href="#" class="tm-product-delete-link" style="background: #3D4E62;">
+                <i class="fas fa-chart-area" style="color:white"></i>
+            </a>
+            <a href="#" class="tm-product-delete-link" style="background: #3D4E62;">
+                <i class="fas fa-chart-area" style="color:white"></i>
+            </a>
+            <a href="#" class="tm-product-delete-link" style="background: #3D4E62;">
+                <i class="fas fa-chart-area" style="color:white"></i>
+            </a>
+          </div>
+          <div>
+              <div id="myPieChart"></div>
+              <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="date debut" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; " >
+                </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="date fin" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
+                </div>
+                <div class="col">
+                    <button type="button" class="btn" class="form-control" style="background: #3D4E62; color: white;">visualiser</button>
+                </div>
+              </div>
+          </div>
       </div>
     </div>
   </div>
 </div>
-<script>
-    $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('chiffre affaire de ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
-</script>
 <script src="Admin/js/graphiqueUser.js"></script>
