@@ -74,7 +74,7 @@
                                     <ul class="cart-header" id="{{order_num}}">
                                             <div class="close1" data-toggle="modal" data-target="#exampleModal"  data-id="{{order_num}}"> </div>
                                                     <li class="ring-in">
-                                                    <a href="#">
+                                                    <a href="#" data-id="{{product_ID}}" data-qte="{{quantity}}" class="detail">
                                                     <img src="client/images/order.png" style="width: 86px;" class="img-responsive" alt="">
                                                     </a>
                                                     </li>
@@ -95,11 +95,11 @@
 	</div>
         
 <script>
-    
-    
+
 $(document).ready(function(c) {
     
-   var id = 0;
+var id = 0;
+
 $('.close1').on('click', function(c){
     id = $(this).data('id');	  
 });
@@ -116,13 +116,43 @@ $('#del').click(function() {
 
 function deleteOrder(id) {
 $.ajax({
-    url: "OrderController?target=deleteorder&idProduct="+id,
+    url: "OrderController?target=deleteorder&idOrder="+id,
     dataType: "json",
     success: function () {
 
     }
 });
+
 }
+
+$(".detail").click(function(){
+    
+    id = $(this).data('id');
+    var qte = $(this).data('qte');
+ 
+    $.ajax({
+    url: "SingleProductController?idProduct="+id,
+    dataType: "json",
+    success: function (data) {
+        
+        $.get("client/single.jsp", function (template) {
+            data["txt_btn"]= "Modifier la Commande"; 
+            data["txt_alert"]= "Votre commande a bien été modifiée ?";
+            data["qte"]= qte;
+            data["action"]= "updatepurchase";
+
+            console.log(data);
+            var processedTemplate = Mustache.to_html(template,data);
+            $("#globalContainer").hide();
+            $('#container').html(processedTemplate);
+        });
+}
+});
+ 
+    
+});
+
+
 
 
 </script>

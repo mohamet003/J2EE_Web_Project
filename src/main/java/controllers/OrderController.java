@@ -13,8 +13,6 @@ import database.DAOException;
 import database.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -38,6 +36,7 @@ import models.Purchase_Order;
 public class OrderController extends HttpServlet {
     PurchaseOrderDAO purcharseOrderDAO = new PurchaseOrderDAO(Database.getDataSource());
     ProductDAO daop = new ProductDAO(Database.getDataSource());
+    Properties resultat = new Properties();
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -58,16 +57,16 @@ public class OrderController extends HttpServlet {
            String action =  "";
            int id = 0;
            int qte = 0;
+   
 
            if(request.getParameter("target") != null) {
 
             action =  request.getParameter("target");
- 
             System.out.println(action);
 
         
             switch (action){
-               
+                
                 case "addorder":
 
                     id = Integer.parseInt(request.getParameter("idProduct"));
@@ -77,23 +76,29 @@ public class OrderController extends HttpServlet {
                     order.setCustomer_ID(curentUser.getCustomerId());
                     order.setProduct_ID(id);
                     order.setQuantity(qte);
-                    order.setFreight_company("IISISIS");
+                    order.setFreight_company("ISIS");
                     order.setShipping_cost(qte*p.getPurchase_cost());
                     order.setOrder_num(lorders.size()+10);
                     purcharseOrderDAO.AddPurchaseOrder(order);
 
                     break;
 
-                case "updateOrder":
-                       	
-                         //request.getRequestDispatcher("Admin/index.jsp").forward(request,response);
+                case "updateorder":
+
+          
+                    id = Integer.parseInt(request.getParameter("idOrder"));
+                    qte = Integer.parseInt(request.getParameter("qte"));
                     
+                    Purchase_Order ord = purcharseOrderDAO.GetPurchaseOrderByID(id);
+                    ord.setQuantity(qte);
+                    purcharseOrderDAO.UpdatePurchaseOrder(ord.getOrder_num());
+
                     break;
+
                 case "deleteorder":
                          
-                         id = Integer.parseInt(request.getParameter("idProduct"));
-                         System.out.println("teeeeeeeeeeeee "+id);
-                         purcharseOrderDAO.DeletePurchaseOrder(id);
+                    id = Integer.parseInt(request.getParameter("idOrder"));
+                    purcharseOrderDAO.DeletePurchaseOrder(id);
                     
                     break;
             }
@@ -101,14 +106,16 @@ public class OrderController extends HttpServlet {
            
            } 
   
-            
-            /* TODO output your page here. You may use following sample code. */
-            Properties resultat = new Properties();
+           
+       
             // On récupére les commandes de l'utilisateur courant 
             resultat.put("orders",lorders);
             // Générer du JSON
             Gson gson = new Gson();
-            out.println(gson.toJson(resultat));
+            out.println(gson.toJson(resultat)); 
+            
+            
+
         }
     } 
 

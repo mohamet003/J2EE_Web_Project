@@ -48,7 +48,6 @@ public class PurchaseOrderDAO {
 					order.setSales_date(rs.getDate("SALES_DATE"));
                                         order.setshipping_date(rs.getDate("SHIPPING_DATE"));
                                         order.setFreight_company(rs.getString("FREIGHT_COMPANY"));
-                                        
                                         System.out.println("DAO test "+ rs.getDate("SALES_DATE"));
 				
 				}
@@ -177,5 +176,9 @@ List<Purchase_Order> orders = new LinkedList<>();
 			throw new DAOException(ex.getMessage());
 		}
 	}
+
+        public void UpdatePurchaseOrder(int order_num) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
 }   
 

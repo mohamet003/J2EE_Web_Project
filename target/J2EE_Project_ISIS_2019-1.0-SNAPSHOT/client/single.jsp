@@ -11,7 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLabel">Commande effectuée avec succès</h2>
+        <h2 class="modal-title" id="exampleModalLabel">{{txt_alert}}</h2>
 
       </div>
       <div class="modal-body">
@@ -19,7 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       </div>
       <div class="modal-footer">
           <a href="#" class="add-cart item_add" data-dismiss="modal" id="voirCommande"  >Voir Mes commandes</a>
-           <a href="#" class="add-cart item_add" data-dismiss="modal"  >Continuer Mes achats</a>
+          <a href="#" class="add-cart item_add" data-dismiss="modal"  >Fermer</a>
            	<!--start-single
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>-->
@@ -68,10 +68,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
 
                                                 <ul class="tag-men">
-                                                    <input type="number" id="qte" placeholder="Quantité" min="1" class="form-control" >
+                                                    <input type="number" id="qte" value="{{qte}}" placeholder="Quantité" min="1" class="form-control" >
                                                     <div id="alert"></div>
                                                 </ul>
-                                            <a href="#" class="add-cart item_add" data-toggle="modal" data-target="#exampleModal" id="purchase" data-idProduct="{{product_ID}}" >Commander</a>
+                                            <a href="#" class="add-cart item_add" data-toggle="modal" data-target="#exampleModal" id="{{action}}" data-idProduct="{{product_ID}}" >{{txt_btn}}</a>
                                         </div>
 
                                     {{/product}}  
@@ -129,6 +129,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             }
 
         });
+        
+        
+        $("#updatepurchase").click(function(){
+        console.log($(this));
+        let qte = $("#qte").val();
+        let id = $(this).data("idproduct");
+        $.ajax({
+            url: "OrderController?target=updateorder&idOrder="+id+"&qte="+qte,
+            dataType: "json",
+            success: function () {
+                   
+            }
+        });
+
+    });
+             
                 
                 
 
