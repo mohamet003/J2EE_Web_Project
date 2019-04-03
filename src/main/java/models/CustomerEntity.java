@@ -17,6 +17,9 @@ public class CustomerEntity {
                 this.email = email;
 	}
 
+        public CustomerEntity() {
+        }
+
     
 
 	/**
