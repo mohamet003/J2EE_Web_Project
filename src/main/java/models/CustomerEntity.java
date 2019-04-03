@@ -17,6 +17,8 @@ public class CustomerEntity {
                 this.email = email;
 	}
 
+    
+
 	/**
 	 * Get the value of customerId
 	 *
@@ -34,6 +36,12 @@ public class CustomerEntity {
 	public String getName() {
 		return name;
 	}
+        
+         public void setName(String name ){
+          
+             this.name = name;
+
+        }
 
 	/**
 	 * Get the value of addressLine1
@@ -43,6 +51,14 @@ public class CustomerEntity {
 	public String getAddressLine1() {
 		return addressLine1;
 	}
+        
+        
+         public void setAddressLine1(String addressLine1 ){
+          
+             this.addressLine1 = addressLine1;
+
+        }
+        
 
         public void setEmail(String email){
           
