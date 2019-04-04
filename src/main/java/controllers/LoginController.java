@@ -7,6 +7,7 @@
 package controllers;
 
 import DAO.CustomerDAO;
+import DAO.ProductCodeDAO;
 import database.DAOException;
 import database.Database;
 import java.io.IOException;
@@ -19,6 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.CustomerEntity;
 import javax.servlet.http.HttpSession;
+import models.Product_Code;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -27,6 +31,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name="LoginController", urlPatterns={"/LoginController"})
 public class LoginController extends HttpServlet {
     CustomerDAO dao = new CustomerDAO(Database.getDataSource());
+    ProductCodeDAO daop = new ProductCodeDAO(Database.getDataSource());
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -46,6 +51,9 @@ public class LoginController extends HttpServlet {
             String adminLog = "admin@admin.com";
             int  adminPwd = 123;    
 
+                List<Product_Code> categorys = daop.GetAllProductCodes();
+                request.setAttribute("categorys",categorys);
+
        try {
             action = request.getParameter("connexion");
             email = request.getParameter("email");
@@ -57,6 +65,7 @@ public class LoginController extends HttpServlet {
             }
             // Si l'utilisateur est toujours connnecté, on le renvoie à la page principale 
             if( this.findUserInSession(request) != null && action == null){
+
                 request.getRequestDispatcher("client/index.jsp").forward(request, response);
             }
 

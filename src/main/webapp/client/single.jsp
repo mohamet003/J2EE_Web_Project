@@ -19,7 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       </div>
       <div class="modal-footer">
           <a href="#" class="add-cart item_add" data-dismiss="modal" id="voirCommande"  >Voir Mes commandes</a>
-          <a href="#" class="add-cart item_add" data-dismiss="modal"  >Fermer</a>
+          <a href="#" class="add-cart item_add" data-dismiss="modal" id="" >Fermer</a>
            	<!--start-single
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>-->
@@ -32,7 +32,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="single contact">
         <div class="container">
                 <div class="single-main">
-                        <div class="col-md-9 single-main-left">
+                        <div class="col-md-12 single-main-left">
                         <div class="sngl-top">
                                 <div class="col-md-5 single-top-left">	
                                         <div class="flexslider">
@@ -80,6 +80,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
 
                         <div class="latestproducts">
+                            <div class="product-top">
                                 <div class="product-one">
                                     {{#products}} 
                                                 <div class="col-md-3 product-left">
@@ -98,6 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                      {{/products}}  
                                         <div class="clearfix"></div>
+                                        </div>
                                 </div>
                         </div>
                 </div>
@@ -119,20 +121,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
        
 
         $("#purchase").click(function(){
-            console.log($(this));
+            //console.log($(this));
             let nbr = $("#qte").val();
             let id = $(this).data("idproduct");
             Purchasing(id,nbr);
-            if(nbr === ""){
+            
                 console.log(id+" nn "+nbr);
-                $("#alert").html("<div class='alert alert-danger' role='alert'>Saisie de la Quantité incorrecte !</div>")
-            }
 
         });
         
         
         $("#updatepurchase").click(function(){
-        console.log($(this));
+        //console.log($(this));
         let qte = $("#qte").val();
         let id = $(this).data("idproduct");
         $.ajax({
@@ -153,6 +153,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 $("#exampleModal").hide();
                  setTimeout(function(){
                    $('#orders').trigger('click');
+                }, 1000);
+
+
+        });
+        
+        $("#close").click(function(){
+                console.log("éééé");
+                $("#exampleModal").hide();
+                 setTimeout(function(){
+                   location.reload();
                 }, 1000);
 
 

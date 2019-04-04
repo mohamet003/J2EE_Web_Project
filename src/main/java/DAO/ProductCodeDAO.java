@@ -45,6 +45,7 @@ public class ProductCodeDAO {
 			stmt.setString(1, Prod_Code);
 			try (ResultSet rs = stmt.executeQuery()) {
 				if (rs.next()) { // On a trouvé
+                                pCode.setProd_Code(Prod_Code);
                                 pCode.setDiscount_code(rs.getString("DISCOUNT_CODE"));
                                 pCode.setDescription(rs.getString("DESCRIPTION"));
 				} 
@@ -70,6 +71,7 @@ public class ProductCodeDAO {
 			try (ResultSet rs = stmt.executeQuery()) {
 				while (rs.next()) { // On a trouvé
                                         Product_Code PCode = new Product_Code();
+                                        PCode.setProd_Code(rs.getString("PROD_CODE"));
 					PCode.setDiscount_code(rs.getString("DISCOUNT_CODE"));
                                         PCode.setDescription(rs.getString("DESCRIPTION"));
                                         LProduitsCode.add(PCode);

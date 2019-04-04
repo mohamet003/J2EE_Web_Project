@@ -5,14 +5,17 @@
  */
 $(document).ready(function(){ 
 
+
+
    
-    function showProducts() {
+    function showProducts(id) {
         $.ajax({
-            url: "ProductController",
+            url: "ProductController?idCategory="+id,
             dataType: "json",
             success:function (result) {
                         $.get("client/products.jsp", function(template){
                         var processedTemplate = Mustache.to_html(template, result);
+                        $("#globalContainer").hide();
                         $('#container').html(processedTemplate);
                         });   
                     }
@@ -36,14 +39,20 @@ $(document).ready(function(){
                     }
         });
     }
-
+    
+    
 
 
 // Afficher les commandes de l'utilisateur
 $("#orders").click(showOrders);
 
-// afficher les produits
-showProducts();
+// Afficher les produits des catégories
+$(".categorys").click(function () {
+
+    let id  = $(this).data('id');
+    console.log("ddd "+ id);
+    showProducts(id);
+})
 
 
 });

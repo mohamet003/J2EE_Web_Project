@@ -1,6 +1,7 @@
 
 import DAO.DiscountDAO;
 import DAO.CustomerDAO;
+import DAO.ProductCodeDAO;
 import database.DAOException;
 import database.Database;
 import javax.sql.DataSource;
@@ -77,7 +78,11 @@ public class NewMain {
         order.setShipping_cost(2300);
         order.setOrder_num(62);
         
-        dao.DeletePurchaseOrder(62);
+        //dao.DeletePurchaseOrder(62);
+        
+        ProductCodeDAO codeDAO = new ProductCodeDAO(Database.getDataSource());
+        
+        System.out.println("NN "+codeDAO.GetAllProductCodes().size());
       
         //dao.AddPurchaseOrder(order);
         //Purchase_Order order2 = dao.GetPurchaseOrderByID(10398001);

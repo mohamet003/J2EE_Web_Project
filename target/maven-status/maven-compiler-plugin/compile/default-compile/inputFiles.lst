@@ -10,6 +10,7 @@
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/Product.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/Micro_Market.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/ProductController.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/CategorysController.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/DAO/PurchaseOrderDAO.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/DAO/CustomerDAO.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/Discount_Code.java
