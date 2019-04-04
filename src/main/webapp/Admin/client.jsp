@@ -19,37 +19,25 @@
                         <tr>
                             <th scope="col">&nbsp;</th>
                             <th scope="col">NOM</th>
-                            <th scope="col">PRIX</th>
-                            <th scope="col">QUANTITE</th>
-                            <th scope="col">DATE EXPIRATION</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">ADRESSELINE1</th>
                             <th scope="col">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {{#client}}
                         <tr>
                             <th scope="row"><input type="checkbox" /></th>
-                            <td class="tm-product-name">Lorem Ipsum Product 5</td>
-                            <td>1,800</td>
-                            <td>200</td>
-                            <td>22 Feb 2019</td>
+                            <td class="tm-product-name">{{name}}</td>
+                            <td>{{email}}</td>
+                            <td>{{addressLine1}}</td>
                             <td> 
                                 <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal">
                                     <i class="fas fa-chart-area" style="color:white"></i>
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox" /></th>
-                            <td class="tm-product-name">Lorem Ipsum Product 11</td>
-                            <td>2,000</td>
-                            <td>400</td>
-                            <td>21 Jan 2019</td>
-                            <td>
-                                <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal">
-                                    <i class="fas fa-chart-area" style="color:white"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        {{/client}}
                     </tbody>
                 </table>
             </div>

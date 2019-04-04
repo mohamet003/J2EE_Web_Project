@@ -15,7 +15,7 @@
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
             <div class="tm-bg-primary-dark tm-block">
                 <h2 class="tm-block-title">Latest Hits</h2>
-                <div id="chart1"></div>
+                <div id="chart2"></div>
             </div>
         </div>
 </div>

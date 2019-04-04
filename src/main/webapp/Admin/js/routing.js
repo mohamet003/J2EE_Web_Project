@@ -12,7 +12,6 @@ function showUsers() {
         dataType: "json",
         success: 
                 function (result) {
-                    
                     console.log(result);
                     $("#graphiqueGeo").removeClass("active");
                     $("#graphiqueCat").removeClass("active");
