@@ -14,7 +14,8 @@ function showUsers() {
                 function (result) {
                     
                     console.log(result);
-                    $("#graphique").removeClass("active");
+                    $("#graph1").removeClass("active");
+                    $("#graph2").removeClass("active");
                     $("#client").addClass("active");
                     $.get("Admin/client.jsp", function(template){
                     var processedTemplate = Mustache.to_html(template, result);
@@ -27,14 +28,15 @@ function showUsers() {
 
 
 
-function showGraphique() {
+function showGraphique1() {
     $.ajax({
         url: "userControlleur",
         dataType: "json",
         success: 
                 function (result) {
                     $("#client").removeClass("active");
-                    $("#graphique").addClass("active");
+                    $("#graph2").removeClass("active");
+                    $("#graph1").addClass("active");
                     $.get("Admin/graphiques.jsp", function(template){
                     var processedTemplate = Mustache.to_html(template, result);
                     $('#container').html(processedTemplate);
@@ -43,7 +45,26 @@ function showGraphique() {
                 }
     });
 }
-$("#graphique").click(showGraphique);
+function showGraphique2() {
+    alert("ddd")
+    $.ajax({
+        url: "userControlleur",
+        dataType: "json",
+        success: 
+                function (result) {
+                    $("#client").removeClass("active");
+                    $("#graph1").removeClass("active");
+                    $("#graph2").addClass("active");
+                    $.get("Admin/graphique2.jsp", function(template){
+                    var processedTemplate = Mustache.to_html(template, result);
+                    $('#container').html(processedTemplate);
+                    });
+                    
+                }
+    });
+}
+$("#graphiqueCat").click(showGraphique1);
+$("#graphiqueGeo").click(showGraphique2);
 $("#client").click(showUsers);
 showUsers();
 });

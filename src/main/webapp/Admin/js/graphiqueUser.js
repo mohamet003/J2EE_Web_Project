@@ -35,7 +35,6 @@ $(document).ready(function(){
       var chart = new google.visualization.Histogram(document.getElementById('myPieChart'));
       chart.draw(data, null);
       chart.draw(data, options);
-      
       switch (this.id){
           case "graph1" : 
                $("#myPieChart").html("");

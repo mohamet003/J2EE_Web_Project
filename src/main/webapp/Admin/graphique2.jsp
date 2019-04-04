@@ -1,10 +1,11 @@
 <%-- 
-    Document   : graphiques
-    Created on : 29 mars 2019, 16:57:59
+    Document   : graphique2
+    Created on : 4 avr. 2019, 13:27:13
     Author     : kevin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <div class="container">
 <div class="row">
     <div class="col">
