@@ -7,6 +7,7 @@ package controllers;
 
 import DAO.CustomerDAO;
 import com.google.gson.Gson;
+import database.DAOException;
 import database.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.CustomerEntity;
 
 /**
  *
@@ -41,18 +43,12 @@ public class UserControlleur extends HttpServlet {
      * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException, DAOException {
        
         try (PrintWriter out = response.getWriter()) {
              response.setContentType("application/json;charset=UTF-8");
              Properties resultat = new Properties();
-             
-             List<String> list =  new LinkedList();
-             list.add("bonjour");             
-             list.add("madame");
-
-             // à faire quand rayane aura fini mon dao
-            resultat.put("client",list);
+            resultat.put("clients",daoUser.findAllCustomer());
             Gson gson = new Gson();
             out.println(gson.toJson(resultat));
                 
@@ -75,6 +71,8 @@ public class UserControlleur extends HttpServlet {
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DAOException ex) {
+            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -92,6 +90,8 @@ public class UserControlleur extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
+            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DAOException ex) {
             Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

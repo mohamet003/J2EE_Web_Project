@@ -10,54 +10,49 @@
     <div class="col">
         <br/><br/>
     </div>
+    
     <!-- row -->
-    <div class="row tm-content-row">
-        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-            <div class="tm-bg-primary-dark tm-block">
-                <h2 class="tm-block-title">Latest Hits</h2>
-                <canvas id="lineChart"></canvas>
-            </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+           
+                <div id="chart1"></div>
+           
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-            <div class="tm-bg-primary-dark tm-block">
-                <h2 class="tm-block-title">Performance</h2>
-                <canvas id="barChart"></canvas>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-            <div class="tm-bg-primary-dark tm-block tm-block-taller">
-                <h2 class="tm-block-title">Storage Information</h2>
-                <div id="pieChartContainer">
-                    <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
-                </div>                        
-            </div>
-        </div>  
+</div><br/>
+<div>
+    <div class="col-lg-2 btn" role="group" aria-label="First group">
+        <a href="#" id="graph1" class="tm-product-delete-link" style="background: #3D4E62;">
+            <i class="fas fa-chart-area" style="color:white"></i>
+        </a>
+        <a href="#" id="graph2" class="tm-product-delete-link" style="background: #3D4E62;">
+            <i class="fas fa-chart-area" style="color:white"></i>
+        </a>
+        <a href="#" id="graph3" class="tm-product-delete-link" style="background: #3D4E62;">
+            <i class="fas fa-chart-area" style="color:white"></i>
+        </a>
+        <a href="#" id="graph4" class="tm-product-delete-link" style="background: #3D4E62;">
+            <i class="fas fa-chart-area" style="color:white"></i>
+        </a>
     </div>
+</div><br/><br/>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="dateFin">Date début</label>
+      <input type="text" class="form-control" id="dateFin" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="dateDebut">Date fin</label>
+      <input type="text" class="form-control" id="dateDebut" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="categorie">Catégorie</label>
+      <select id="categorie" class="form-control" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+        <button type="button" class="btn btn-primary" class="form-control" style="margin-top: 32px;">visualiser</button>
+    </div>
+  </div>
 </div>
-</div>
-  <script src="Admin/js/Chart.min.js"></script>
-<script>
-        Chart.defaults.global.defaultFontColor = 'white';
-        let ctxLine,
-            ctxBar,
-            ctxPie,
-            optionsLine,
-            optionsBar,
-            optionsPie,
-            configLine,
-            configBar,
-            configPie,
-            lineChart;
-        barChart, pieChart;
-        // DOM is ready
-        $(function () {
-            drawLineChart(); // Line Chart
-            drawBarChart(); // Bar Chart
-            drawPieChart(); // Pie Chart
-
-            $(window).resize(function () {
-                updateLineChart();
-                updateBarChart();                
-            });
-        })
-    </script>
+<script src="Admin/js/graphique2.js"></script>

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 $(document).ready(function(){
        google.charts.load('current', {packages: ['corechart']});
         google.charts.setOnLoadCallback(drawChart);
@@ -28,35 +27,35 @@ $(document).ready(function(){
       var options = {'legend':'left',
                      'title':'My Big Pie Chart',
                      'is3D':true,
-                     'width':800,
-                     'height':500};
+                     'width':1100,
+                     'height':400};
 
       // Instantiate and draw the chart.
-      var chart = new google.visualization.Histogram(document.getElementById('myPieChart'));
+      var chart = new google.visualization.Histogram(document.getElementById('chart1'));
       chart.draw(data, null);
       chart.draw(data, options);
       switch (this.id){
           case "graph1" : 
                $("#myPieChart").html("");
-               var chart = new google.visualization.AreaChart(document.getElementById('myPieChart'));   
+               var chart = new google.visualization.AreaChart(document.getElementById('chart1'));   
                chart.draw(data, null);
                chart.draw(data, options);
                break;
            case "graph2" : 
                $("#myPieChart").html("");
-               var chart = new google.visualization.ScatterChart(document.getElementById('myPieChart'));   
+               var chart = new google.visualization.ScatterChart(document.getElementById('chart1'));   
                chart.draw(data, null);
                chart.draw(data, options);
                break;
            case "graph3" : 
                $("#myPieChart").html("");
-               var chart = new google.visualization.LineChart(document.getElementById('myPieChart'));   
+               var chart = new google.visualization.LineChart(document.getElementById('chart1'));   
                chart.draw(data, null);
                chart.draw(data, options);
                break;
            case "graph4" : 
                $("#myPieChart").html("");
-               var chart = new google.visualization.Histogram(document.getElementById('myPieChart'));   
+               var chart = new google.visualization.Histogram(document.getElementById('chart1'));   
                chart.draw(data, null);
                chart.draw(data, options);
                break;

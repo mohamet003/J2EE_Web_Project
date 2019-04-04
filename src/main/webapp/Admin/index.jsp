@@ -53,12 +53,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="graphique" href="#">
+                            <a class="nav-link" id="graphiqueCat" href="#">
                                 <i class="fas fa-chart-pie"></i>
-                                Graphiques
-                                <span class="sr-only">(current)</span>
+                                GraphCat
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="graphiqueGeo" href="#">
+                                <i class="fas fa-users"></i>
+                                GraphiqueGeo
+                            </a>
+                        </li>
+                           
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
