@@ -99,9 +99,10 @@ public class ProductDAO {
 
             stmt.setString(1, product_code);
             try ( ResultSet rs = stmt.executeQuery()) {
-                Product p = new Product();
+                
 
                 while (rs.next()) {
+                    Product p = new Product();
                     p.setAvailable(rs.getBoolean("AVAILABLE"));
                     p.setDescription(rs.getString("DESCRIPTION"));
                     p.setManufacturer_ID(rs.getInt("MANUFACTURER_ID"));
