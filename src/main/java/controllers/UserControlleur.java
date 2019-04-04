@@ -11,6 +11,8 @@ import database.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,12 +44,17 @@ public class UserControlleur extends HttpServlet {
             throws ServletException, IOException, SQLException {
        
         try (PrintWriter out = response.getWriter()) {
-             response.setContentType("text/html;charset=UTF-8");
+             response.setContentType("application/json;charset=UTF-8");
              Properties resultat = new Properties();
+             
+             List<String> list =  new LinkedList();
+             list.add("bonjour");             
+             list.add("madame");
+
              // à faire quand rayane aura fini mon dao
-           //  resultat.put("client",daoUser.listeUser());
-            // Gson gson = new Gson();
-           // out.println(gson.toJson(resultat));
+            resultat.put("client",list);
+            Gson gson = new Gson();
+            out.println(gson.toJson(resultat));
                 
         }
     }
