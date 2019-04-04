@@ -15,6 +15,7 @@ models/Purchase_Order.class
 DAO/PurchaseOrderDAO.class
 DAO/CustomerDAO.class
 controllers/OrderController.class
+controllers/CategorysController.class
 controllers/ProductController.class
 models/Discount_Code.class
 models/CustomerEntity.class

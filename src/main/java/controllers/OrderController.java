@@ -36,7 +36,7 @@ import models.Purchase_Order;
 public class OrderController extends HttpServlet {
     PurchaseOrderDAO purcharseOrderDAO = new PurchaseOrderDAO(Database.getDataSource());
     ProductDAO daop = new ProductDAO(Database.getDataSource());
-    Properties resultat = new Properties();
+  
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -47,7 +47,7 @@ public class OrderController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException, DAOException {
-        response.setContentType("text/html;charset=UTF-8");
+       
         try (PrintWriter out = response.getWriter()) {
             
             // On récupére l'utilisateur courant et ses commandes
@@ -57,6 +57,7 @@ public class OrderController extends HttpServlet {
            String action =  "";
            int id = 0;
            int qte = 0;
+          
    
 
            if(request.getParameter("target") != null) {
@@ -78,9 +79,8 @@ public class OrderController extends HttpServlet {
                     order.setQuantity(qte);
                     order.setFreight_company("ISIS");
                     order.setShipping_cost(qte*p.getPurchase_cost());
-                    order.setOrder_num(lorders.size()+10);
+                    order.setOrder_num(lorders.size()+20);
                     purcharseOrderDAO.AddPurchaseOrder(order);
-
                     break;
 
                 case "updateorder":
@@ -88,10 +88,9 @@ public class OrderController extends HttpServlet {
           
                     id = Integer.parseInt(request.getParameter("idOrder"));
                     qte = Integer.parseInt(request.getParameter("qte"));
-                    
                     Purchase_Order ord = purcharseOrderDAO.GetPurchaseOrderByID(id);
                     ord.setQuantity(qte);
-                    purcharseOrderDAO.UpdatePurchaseOrder(ord.getOrder_num());
+                    //purcharseOrderDAO.UpdatePurchaseOrder(ord.getOrder_num());
 
                     break;
 
@@ -106,8 +105,8 @@ public class OrderController extends HttpServlet {
            
            } 
   
-           
-       
+            response.setContentType("application/json;charset=UTF-8");
+             Properties resultat = new Properties();
             // On récupére les commandes de l'utilisateur courant 
             resultat.put("orders",lorders);
             // Générer du JSON

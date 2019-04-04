@@ -21,7 +21,7 @@
 	<!--end-breadcrumbs-->
         
                 <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ata-backdrop="static">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -133,16 +133,16 @@ $(".detail").click(function(){
     $.ajax({
     url: "SingleProductController?idProduct="+id,
     dataType: "json",
-    success: function (data) {
+    success: function (datas) {
         
         $.get("client/single.jsp", function (template) {
-            data["txt_btn"]= "Modifier la Commande"; 
-            data["txt_alert"]= "Votre commande a bien été modifiée ?";
-            data["qte"]= qte;
-            data["action"]= "updatepurchase";
+            datas["txt_btn"]= "Modifier la Commande"; 
+            datas["txt_alert"]= "Votre commande a bien été modifiée ?";
+            datas["qte"]= qte;
+            datas["action"]= "updatepurchase";
 
-            console.log(data);
-            var processedTemplate = Mustache.to_html(template,data);
+            console.log(datas);
+            var processedTemplate = Mustache.to_html(template,datas);
             $("#globalContainer").hide();
             $('#container').html(processedTemplate);
         });

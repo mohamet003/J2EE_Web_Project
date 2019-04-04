@@ -48,8 +48,9 @@ public class ProductController extends HttpServlet {
    
             response.setContentType("application/json;charset=UTF-8");
             Properties resultat = new Properties();
+            String code = request.getParameter("idCategory");
 
-            resultat.put("products",productOrganize(daop.GetAllProduct()));
+            resultat.put("products",productOrganize(daop.GetAllProductsByProductCode(code)));
 
             // Générer du JSON
             Gson gson = new Gson();

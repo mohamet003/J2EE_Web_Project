@@ -6,6 +6,21 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<br><br>
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="LoginController">Menu Principal</a></li>
+					<li class="active">Products</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+        
+<br><br>
 <div class="container">
     <div class="product-top">
         {{#products}}  
