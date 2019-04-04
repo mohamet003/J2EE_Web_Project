@@ -53,27 +53,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <a class="nav-link" id="graphiqueCat" href="#">
                                 <i class="fas fa-chart-pie"></i>
-                                Graphiques
+                                GraphCat
                             </a>
                         </li>
-                        <div class="nav-item collapse" id="collapseExample">
-                            <ul class="navbar-nav mx-auto h-100">
-                                <li class="nav-item">
-                                    <a class="nav-link" id="graphiqueCat" href="#">
-                                        <i class="fas fa-users"></i>
-                                        Graph1
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="graphiqueGeo" href="#">
-                                        <i class="fas fa-users"></i>
-                                        Graph2
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <li class="nav-item">
+                            <a class="nav-link" id="graphiqueGeo" href="#">
+                                <i class="fas fa-users"></i>
+                                GraphiqueGeo
+                            </a>
+                        </li>
+                           
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">

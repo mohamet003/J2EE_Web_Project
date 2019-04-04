@@ -14,8 +14,8 @@ function showUsers() {
                 function (result) {
                     
                     console.log(result);
-                    $("#graph1").removeClass("active");
-                    $("#graph2").removeClass("active");
+                    $("#graphiqueGeo").removeClass("active");
+                    $("#graphiqueCat").removeClass("active");
                     $("#client").addClass("active");
                     $.get("Admin/client.jsp", function(template){
                     var processedTemplate = Mustache.to_html(template, result);
@@ -35,8 +35,8 @@ function showGraphique1() {
         success: 
                 function (result) {
                     $("#client").removeClass("active");
-                    $("#graph2").removeClass("active");
-                    $("#graph1").addClass("active");
+                    $("#graphiqueGeo").removeClass("active");
+                    $("#graphiqueCat").addClass("active");
                     $.get("Admin/graphiques.jsp", function(template){
                     var processedTemplate = Mustache.to_html(template, result);
                     $('#container').html(processedTemplate);
@@ -46,15 +46,14 @@ function showGraphique1() {
     });
 }
 function showGraphique2() {
-    alert("ddd")
     $.ajax({
         url: "userControlleur",
         dataType: "json",
         success: 
                 function (result) {
                     $("#client").removeClass("active");
-                    $("#graph1").removeClass("active");
-                    $("#graph2").addClass("active");
+                    $("#graphiqueCat").removeClass("active");
+                    $("#graphiqueGeo").addClass("active");
                     $.get("Admin/graphique2.jsp", function(template){
                     var processedTemplate = Mustache.to_html(template, result);
                     $('#container').html(processedTemplate);
