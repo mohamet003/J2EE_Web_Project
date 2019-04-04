@@ -4,10 +4,16 @@
  * and open the template in the editor.
  */
 
-google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+$(document).ready(function(){
+       google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        $("#graph1").click(drawChart);
+        $("#graph2").click(drawChart);
+        $("#graph3").click(drawChart);
+        $("#graph4").click(drawChart);
+     })
 
-    function drawChart() {
+    function drawChart(event) {
       // Define the chart to be drawn.
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Element');
@@ -17,9 +23,47 @@ google.charts.load('current', {packages: ['corechart']});
         ['Oxygen', 0.21],
         ['Other', 0.01]
       ]);
+      
+      // Set chart options
+      var options = {'legend':'left',
+                     'title':'My Big Pie Chart',
+                     'is3D':true,
+                     'width':800,
+                     'height':500};
 
       // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+      var chart = new google.visualization.Histogram(document.getElementById('myPieChart'));
       chart.draw(data, null);
+      chart.draw(data, options);
+      
+      switch (this.id){
+          case "graph1" : 
+               $("#myPieChart").html("");
+               var chart = new google.visualization.AreaChart(document.getElementById('myPieChart'));   
+               chart.draw(data, null);
+               chart.draw(data, options);
+               break;
+           case "graph2" : 
+               $("#myPieChart").html("");
+               var chart = new google.visualization.ScatterChart(document.getElementById('myPieChart'));   
+               chart.draw(data, null);
+               chart.draw(data, options);
+               break;
+           case "graph3" : 
+               $("#myPieChart").html("");
+               var chart = new google.visualization.LineChart(document.getElementById('myPieChart'));   
+               chart.draw(data, null);
+               chart.draw(data, options);
+               break;
+           case "graph4" : 
+               $("#myPieChart").html("");
+               var chart = new google.visualization.Histogram(document.getElementById('myPieChart'));   
+               chart.draw(data, null);
+               chart.draw(data, options);
+               break;
+      }
+      
+       
     }
+    
     
