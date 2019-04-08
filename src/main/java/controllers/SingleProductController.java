@@ -46,6 +46,9 @@ public class SingleProductController extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
 
             int id = Integer.parseInt(request.getParameter("idProduct"));
+            int rate = Integer.parseInt(request.getParameter("rate"));
+            
+            System.out.println("rateeee : "+rate);
 
             Product p = daop.GetProductByID(id);
         
@@ -64,6 +67,7 @@ public class SingleProductController extends HttpServlet {
             Properties resultat = new Properties();
 
             resultat.put("product", product);
+            resultat.put("rate", rate);
             resultat.put("products", products);
 
             

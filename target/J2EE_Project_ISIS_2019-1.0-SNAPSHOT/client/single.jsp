@@ -32,7 +32,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="single contact">
         <div class="container">
                 <div class="single-main">
-                        <div class="col-md-12 single-main-left">
+                        <div class="col-md-9 single-main-left">
                         <div class="sngl-top">
                                 <div class="col-md-5 single-top-left">	
                                         <div class="flexslider">
@@ -63,7 +63,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <div class="clearfix"> </div>
                                                 </div>
 
-                                                <h5 class="item_price"> {{purchase_cost}} € </h5>
+                                        <h5 class="item_price" id="price" data-price="{{purchase_cost}}" data-qteOneHand="{{quantity_on_hand}}"> {{purchase_cost}} € </h5>
 
                                                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
 
@@ -92,7 +92,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                             <h4><a class="item_add" href="#"><i></i></a> <span class="item_price">{{ purchase_cost }} €</span></h4>
                                                         </div>
                                                         <div class="srch">
-                                                            <span>-50%</span>
+                                                            <span id="rate" data-rate="{{rate}}" >-{{rate}}%</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,6 +103,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </div>
                         </div>
                 </div>
+                    
+        <div class="col-md-3 single-right">
+                <div class="w_sidebar">
+                        <section  class="sky-form">
+                                <h4>Montant</h4>
+                                <div class="row1 scroll-pane">
+                                    <label id="montantBrute"></label>
+                                    <label id="remise"></label>
+                                    <label id="montant"></label>		
+                                </div>
+                        </section>
+
+                </div>
+        </div>
 
                         <div class="clearfix"> </div>
                 </div>
@@ -118,22 +132,60 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         <script>
             
+       //le prix du produit
+       var price = $("#price").data("price");
+       // la quantité du produi
+       var qte = 0;
+       // le montant à payer
+       var montant = 0;
+       // le taux de remise
+       var rate = $("#rate").data("rate");
+       // quantité dispo
+       var qteDispo = $("#price").data("qteOneHand");
        
+       
+       qte = $("#qte").val();
+       calculMontant(qte,price);
+       
+       $("#qte").change(function(){
+           qte = $("#qte").val();
+           calculMontant(qte,price);
+       });
+       
+       
+       $("#qte").keyup(function(){
+           qte = $("#qte").val();
+           calculMontant(qte,price);
+       });
 
+
+       // l'évenement qui permet d'effectuer la commande
         $("#purchase").click(function(){
-            //console.log($(this));
-            let nbr = $("#qte").val();
             let id = $(this).data("idproduct");
-            Purchasing(id,nbr);
-            
-                console.log(id+" nn "+nbr);
-
+            Purchasing(id,qte);
         });
         
+        //calculer le montant en fonction de la remise
+        function calculMontant(qte,price){
+            let remise = Math.round((qte*price*rate)/100);
+            montant = (qte*price) - remise.toFixed(2);
+            
+            console.log("Montant Hors remise: "+qte*price+" remise : "+remise+" montant: "+montant)
+            $("#montantBrute").text("Montant Brute : "+qte*price+" €");
+            $("#remise").text("Remise "+rate+"% :    "+remise+" €");
+            $("#montant").text("Montant à payer : "+montant+" €");
+        }
         
+        // verif quantité à commender
+        
+        function verifQte (qte,qteDispo){
+            
+        }
+        
+        
+        // mettre a jour la commande
         $("#updatepurchase").click(function(){
         //console.log($(this));
-        let qte = $("#qte").val();
         let id = $(this).data("idproduct");
         $.ajax({
             url: "OrderController?target=updateorder&idOrder="+id+"&qte="+qte,
@@ -147,7 +199,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
              
                 
                 
-
+        // lister les commandes 
         $("#voirCommande").click(function(){
 
                 $("#exampleModal").hide();
@@ -158,8 +210,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         });
         
+        
+        // fermer le modale 
         $("#close").click(function(){
-                console.log("éééé");
+  
                 $("#exampleModal").hide();
                  setTimeout(function(){
                    location.reload();
@@ -168,7 +222,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         });
 
-                
+        // methode qui permet effectue la commande       
         function Purchasing(id,qte) {
         $.ajax({
             url: "OrderController?target=addorder&idProduct="+id+"&qte="+qte,

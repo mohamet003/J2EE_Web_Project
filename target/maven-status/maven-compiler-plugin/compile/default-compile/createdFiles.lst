@@ -7,6 +7,7 @@ DAO/ProductCodeDAO.class
 controllers/UserControlleur.class
 controllers/AdminController.class
 database/Database.class
+models/Discount_code.class
 DAO/DiscountDAO.class
 controllers/SingleProductController.class
 controllers/LoginController.class
@@ -17,6 +18,5 @@ DAO/CustomerDAO.class
 controllers/OrderController.class
 controllers/CategorysController.class
 controllers/ProductController.class
-models/Discount_Code.class
 models/CustomerEntity.class
 DAO/MicroMarketDAO.class

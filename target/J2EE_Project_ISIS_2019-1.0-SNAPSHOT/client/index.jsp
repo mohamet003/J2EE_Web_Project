@@ -92,7 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                                 	<ul>
                                                                                     <c:forEach items="${categorys}" var="category">
 						
-                                                                                        <li><a href="#" class="categorys" data-id=${category.getProd_Code()} >${category.getDescription()}</a></li>
+                                                                                        <li><a href="#" class="categorys" data-id="${category.getProd_Code()}" data-iddiscount="${category.getDiscount_code()}" >${category.getDescription()}</a></li>
 						
                                                                                     </c:forEach>
                                                                                    </ul>
