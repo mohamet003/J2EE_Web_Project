@@ -63,7 +63,10 @@ public class PurchaseOrderDAO {
    public List<Purchase_Order> GetPurchaseOrderByCustomer(int customer_ID) throws DAOException {
 
 List<Purchase_Order> orders = new LinkedList<>();
-		String sql = "SELECT * FROM PURCHASE_ORDER WHERE CUSTOMER_ID = ? ";
+		String sql = "SELECT PURCHASE_ORDER.ORDER_NUM,PURCHASE_ORDER.CUSTOMER_ID,PURCHASE_ORDER.PRODUCT_ID,PURCHASE_ORDER.QUANTITY,\n" +
+"PURCHASE_ORDER.SHIPPING_COST,PURCHASE_ORDER.SALES_DATE,PURCHASE_ORDER.SHIPPING_DATE,PURCHASE_ORDER.FREIGHT_COMPANY,\n" +
+"(PURCHASE_ORDER.QUANTITY * PRODUCT.PURCHASE_COST) as \"COST\" \n" +
+"FROM PURCHASE_ORDER INNER JOIN PRODUCT USING(PRODUCT_ID)  WHERE CUSTOMER_ID = ?";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -80,6 +83,7 @@ List<Purchase_Order> orders = new LinkedList<>();
                                         order.setSales_date(rs.getDate("SALES_DATE"));
                                         order.setshipping_date(rs.getDate("SHIPPING_DATE"));
                                         order.setFreight_company(rs.getString("FREIGHT_COMPANY"));
+                                        order.setCost(rs.getFloat("COST"));
                                         orders.add(order);
 					// On crée l'objet "entity"
 				

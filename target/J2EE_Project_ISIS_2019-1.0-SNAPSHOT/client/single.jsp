@@ -134,7 +134,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             
        //le prix du produit
        var price = $("#price").data("price");
-       // la quantité du produi
+       // la quantité du produit
        var qte = 0;
        // le montant à payer
        var montant = 0;
@@ -168,18 +168,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         //calculer le montant en fonction de la remise
         function calculMontant(qte,price){
             let remise = Math.round((qte*price*rate)/100);
-            montant = (qte*price) - remise.toFixed(2);
+            montant = (qte*price) - remise;
             
             console.log("Montant Hors remise: "+qte*price+" remise : "+remise+" montant: "+montant)
             $("#montantBrute").text("Montant Brute : "+qte*price+" €");
-            $("#remise").text("Remise "+rate+"% :    "+remise+" €");
+            $("#remise").text("Remise "+rate+"% :    -"+remise+" €");
             $("#montant").text("Montant à payer : "+montant+" €");
         }
         
         // verif quantité à commender
         
         function verifQte (qte,qteDispo){
-            
+            if (qte <= qteDispo) {
+    
+            }
         }
         
         

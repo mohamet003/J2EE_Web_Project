@@ -57,8 +57,6 @@ public class OrderController extends HttpServlet {
            String action =  "";
            int id = 0;
            int qte = 0;
-          
-   
 
            if(request.getParameter("target") != null) {
 
@@ -78,7 +76,7 @@ public class OrderController extends HttpServlet {
                     order.setProduct_ID(id);
                     order.setQuantity(qte);
                     order.setFreight_company("ISIS");
-                    order.setShipping_cost(qte*p.getPurchase_cost());
+                    order.setShipping_cost((float) (qte*p.getPurchase_cost()*0.03));
                     order.setOrder_num(lorders.size()+20);
                     purcharseOrderDAO.AddPurchaseOrder(order);
                     break;

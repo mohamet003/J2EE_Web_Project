@@ -79,7 +79,7 @@
                                                     </a>
                                                     </li>
                                                     <li><span class="cost">{{quantity}}</span></li>
-                                                    <li><span class="cost">{{shipping_cost}} €</span></li>
+                                                    <li><span class="cost">{{cost}} €</span></li>
                                                     <li><span class="cost">{{shipping_date}}</li>
                                                    
                                                     

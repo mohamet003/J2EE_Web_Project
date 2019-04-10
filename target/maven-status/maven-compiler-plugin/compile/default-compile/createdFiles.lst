@@ -3,6 +3,7 @@ DAO/ProductDAO.class
 models/Product_Code.class
 models/Product.class
 database/DAOException.class
+DAO/StatDAO.class
 DAO/ProductCodeDAO.class
 controllers/UserControlleur.class
 controllers/AdminController.class
