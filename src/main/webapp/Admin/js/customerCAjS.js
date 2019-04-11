@@ -13,6 +13,8 @@ $(document).ready(function(){
      
 function affcherGraphique(event){
     $('#myPieChart').html("");
+    $("#dateD").val('');
+    $("#dateF").val('');
     //recuperation de l'id de l'utilisateur
      let id = this.id;
      
