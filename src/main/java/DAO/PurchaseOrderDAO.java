@@ -135,10 +135,10 @@ List<Purchase_Order> orders = new LinkedList<>();
 		return orders;
 	}
    public void AddPurchaseOrder (Purchase_Order order ) throws DAOException {
-		//DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");`
+		
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd");
                         String date = sdf.format(new Date()); 
-                 System.out.println("tesdgdgdsggdf    " + date);
+    
         String sql = "INSERT INTO PURCHASE_ORDER VALUES (?,?,?,?,?,?,?,?)";
 	
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête

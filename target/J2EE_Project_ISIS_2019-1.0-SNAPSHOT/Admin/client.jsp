@@ -34,7 +34,7 @@
                             <td>{{email}}</td>
                             <td>{{addressLine1}}</td>
                             <td> 
-                                <a href="#" class="users tm-product-delete-link" id ="{{customerId}}" data-toggle="modal" data-target="#exampleModal">
+                                <a href="#" class="users tm-product-delete-link" id="{{customerId}}" data-toggle="modal" data-target="#exampleModal">
                                     <i class="fas fa-chart-area" style="color:white"></i>
                                 </a>
                             </td>

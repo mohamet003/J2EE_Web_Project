@@ -1,4 +1,5 @@
 
+import DAO.CACategorieDAO;
 import DAO.DiscountDAO;
 import DAO.CustomerDAO;
 import DAO.ProductCodeDAO;
@@ -17,6 +18,8 @@ import java.util.List;
 import jdk.nashorn.internal.parser.JSONParser;
 import models.Product;
 import DAO.DiscountDAO;
+import java.text.ParseException;
+import models.ShippingForCustomer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -33,7 +36,7 @@ public class NewMain {
      * @param args the command line arguments
      */
 
-    public static void main(String[] args) throws DAOException {
+    public static void main(String[] args) throws DAOException, ParseException {
         // TODO code application logic here
 
         /*
@@ -88,16 +91,18 @@ public class NewMain {
         
         //System.out.println("pol "+order);
 
- DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
+        DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
 
-float rate = ddao.GetDiscountByID("M").getRate();
-   System.out.println("rate  "+rate);
+        float rate = ddao.GetDiscountByID("M").getRate();
+        System.out.println("rate  "+rate);
 
+        CACategorieDAO cacdao = new CACategorieDAO(Database.getDataSource());
+        List<ShippingForCustomer> lca = cacdao.GetCaByCategorie("HW", "2011-05-24", "2019-04-11");
         
-
-        
+        for (ShippingForCustomer shippingForCustomer : lca) {
+            System.out.println("Ressss "+shippingForCustomer.getCA()+"   dddada  "+shippingForCustomer.getDate());
+        }
         //System.out.println("test"+cust.getName()); 
-        
     }
    
 }
