@@ -45,10 +45,10 @@ public class JUnitTestPurchaseOrderDAO {
     @Before
     public void setUp() {
         orderDAO = new PurchaseOrderDAO(Database.getDataSource());
-        productID = 980001;
-        orderNum = 30198001;
-        Quantity =10;
-        customer_ID= 409;
+        productID = 980025;
+        orderNum = 10398003;
+        Quantity = 8;
+        customer_ID= 2;
            
     }
     
@@ -65,7 +65,7 @@ public class JUnitTestPurchaseOrderDAO {
     @Test
     public void testGetPurchaseOrderByCustomer() throws DAOException {  
         LOrder = orderDAO.GetPurchaseOrderByCustomer(customer_ID);
-        assertEquals(1, LOrder.size());
+        assertNotEquals(0, LOrder.size());
     }
     
     @Test
@@ -74,12 +74,18 @@ public class JUnitTestPurchaseOrderDAO {
        assertNotEquals(0, LOrder.size());
     }
     
-   /* @Test
+   @Test
     public void testAddPurchaseOrder() throws DAOException { 
         Purchase_Order order = new Purchase_Order();
-        LOrder.add(orderDAO.AddPurchaseOrder(order));
-        assertEquals(Quantity_on_hand, produit.getQuantity_on_hand());
-    }*/
+        order.setCustomer_ID(customer_ID);
+        order.setFreight_company("ISIS");
+        order.setOrder_num(10398017);
+        order.setProduct_ID(productID);
+        order.setQuantity(5);
+        order.setShipping_cost(650);
+        orderDAO.AddPurchaseOrder(order);
+        assertEquals(10398017, order.getOrder_num());
+    }
     
     @Test
     public void testUpdatePurchaseOrder() throws DAOException {  
@@ -90,9 +96,9 @@ public class JUnitTestPurchaseOrderDAO {
     
     @Test
     public void testDeletePurchaseOrder() throws DAOException {  
-       orderDAO.DeletePurchaseOrder(orderNum);
-       Purchase_Order order = orderDAO.GetPurchaseOrderByID(orderNum);
-       assertNull (order.getOrder_num());
+       orderDAO.DeletePurchaseOrder(10398017);
+       Purchase_Order order = orderDAO.GetPurchaseOrderByID(10398017);
+       assertEquals(0, order.getOrder_num());
     }
     
     

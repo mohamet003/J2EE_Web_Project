@@ -78,6 +78,6 @@ public class JUnitTestProductDAO {
     public void testUpdateProduct() throws DAOException {
         pdao.UpdateProduct(idProduct, quantity_on_hand); 
         product = pdao.GetProductByID(idProduct);
-        assertNotEquals(800000,product.getQuantity_on_hand());
+        assertEquals(13,product.getQuantity_on_hand());
     }
 }
