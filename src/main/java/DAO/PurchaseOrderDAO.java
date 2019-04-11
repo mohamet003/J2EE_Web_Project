@@ -183,8 +183,8 @@ List<Purchase_Order> orders = new LinkedList<>();
 	try (Connection connection = myDataSource.getConnection();
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-                        stmt.setInt(1, order_num); 
-                        stmt.setInt(2, Quantity);
+                        stmt.setInt(1, Quantity); 
+                        stmt.setInt(2, order_num);
                         
                         int rs = stmt.executeUpdate();
 

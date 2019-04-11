@@ -128,8 +128,8 @@ public class ProductDAO {
 	try (Connection connection = myDataSource.getConnection();
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-                        stmt.setInt(1, product_ID); 
-                        stmt.setInt(2, Quantity_on_hand);
+                        stmt.setInt(1,Quantity_on_hand); 
+                        stmt.setInt(2, product_ID);
                         
                         int rs = stmt.executeUpdate();
 		
