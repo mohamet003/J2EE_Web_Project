@@ -74,7 +74,7 @@ public class JUnitTestPurchaseOrderDAO {
        assertNotEquals(0, LOrder.size());
     }
     
-    /*@Test
+   /* @Test
     public void testAddPurchaseOrder() throws DAOException { 
         Purchase_Order order = new Purchase_Order();
         LOrder.add(orderDAO.AddPurchaseOrder(order));

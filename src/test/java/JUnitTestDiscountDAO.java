@@ -41,9 +41,9 @@ public class JUnitTestDiscountDAO {
     public void tearDown() {
     }
 
-    @Test
+    /*@Test
     public void testGetDiscountByID() throws DAOException {
-    /*    Discount_Code DCode = Ddao.GetDiscountByID(DCode);
-        assertEquals("Accounting Application", product.getDescription());*/
-    }
+       Discount_Code DCode = Ddao.GetDiscountByID(DCode);
+        assertEquals("Accounting Application", product.getDescription());
+    }*/
 }
