@@ -177,8 +177,25 @@ List<Purchase_Order> orders = new LinkedList<>();
 		}
 	}
 
-        public void UpdatePurchaseOrder(int order_num) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        public void UpdatePurchaseOrder(int order_num,int Quantity) throws DAOException {
+           String sql = "UPDATE PURCHASE_ORDER SET QUANTITY = ? WHERE ORDER_NUM = ? ";
+	
+	try (Connection connection = myDataSource.getConnection();
+			PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+                        stmt.setInt(1, order_num); 
+                        stmt.setInt(2, Quantity);
+                        
+                        int rs = stmt.executeUpdate();
+
+                        if (rs==1) {
+                            System.out.println("okay");
+                        }
+		
+		}  catch (SQLException ex) {
+			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+			throw new DAOException(ex.getMessage());
+		} 
         }
 }   
 

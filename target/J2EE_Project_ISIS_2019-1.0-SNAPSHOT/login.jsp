@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 	<title>Login V16</title>
 	<meta charset="UTF-8">
@@ -67,10 +67,7 @@
 	
 <!--===============================================================================================-->
 	<script src="client/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
 
-	<script src="client/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
 	<script src="client/js/main.js"></script>
 
 </body>

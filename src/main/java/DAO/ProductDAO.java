@@ -99,9 +99,10 @@ public class ProductDAO {
 
             stmt.setString(1, product_code);
             try ( ResultSet rs = stmt.executeQuery()) {
-                Product p = new Product();
+                
 
                 while (rs.next()) {
+                    Product p = new Product();
                     p.setAvailable(rs.getBoolean("AVAILABLE"));
                     p.setDescription(rs.getString("DESCRIPTION"));
                     p.setManufacturer_ID(rs.getInt("MANUFACTURER_ID"));
@@ -120,5 +121,21 @@ public class ProductDAO {
         }
 
         return LProduits;
+    }
+    public void UpdateProduct(int product_ID,int Quantity_on_hand) throws DAOException {
+           String sql = "UPDATE PRODUCT SET QUANTITY_ON_HAND = ? WHERE PRODUCT_ID = ? ";
+	
+	try (Connection connection = myDataSource.getConnection();
+			PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+                        stmt.setInt(1, product_ID); 
+                        stmt.setInt(2, Quantity_on_hand);
+                        
+                        int rs = stmt.executeUpdate();
+		
+		}  catch (SQLException ex) {
+			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+			throw new DAOException(ex.getMessage());
+		} 
     }
 }

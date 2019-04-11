@@ -92,7 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                                 	<ul>
                                                                                     <c:forEach items="${categorys}" var="category">
 						
-                                                                                        <li><a href="#" class="categorys" data-id=${category.getProd_Code()} >${category.getDescription()}</a></li>
+                                                                                        <li><a href="#" class="categorys" data-id="${category.getProd_Code()}" data-iddiscount="${category.getDiscount_code()}" >${category.getDescription()}</a></li>
 						
                                                                                     </c:forEach>
                                                                                    </ul>
@@ -180,9 +180,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	            
         </div>
         
-        
         <div class="product" id="container">  </div>
-	
+        
+  
+        <div class="loader" style="display:none;"></div>
         
 	<!--information-starts-->
 	<div class="information">
@@ -202,14 +203,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="#"><p>Specials</p></a></li>
 						<li><a href="#"><p>New Products</p></a></li>
 						<li><a href="#"><p>Our Stores</p></a></li>
-						<li><a href="contact.html"><p>Contact Us</p></a></li>
+						<li><a href="#"><p>Contact Us</p></a></li>
 						<li><a href="#"><p>Top Sellers</p></a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 infor-left">
 					<h3>My Account</h3>
 					<ul>
-						<li><a href="account.html"><p>My Account</p></a></li>
+						<li><a href="#"><p>My Account</p></a></li>
 						<li><a href="#"><p>My Credit slips</p></a></li>
 						<li><a href="#"><p>My Merchandise returns</p></a></li>
 						<li><a href="#"><p>My Personal info</p></a></li>
@@ -265,6 +266,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="client/js/simpleCart.min.js"> </script>
 
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid  #73B6E1;
+  border-bottom: 16px solid  #73B6E1;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
 
 	<!--Slider-Starts-Here-->
 				<script src="client/js/responsiveslides.min.js"></script>

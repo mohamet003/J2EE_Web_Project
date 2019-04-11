@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/ProductDAO.java
 /Users/kevin/NetBeansProjects/projetWeb/src/main/java/database/DAOException.java
 /Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/OrderController.java
@@ -23,3 +24,27 @@
 /Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/ProductCodeDAO.java
 /Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/CustomerDAO.java
 /Users/kevin/NetBeansProjects/projetWeb/src/main/java/NewMain.java
+=======
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/database/Database.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/database/DAOException.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/Discount_code.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/UserControlleur.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/SingleProductController.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/LoginController.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/Purchase_Order.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/OrderController.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/Product_Code.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/DAO/MicroMarketDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/Product.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/Micro_Market.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/ProductController.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/CategorysController.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/DAO/PurchaseOrderDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/DAO/CustomerDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/DAO/ProductDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/DAO/DiscountDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/AdminController.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/NewMain.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/CustomerEntity.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/DAO/ProductCodeDAO.java
+>>>>>>> 3c639c9e3ebe593e4348bf6070f2527b3c806072

@@ -51,8 +51,9 @@ public class LoginController extends HttpServlet {
             String adminLog = "admin@admin.com";
             int  adminPwd = 123;    
 
-                List<Product_Code> categorys = daop.GetAllProductCodes();
-                request.setAttribute("categorys",categorys);
+            // je recupere l'ensemble des catégories
+            List<Product_Code> categorys = daop.GetAllProductCodes();
+            request.setAttribute("categorys",categorys);
 
        try {
             action = request.getParameter("connexion");
@@ -63,7 +64,8 @@ public class LoginController extends HttpServlet {
             if (email != null){
                 request.setAttribute("result","error");
             }
-            // Si l'utilisateur est toujours connnecté, on le renvoie à la page principale 
+
+            // Si l'utilisateur est toujours connecté, on le renvoie à la page principale 
             if( this.findUserInSession(request) != null && action == null){
 
                 request.getRequestDispatcher("client/index.jsp").forward(request, response);
@@ -143,6 +145,8 @@ public class LoginController extends HttpServlet {
     }// </editor-fold>
 
 
+
+    // creer une session pour l'utilisateur
     public boolean connexion(String email, int ID, HttpServletRequest request) throws DAOException{
         
         try {
@@ -159,6 +163,8 @@ public class LoginController extends HttpServlet {
 
     }
 
+
+      // detruire la session pour l'utilisateur
     public boolean deconnexion(HttpServletRequest request) throws DAOException{
         
         try {
@@ -176,6 +182,8 @@ public class LoginController extends HttpServlet {
 
     }
     
+
+    // trouver l'utilisateur connecté 
     public CustomerEntity findUserInSession(HttpServletRequest request) {
 
 		HttpSession session = request.getSession(false);

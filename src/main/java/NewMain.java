@@ -15,9 +15,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import jdk.nashorn.internal.parser.JSONParser;
-import models.Discount_Code;
 import models.Product;
-
+import DAO.DiscountDAO;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -87,7 +86,12 @@ public class NewMain {
         //dao.AddPurchaseOrder(order);
         //Purchase_Order order2 = dao.GetPurchaseOrderByID(10398001);
         
-        System.out.println("pol "+order);
+        //System.out.println("pol "+order);
+
+ DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
+
+float rate = ddao.GetDiscountByID("M").getRate();
+   System.out.println("rate  "+rate);
 
         
 

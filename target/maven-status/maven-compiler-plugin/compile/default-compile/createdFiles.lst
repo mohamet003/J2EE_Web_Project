@@ -4,6 +4,11 @@ database/DAOException.class
 DAO/ProductCodeDAO.class
 controllers/UserControlleur.class
 database/Database.class
+<<<<<<< HEAD
+=======
+models/Discount_code.class
+DAO/DiscountDAO.class
+>>>>>>> 3c639c9e3ebe593e4348bf6070f2527b3c806072
 controllers/SingleProductController.class
 controllers/LoginController.class
 models/Purchase_Order.class
@@ -11,8 +16,11 @@ DAO/CustomerDAO.class
 controllers/OrderController.class
 controllers/CategorysController.class
 controllers/ProductController.class
+<<<<<<< HEAD
 models/Discount_Code.class
 controllers/CAcustomerController.class
+=======
+>>>>>>> 3c639c9e3ebe593e4348bf6070f2527b3c806072
 models/CustomerEntity.class
 DAO/MicroMarketDAO.class
 NewMain.class

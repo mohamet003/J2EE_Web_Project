@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import DAO.DiscountDAO;
 import DAO.ProductDAO;
 import com.google.gson.Gson;
 import database.DAOException;
@@ -30,6 +31,8 @@ import models.Product;
 @WebServlet(name = "ProductController", urlPatterns = {"/ProductController"})
 public class ProductController extends HttpServlet {
      ProductDAO daop = new ProductDAO(Database.getDataSource());
+     DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
+     
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,8 +52,14 @@ public class ProductController extends HttpServlet {
             response.setContentType("application/json;charset=UTF-8");
             Properties resultat = new Properties();
             String code = request.getParameter("idCategory");
+            String idd = request.getParameter("idd");
+            
+            float rate = ddao.GetDiscountByID(idd).getRate();
+            
+            
 
             resultat.put("products",productOrganize(daop.GetAllProductsByProductCode(code)));
+            resultat.put("rate", rate);
 
             // Générer du JSON
             Gson gson = new Gson();

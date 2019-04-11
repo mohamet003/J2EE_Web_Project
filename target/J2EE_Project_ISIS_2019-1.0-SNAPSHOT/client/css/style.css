@@ -711,7 +711,21 @@ a.mask {
     -o-transition: 0.5s all ease;
     -ms-transition: 0.5s all ease;
 }
+
+.product-left-rupture:hover .product-main{
+	border:1px solid red;
+	transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+    pointer-events: none;
+}
 .product-left:hover .srch{
+	display:block;
+}
+
+.product-left-rupture:hover .srchR{
 	display:block;
 }
 .srch {
@@ -720,6 +734,21 @@ a.mask {
     top: 18%;
     left: 16px;
 }
+
+.srchR {
+    display: none;
+    position: absolute;
+    top: 18%;
+    left: 16px;
+}
+.srchR span {
+    background: red;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 10px 25px;
+}
+
 .srch span {
     background: #73B6E1;
     color: #fff;

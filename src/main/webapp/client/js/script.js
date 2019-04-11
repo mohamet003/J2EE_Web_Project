@@ -3,20 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
 $(document).ready(function(){ 
 
 
 
    
-    function showProducts(id) {
+    function showProducts(id,idd) {
         $.ajax({
-            url: "ProductController?idCategory="+id,
+            url: "ProductController?idCategory="+id+"&idd="+idd,
             dataType: "json",
             success:function (result) {
                         $.get("client/products.jsp", function(template){
+                            console.log(result);
                         var processedTemplate = Mustache.to_html(template, result);
                         $("#globalContainer").hide();
+                         $(".loader").show();
                         $('#container').html(processedTemplate);
+                         $(".loader").hide();
                         });   
                     }
         });
@@ -50,8 +55,9 @@ $("#orders").click(showOrders);
 $(".categorys").click(function () {
 
     let id  = $(this).data('id');
-    console.log("ddd "+ id);
-    showProducts(id);
+    let idd  = $(this).data('iddiscount');
+    console.log("ddd "+ idd);
+    showProducts(id,idd);
 })
 
 
