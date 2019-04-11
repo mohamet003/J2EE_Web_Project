@@ -28,7 +28,7 @@ public class JUnitTestPurchaseOrderDAO {
     private int orderNum;
     List <Purchase_Order> LOrder;
     int Quantity;
-    
+    int customer_ID;
     public JUnitTestPurchaseOrderDAO() {
     }
     
@@ -45,8 +45,9 @@ public class JUnitTestPurchaseOrderDAO {
     public void setUp() {
         orderDAO = new PurchaseOrderDAO(Database.getDataSource());
         productID = 980001;
-        orderNum = 10398001;
+        orderNum = 30198001;
         Quantity =10;
+        customer_ID= 409;
            
     }
     
@@ -62,30 +63,36 @@ public class JUnitTestPurchaseOrderDAO {
     
     @Test
     public void testGetPurchaseOrderByCustomer() throws DAOException {  
-        LOrder = orderDAO.GetPurchaseOrderByCustomer(productID);
-        assertNotEquals(0, LOrder.size());
+        LOrder = orderDAO.GetPurchaseOrderByCustomer(customer_ID);
+        assertEquals(1, LOrder.size());
+    }
+    
+    @Test
+    public void testGetPurchaseOrderByProduct() throws DAOException {  
+       LOrder = orderDAO.GetPurchaseOrderByProduct(productID);
+       assertNotEquals(0, LOrder.size());
     }
     
     /*@Test
     public void testAddPurchaseOrder() throws DAOException { 
         Purchase_Order order = new Purchase_Order();
-        orderDAO.AddPurchaseOrder(order);
-        L
+        LOrder.add(orderDAO.AddPurchaseOrder(order));
         assertEquals(Quantity_on_hand, produit.getQuantity_on_hand());
     }*/
     
     @Test
     public void testUpdatePurchaseOrder() throws DAOException {  
-        orderDAO.UpdatePurchaseOrder(orderNum, productID);
+        orderDAO.UpdatePurchaseOrder(orderNum, 100);
        Purchase_Order order = orderDAO.GetPurchaseOrderByID(orderNum);
-       assertEquals(Quantity, order.getQuantity());
+       assertEquals(100 , order.getQuantity());
     }
     
     @Test
     public void testDeletePurchaseOrder() throws DAOException {  
-        
-       Purchase_Order order = orderDAO.GetPurchaseOrderByID(orderNum);
        orderDAO.DeletePurchaseOrder(orderNum);
+       Purchase_Order order = orderDAO.GetPurchaseOrderByID(orderNum);
        assertNull (order.getOrder_num());
     }
+    
+    
 }
