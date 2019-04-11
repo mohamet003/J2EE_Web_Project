@@ -5,13 +5,13 @@
  */
 package controllers;
 
-import DAO.CustomerDAO;
+import DAO.CAZoneGeographiqueDAO;
 import com.google.gson.Gson;
 import database.DAOException;
 import database.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,15 +20,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Product_Code;
 
 /**
  *
  * @author kevin
  */
-
-@WebServlet(name="userControlleur", urlPatterns={"/userControlleur"})
-public class UserControlleur extends HttpServlet {
-    CustomerDAO daoUser = new CustomerDAO(Database.getDataSource());
+@WebServlet(name = "StateController", urlPatterns = {"/StateController"})
+public class StateController extends HttpServlet {
+    CAZoneGeographiqueDAO daop = new CAZoneGeographiqueDAO(Database.getDataSource());
+    Properties resultat = new Properties();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,18 +38,18 @@ public class UserControlleur extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, DAOException {
-       
+            throws ServletException, IOException, DAOException {
+        response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-             response.setContentType("application/json;charset=UTF-8");
-             Properties resultat = new Properties();
-            resultat.put("clients",daoUser.findAllCustomer());
+            /* TODO output your page here. You may use following sample code. */
+            List<String> StateList = daop.findAllState();
+            resultat.put("state",StateList);
+            // Générer du JSON
             Gson gson = new Gson();
-            out.println(gson.toJson(resultat));
-                
+            out.println(gson.toJson(resultat)); 
+            
         }
     }
 
@@ -66,10 +67,8 @@ public class UserControlleur extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DAOException ex) {
-            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StateController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -86,10 +85,8 @@ public class UserControlleur extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DAOException ex) {
-            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StateController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

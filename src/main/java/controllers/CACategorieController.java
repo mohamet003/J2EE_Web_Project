@@ -5,13 +5,13 @@
  */
 package controllers;
 
-import DAO.CustomerDAO;
+import DAO.CACategorieDAO;
 import com.google.gson.Gson;
 import database.DAOException;
 import database.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,15 +20,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.ShippingForCustomer;
 
 /**
  *
  * @author kevin
  */
-
-@WebServlet(name="userControlleur", urlPatterns={"/userControlleur"})
-public class UserControlleur extends HttpServlet {
-    CustomerDAO daoUser = new CustomerDAO(Database.getDataSource());
+@WebServlet(name = "CACategorieController", urlPatterns = {"/CACategorieController"})
+public class CACategorieController extends HttpServlet {
+    private String action = "";
+    private String dateD = "";
+    private String dateF = "";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,18 +39,19 @@ public class UserControlleur extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, DAOException {
-       
+            throws ServletException, IOException, DAOException {
         try (PrintWriter out = response.getWriter()) {
-             response.setContentType("application/json;charset=UTF-8");
-             Properties resultat = new Properties();
-            resultat.put("clients",daoUser.findAllCustomer());
-            Gson gson = new Gson();
-            out.println(gson.toJson(resultat));
-                
+            /* TODO output your page here. You may use following sample code. */
+           action =  request.getParameter("id");
+           dateD =  request.getParameter("dateD");
+           dateF = request.getParameter("dateF");
+           response.setContentType("application/json;charset=UTF-8");
+           Properties resultat = new Properties();
+           resultat.put("ca",CaForCategorie(action,dateD,dateF));
+           Gson gson = new Gson();
+           out.println(gson.toJson(resultat));
         }
     }
 
@@ -66,10 +69,8 @@ public class UserControlleur extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DAOException ex) {
-            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CACategorieController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -86,10 +87,8 @@ public class UserControlleur extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DAOException ex) {
-            Logger.getLogger(UserControlleur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CACategorieController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -103,4 +102,15 @@ public class UserControlleur extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public List<ShippingForCustomer> CaForCategorie(String PRODUCT_CODE,String dateD, String dateF) throws DAOException{
+        
+        try {   
+            CACategorieDAO caU = new CACategorieDAO(Database.getDataSource());
+            return caU.GetCaByCategorie(PRODUCT_CODE,dateD,dateF); 
+        } catch (Exception e) {
+            
+        }
+        return null;
+        
+    }
 }

@@ -12,7 +12,6 @@ function showUsers() {
         dataType: "json",
         success: 
                 function (result) {
-                    console.log(result);
                     $("#graphiqueGeo").removeClass("active");
                     $("#graphiqueCat").removeClass("active");
                     $("#client").addClass("active");
@@ -25,11 +24,9 @@ function showUsers() {
     });
 }
 
-
-
-function showGraphique1() {
+function showGraphique() {
     $.ajax({
-        url: "userControlleur",
+        url: "CategorysController",
         dataType: "json",
         success: 
                 function (result) {
@@ -46,7 +43,7 @@ function showGraphique1() {
 }
 function showGraphique2() {
     $.ajax({
-        url: "userControlleur",
+        url: "StateController",
         dataType: "json",
         success: 
                 function (result) {
@@ -61,7 +58,7 @@ function showGraphique2() {
                 }
     });
 }
-$("#graphiqueCat").click(showGraphique1);
+$("#graphiqueCat").click(showGraphique);
 $("#graphiqueGeo").click(showGraphique2);
 $("#client").click(showUsers);
 showUsers();

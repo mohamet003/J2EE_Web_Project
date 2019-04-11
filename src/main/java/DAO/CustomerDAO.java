@@ -131,7 +131,7 @@ public class CustomerDAO {
 			try (ResultSet rs = stmt.executeQuery()) {
 				while (rs.next()) {                   
                                         CustomerEntity CE = new CustomerEntity();
-                                        
+                                        CE.setCustomerId(rs.getInt("CUSTOMER_ID"));
 					CE.setName (rs.getString("NAME"));
 					CE.setAddressLine1(rs.getString("ADDRESSLINE1"));
                                         CE. setEmail(rs.getString("EMAIL"));
