@@ -10,8 +10,8 @@
 <div class="row">
     <div id="chart1" class="col-lg-11"></div>
     <div class="col-lg-1 btn btn-group-vertical" role="group" aria-label="First group">
-        <a class="tm-product-delete-link" style="background: #3D4E62; margin-left: -16px" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="fas fa-plus" style="color:white"></i>
+        <a id="botChange" class="tm-product-delete-link" style="background: #3D4E62; margin-left: -16px" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <i id="imagine" class="fas fa-plus" style="color:white"></i>
         </a>
         <div class="collapse row" id="collapseExample" style="width: 40px;">
             <a href="#" id="graph1" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">

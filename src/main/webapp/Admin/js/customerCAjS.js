@@ -9,7 +9,19 @@ $(document).ready(function(){
        google.charts.load('current', {packages: ['corechart']});
        google.charts.setOnLoadCallback(affcherGraphique);
          $(".users").click(affcherGraphique);
+         $("#botChange").click(changeIcon);
 })
+
+function changeIcon(event){
+    if($("#bimagine").hasClass("fa-plus")){
+        $("#bimagine").removeClass("fa-plus");
+        $("#bimagine").addClass("fa-minus");
+    }
+    else{
+        $("#bimagine").removeClass("fa-minus");
+        $("#bimagine").addClass("fa-plus");
+    }
+}
      
 function affcherGraphique(event){
     $('#myPieChart').html("");
@@ -73,7 +85,7 @@ function graphique(result) {
                break;
            case "graph2" : 
                $("#myPieChart").html("");
-               var chart = new google.visualization.ScatterChart(document.getElementById('myPieChart'));   
+               var chart = new google.visualization.ColumnChart(document.getElementById('myPieChart'));   
                chart.draw(data, null);
                chart.draw(data, options);
                break;
@@ -85,7 +97,7 @@ function graphique(result) {
                break;
            case "graph4" : 
                $("#myPieChart").html("");
-               var chart = new google.visualization.Histogram(document.getElementById('myPieChart'));   
+               var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));   
                chart.draw(data, null);
                chart.draw(data, options);
                break;
