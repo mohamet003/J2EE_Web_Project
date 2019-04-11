@@ -5,6 +5,8 @@
  */
 package controllers;
 
+import DAO.DiscountDAO;
+import DAO.ProductCodeDAO;
 import DAO.ProductDAO;
 import com.google.gson.Gson;
 import database.DAOException;
@@ -22,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.LinkedList;
 import java.util.List;
 import models.Product;
+import models.Product_Code;
 
 /**
  *
@@ -31,6 +34,8 @@ import models.Product;
 public class SingleProductController extends HttpServlet {
 
     ProductDAO daop = new ProductDAO(Database.getDataSource());
+    ProductCodeDAO codeDAO = new ProductCodeDAO(Database.getDataSource());
+    DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,12 +51,11 @@ public class SingleProductController extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
 
             int id = Integer.parseInt(request.getParameter("idProduct"));
-            int rate = Integer.parseInt(request.getParameter("rate"));
-            
-            System.out.println("rateeee : "+rate);
-
             Product p = daop.GetProductByID(id);
-        
+            Product_Code code = codeDAO.GetProductCodeByID(p.getProduct_code());
+            int rate = (int)(ddao.GetDiscountByID(code.getDiscount_code()).getRate());
+            
+            
             List<Product> product = new  LinkedList<>();
             List<Product> tabProd = new  LinkedList<>();
             List<Product> products = new  LinkedList<>();
@@ -61,9 +65,9 @@ public class SingleProductController extends HttpServlet {
                 if (i == 3) break;
                 products.add(tabProd.get(i));   
             }       
+            
 
             response.setContentType("application/json;charset=UTF-8");
-
             Properties resultat = new Properties();
 
             resultat.put("product", product);

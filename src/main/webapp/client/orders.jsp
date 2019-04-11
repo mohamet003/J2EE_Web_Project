@@ -132,7 +132,7 @@ $(".detail").click(function(){
     id = $(this).data('id');
     var qte = $(this).data('qte');
  
-    $.ajax({
+$.ajax({
     url: "SingleProductController?idProduct="+id,
     dataType: "json",
     success: function (datas) {
