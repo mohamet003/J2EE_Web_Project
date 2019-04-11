@@ -29,6 +29,7 @@ public class JUnitTestPurchaseOrderDAO {
     List <Purchase_Order> LOrder;
     int Quantity;
     int customer_ID;
+    
     public JUnitTestPurchaseOrderDAO() {
     }
     
