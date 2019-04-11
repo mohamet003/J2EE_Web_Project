@@ -46,7 +46,7 @@ function graphique(result) {
     let options = {'legend':'left',
                    'title':'My Big Pie Chart',
                    'is3D':true,
-                   'width':1100,
+                   'width':1000,
                    'height':400};
     // Instantiate and draw the chart.
     let chart = new google.visualization.ScatterChart(document.getElementById('chart1'));
