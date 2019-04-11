@@ -91,4 +91,4 @@
     </div>
   </div>
 </div>
-<!--<script src="Admin/js/graphiqueUser.js"></script>
+<script src="Admin/js/customerCAjS.js"></script>
