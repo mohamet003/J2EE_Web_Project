@@ -18,6 +18,7 @@
                     <thead>
                         <tr>
                             <th scope="col">&nbsp;</th>
+                            <th scope="col">ID_USER</th>
                             <th scope="col">NOM</th>
                             <th scope="col">EMAIL</th>
                             <th scope="col">ADRESSELINE1</th>
@@ -25,19 +26,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#client}}
+                        {{#clients}}
                         <tr>
                             <th scope="row"><input type="checkbox" /></th>
+                            <td class="tm-product-name">{{customerId}}</td>
                             <td class="tm-product-name">{{name}}</td>
                             <td>{{email}}</td>
                             <td>{{addressLine1}}</td>
                             <td> 
-                                <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal">
+                                <a href="#" class="users tm-product-delete-link" id ="{{customerId}}" data-toggle="modal" data-target="#exampleModal">
                                     <i class="fas fa-chart-area" style="color:white"></i>
                                 </a>
                             </td>
                         </tr>
-                        {{/client}}
+                        {{/clients}}
                     </tbody>
                 </table>
             </div>
@@ -58,30 +60,37 @@
           <div class="row">
                 <div class="col-lg-10" id="myPieChart"></div>
                 <div class="col-lg-2 btn btn-group-vertical" role="group" aria-label="First group">
-                    <a href="#" id="graph1" class="tm-product-delete-link" style="background: #3D4E62;">
-                        <i class="fas fa-chart-area" style="color:white"></i>
+                    <a id="botChange" class="tm-product-delete-link" style="background: #3D4E62; margin-left: -16px" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <i id="imagine" class="fas fa-plus" style="color:white"></i>
                     </a>
-                    <a href="#" id="graph2" class="tm-product-delete-link" style="background: #3D4E62;">
-                        <i class="fas fa-chart-area" style="color:white"></i>
-                    </a>
-                    <a href="#" id="graph3" class="tm-product-delete-link" style="background: #3D4E62;">
-                        <i class="fas fa-chart-area" style="color:white"></i>
-                    </a>
-                    <a href="#" id="graph4" class="tm-product-delete-link" style="background: #3D4E62;">
-                        <i class="fas fa-chart-area" style="color:white"></i>
-                    </a>
+                    <div class="collapse row" id="collapseExample" style="width: 40px;">
+                        <a href="#" id="graph1" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
+                            <i class="fas fa-chart-area" style="color:white"></i>
+                        </a>
+                        <a href="#" id="graph2" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
+                            <i class="fas fa-chart-line" style="color:white"></i>
+                        </a>
+                        <a href="#" id="graph3" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
+                            <i class="fas fa-chart-bar" style="color:white"></i>
+                        </a>
+                        <a href="#" id="graph4" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
+                            <i class="fas fa-diagnoses" style="color:white"></i>
+                        </a>
+                    </div>
                 </div>
           </div>
           <div>
               <div class="row">
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="date debut" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; " >
+                <div class="col form-group">
+                    <label for="dateD" style="color:black;">Date début</label>
+                    <input type="date" class="form-control border border-info rounded" id="dateD" style="background: white; color: #3D4E62;" >
                 </div>
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="date fin" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
+                  <div class="col form-group">
+                      <label for="dateF" style="color:black;">Date Fin</label>
+                    <input type="date" class="form-control border border-info rounded" id="dateF" style="background: white; color: #3D4E62;">
                 </div>
-                <div class="col">
-                    <button type="button" class="btn" class="form-control" style="background: #3D4E62; color: white;">visualiser</button>
+                <div class="col form-group">
+                    <button type="button" class="fa fa-paper-plane btn btn-primary rounded-pill" id="valider" class="form-control rounded-pill" style="color: white; margin-bottom: -90px;"> visualiser</button>
                 </div>
               </div>
           </div>
@@ -89,4 +98,4 @@
     </div>
   </div>
 </div>
-<script src="Admin/js/graphiqueUser.js"></script>
+<script src="Admin/js/customerCAjS.js"></script>

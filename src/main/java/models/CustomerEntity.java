@@ -30,6 +30,12 @@ public class CustomerEntity {
 	public int getCustomerId() {
 		return customerId;
 	}
+        
+         public void setCustomerId(int id ){
+          
+             this.customerId = id;
+
+        }
 
 	/**
 	 * Get the value of name

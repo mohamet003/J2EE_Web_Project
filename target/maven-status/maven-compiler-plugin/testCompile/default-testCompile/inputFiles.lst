@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestCustumerDAO.java
 C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestPurchaseOrderDAO.java
 C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestProductDAO.java
 C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestDiscountDAO.java
+=======
+/Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestCustumerDAO.java
+/Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestProductDAO.java
+>>>>>>> 622b17725fe888ed41ba8a49b9e204755dca2fcb

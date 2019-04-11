@@ -55,13 +55,13 @@
                         <li class="nav-item">
                             <a class="nav-link" id="graphiqueCat" href="#">
                                 <i class="fas fa-chart-pie"></i>
-                                GraphCat
+                                Catégorie
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="graphiqueGeo" href="#">
-                                <i class="fas fa-users"></i>
-                                GraphiqueGeo
+                                <i class="fas fa-map-marked"></i>
+                                Zone Geographique
                             </a>
                         </li>
                            
