@@ -45,9 +45,11 @@
     </div>
     <div class="form-group col-md-3">
       <label for="categorie">Catégorie</label>
-      <select id="categorie" class="form-control" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
-        <option selected>Choose...</option>
-        <option>...</option>
+      <select id="categorie" class="form-control" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62;">
+         <option selected>Choose...</option>
+        {{#categorys}}
+        <option class="infosCat" id="{{Prod_Code}}">{{description}}</option>
+        {{/categorys}}
       </select>
     </div>
     <div class="form-group col-md-3">
@@ -55,4 +57,4 @@
     </div>
   </div>
 </div>
-<script src="Admin/js/graphique2.js"></script>
+<script src="Admin/js/graphiques.js"></script>

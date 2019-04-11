@@ -18,6 +18,7 @@
                     <thead>
                         <tr>
                             <th scope="col">&nbsp;</th>
+                            <th scope="col">ID_USER</th>
                             <th scope="col">NOM</th>
                             <th scope="col">EMAIL</th>
                             <th scope="col">ADRESSELINE1</th>
@@ -25,19 +26,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#client}}
+                        {{#clients}}
                         <tr>
                             <th scope="row"><input type="checkbox" /></th>
+                            <td class="tm-product-name">{{customerId}}</td>
                             <td class="tm-product-name">{{name}}</td>
                             <td>{{email}}</td>
                             <td>{{addressLine1}}</td>
                             <td> 
-                                <a href="#" class="tm-product-delete-link" data-toggle="modal" data-target="#exampleModal">
+                                <a href="#" class="users tm-product-delete-link" id ="{{customerId}}" data-toggle="modal" data-target="#exampleModal">
                                     <i class="fas fa-chart-area" style="color:white"></i>
                                 </a>
                             </td>
                         </tr>
-                        {{/client}}
+                        {{/clients}}
                     </tbody>
                 </table>
             </div>
@@ -89,4 +91,5 @@
     </div>
   </div>
 </div>
-<script src="Admin/js/graphiqueUser.js"></script>
+<script src="Admin/js/customerCA.js"></script>
+<!--<script src="Admin/js/graphiqueUser.js"></script>
