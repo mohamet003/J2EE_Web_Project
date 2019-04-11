@@ -29,6 +29,8 @@ import models.ShippingForCustomer;
 @WebServlet(name = "CACategorieController", urlPatterns = {"/CACategorieController"})
 public class CACategorieController extends HttpServlet {
     private String action = "";
+    private String dateD = "";
+    private String dateF = "";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,9 +45,11 @@ public class CACategorieController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
            action =  request.getParameter("id");
+           dateD =  request.getParameter("dateD");
+           dateF = request.getParameter("dateF");
            response.setContentType("application/json;charset=UTF-8");
            Properties resultat = new Properties();
-           resultat.put("ca",CaForCategorie(action));
+           resultat.put("ca",CaForCategorie(action,dateD,dateF));
            Gson gson = new Gson();
            out.println(gson.toJson(resultat));
         }
@@ -98,11 +102,11 @@ public class CACategorieController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public List<ShippingForCustomer> CaForCategorie(String PRODUCT_CODE) throws DAOException{
+    public List<ShippingForCustomer> CaForCategorie(String PRODUCT_CODE,String dateD, String dateF) throws DAOException{
         
         try {   
             CACategorieDAO caU = new CACategorieDAO(Database.getDataSource());
-            return caU.GetCaByCategorie(PRODUCT_CODE); 
+            return caU.GetCaByCategorie(PRODUCT_CODE,dateD,dateF); 
         } catch (Exception e) {
             
         }

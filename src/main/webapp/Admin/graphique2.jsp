@@ -38,11 +38,11 @@
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="dateFin">Date début</label>
-      <input type="text" class="form-control" id="dateFin" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
+      <input type="date" class="form-control" id="dateD" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
     </div>
     <div class="form-group col-md-3">
       <label for="dateDebut">Date fin</label>
-      <input type="text" class="form-control" id="dateDebut" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
+      <input type="date" class="form-control" id="dateF" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
     </div>
     <div class="form-group col-md-3">
       <label for="categorie">Catégorie</label>
@@ -55,8 +55,8 @@
       </select>
     </div>
     <div class="form-group col-md-3">
-        <button type="button" class="btn btn-primary" class="form-control" style="margin-top: 32px;">visualiser</button>
+        <button type="button" class="btn btn-primary" class="form-control" id="valider" style="margin-top: 32px;">visualiser</button>
     </div>
   </div>
 </div>
-<script src="Admin/js/zoneGeoJS.js"></script>
+<script src="Admin/js/zoneGeographiqueJS.js"></script>

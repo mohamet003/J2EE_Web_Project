@@ -29,6 +29,8 @@ import models.ShippingForCustomer;
 @WebServlet(name = "CAZoneGeoController", urlPatterns = {"/CAZoneGeoController"})
 public class CAZoneGeoController extends HttpServlet {
     private String action = "";
+    private String dateD = "";
+    private String dateF = "";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -44,9 +46,11 @@ public class CAZoneGeoController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
            action =  request.getParameter("id");
+           dateD =  request.getParameter("dateD");
+           dateF = request.getParameter("dateF");
            response.setContentType("application/json;charset=UTF-8");
            Properties resultat = new Properties();
-           resultat.put("ca",CaForZone(action));
+           resultat.put("ca",CaForZone(action,dateD,dateF));
            Gson gson = new Gson();
            out.println(gson.toJson(resultat));
         }
@@ -99,11 +103,11 @@ public class CAZoneGeoController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public List<ShippingForCustomer> CaForZone(String State) throws DAOException{
+    public List<ShippingForCustomer> CaForZone(String State,String dateD, String dateF) throws DAOException{
         
         try {   
             CAZoneGeographiqueDAO caU = new CAZoneGeographiqueDAO(Database.getDataSource());
-            return caU.GetCaByZoneGeo(State); 
+            return caU.GetCaByZoneGeo(State,dateD,dateF); 
         } catch (Exception e) {
             
         }

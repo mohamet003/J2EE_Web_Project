@@ -10,17 +10,22 @@ $(document).ready(function(){
        google.charts.setOnLoadCallback(affcherGraphique);
         $(".infosZone").click(affcherGraphique);
 })
-     
+
 function affcherGraphique(event){
     let id = this.id;
-    let url = "CAZoneGeoController?id="+id;
-    $.ajax({
-        url: url,
-        type : "GET",
-        dataType: "json",
-        success: graphique,
-        error : afficherErreur,
-    }) ;
+    $("#valider").click(affiche)
+    function affiche(event){
+        let dateD = $("#dateD").val();
+        let dateF = $("#dateF").val();
+        let url = "CAZoneGeoController?id="+id+"&dateD="+dateD+"&dateF="+dateF;
+        $.ajax({
+            url: url,
+            type : "GET",
+            dataType: "json",
+            success: graphique,
+            error : afficherErreur,
+        }) ;
+    }
 }
 
 //afficher l'erreur 

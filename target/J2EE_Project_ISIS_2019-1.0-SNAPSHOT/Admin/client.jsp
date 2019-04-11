@@ -77,13 +77,13 @@
           <div>
               <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="date debut" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; " >
+                    <input type="date" class="form-control" id="dateD" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; " >
                 </div>
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="date fin" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
+                    <input type="date" class="form-control" id="dateF" style="background: white; color: #3D4E62; border-bottom: solid 1px #3D4E62; ">
                 </div>
                 <div class="col">
-                    <button type="button" class="btn" class="form-control" style="background: #3D4E62; color: white;">visualiser</button>
+                    <button type="button" class="btn" id="valider" class="form-control" style="background: #3D4E62; color: white;">visualiser</button>
                 </div>
               </div>
           </div>
@@ -91,5 +91,4 @@
     </div>
   </div>
 </div>
-<script src="Admin/js/customerCA.js"></script>
 <!--<script src="Admin/js/graphiqueUser.js"></script>

@@ -29,14 +29,16 @@ public class ShippingCustomerDAO {
     }
 
     
-     public List<ShippingForCustomer> GetCaByIDCustomer(int customerID) throws DAOException {
+     public List<ShippingForCustomer> GetCaByIDCustomer(int customerID, String dateD, String dateF) throws DAOException {
                 List<ShippingForCustomer> LShipping = new LinkedList<>();
-		String sql = "SELECT SHIPPING_DATE, SUM(SHIPPING_COST*QUANTITY) AS PRIX FROM APP.PURCHASE_ORDER INNER JOIN APP.CUSTOMER USING(CUSTOMER_ID) WHERE CUSTOMER_ID = ? GROUP BY SHIPPING_DATE";
+		String sql = "SELECT SHIPPING_DATE, SUM(SHIPPING_COST*QUANTITY) AS PRIX FROM APP.PURCHASE_ORDER INNER JOIN APP.CUSTOMER USING(CUSTOMER_ID) WHERE CUSTOMER_ID = ? GROUP BY SHIPPING_DATE HAVING SHIPPING_DATE > ? AND SHIPPING_DATE < ? ";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
 
 			stmt.setInt(1, customerID );
+                        stmt.setString(2, dateD );
+                         stmt.setString(3, dateF );
 			try (ResultSet rs = stmt.executeQuery()) {
 				while (rs.next()) {
                                         ShippingForCustomer d = new ShippingForCustomer();

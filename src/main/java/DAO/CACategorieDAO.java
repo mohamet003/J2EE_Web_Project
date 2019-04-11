@@ -29,13 +29,15 @@ public class CACategorieDAO {
         this.myDataSource = myDataSource;
     }
     
-    public List<ShippingForCustomer> GetCaByCategorie(String PRODUCT_CODE) throws DAOException {
+    public List<ShippingForCustomer> GetCaByCategorie(String PRODUCT_CODE, String dateD, String dateF) throws DAOException {
                 List<ShippingForCustomer> LShipping = new LinkedList<>();
-		String sql = "SELECT PRODUCT_CODE,SHIPPING_DATE,SUM(SHIPPING_COST*QUANTITY) AS PRIX FROM APP.PRODUCT_CODE INNER JOIN(APP.PRODUCT INNER JOIN APP.PURCHASE_ORDER USING(PRODUCT_ID)) ON PROD_CODE = PRODUCT_CODE GROUP BY SHIPPING_DATE,PRODUCT_CODE  HAVING PRODUCT_CODE = ? ";
+		String sql = "SELECT PRODUCT_CODE,SHIPPING_DATE,SUM(SHIPPING_COST*QUANTITY) AS PRIX FROM APP.PRODUCT_CODE INNER JOIN(APP.PRODUCT INNER JOIN APP.PURCHASE_ORDER USING(PRODUCT_ID)) ON PROD_CODE = PRODUCT_CODE GROUP BY SHIPPING_DATE,PRODUCT_CODE  HAVING PRODUCT_CODE = ? AND SHIPPING_DATE > ? AND SHIPPING_DATE < ? ";
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
 
 			stmt.setString(1, PRODUCT_CODE);
+                        stmt.setString(2, dateD );
+                         stmt.setString(3, dateF );
 			try (ResultSet rs = stmt.executeQuery()) {
 				while (rs.next()) {
                                         ShippingForCustomer d = new ShippingForCustomer();

@@ -8,19 +8,27 @@
 $(document).ready(function(){
        google.charts.load('current', {packages: ['corechart']});
        google.charts.setOnLoadCallback(affcherGraphique);
-        $(".users").click(affcherGraphique);
+         $(".users").click(affcherGraphique);
 })
      
 function affcherGraphique(event){
-    let id = this.id;
-    let url = "CAcustomerController?id="+id;
-    $.ajax({
-        url: url,
-        type : "GET",
-        dataType: "json",
-        success: graphique,
-        error : afficherErreur,
-    }) ;
+    $('#myPieChart').html("");
+    //recuperation de l'id de l'utilisateur
+     let id = this.id;
+     
+        $("#valider").click(affiche)
+        function affiche(event){
+            let dateD = $("#dateD").val();
+            let dateF = $("#dateF").val();
+            let url = "CAcustomerController?id="+id+"&dateD="+dateD+"&dateF="+dateF;
+            $.ajax({
+                url: url,
+                type : "GET",
+                dataType: "json",
+                success: graphique,
+                error : afficherErreur,
+            }) ;
+        }
 }
 
 //afficher l'erreur 

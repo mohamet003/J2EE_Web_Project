@@ -29,13 +29,15 @@ public class CAZoneGeographiqueDAO {
         this.myDataSource = myDataSource;
     }
     
-    public List<ShippingForCustomer> GetCaByZoneGeo(String STATE) throws DAOException {
+    public List<ShippingForCustomer> GetCaByZoneGeo(String STATE,String dateD, String dateF) throws DAOException {
                 List<ShippingForCustomer> LShipping = new LinkedList<>();
-		String sql = "SELECT SHIPPING_DATE, STATE, SUM(SHIPPING_COST*QUANTITY) AS PRIX FROM APP.PURCHASE_ORDER INNER JOIN (APP.PRODUCT INNER JOIN APP.MANUFACTURER USING (MANUFACTURER_ID))USING(PRODUCT_ID) GROUP BY STATE, SHIPPING_DATE HAVING STATE = ? ";
+		String sql = "SELECT SHIPPING_DATE, STATE, SUM(SHIPPING_COST*QUANTITY) AS PRIX FROM APP.PURCHASE_ORDER INNER JOIN (APP.PRODUCT INNER JOIN APP.MANUFACTURER USING (MANUFACTURER_ID))USING(PRODUCT_ID) GROUP BY STATE, SHIPPING_DATE HAVING STATE = ? AND SHIPPING_DATE > ? AND SHIPPING_DATE < ? ";
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
 
 			stmt.setString(1, STATE);
+                        stmt.setString(2, dateD );
+                         stmt.setString(3, dateF );
 			try (ResultSet rs = stmt.executeQuery()) {
 				while (rs.next()) {
                                         ShippingForCustomer d = new ShippingForCustomer();
