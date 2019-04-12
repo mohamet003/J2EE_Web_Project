@@ -25,15 +25,15 @@ public class JUnitTestCustumerDAO {
     int id;
     String email;
     
-
     public JUnitTestCustumerDAO() {
         
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
+    
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
@@ -57,12 +57,26 @@ public class JUnitTestCustumerDAO {
     // public void hello() {}
     
      @Test
-     public void TestGetCustomerByIdAndPwd() throws DAOException {
+     public void TestfindCustomerByLoginAndPwd() throws DAOException {
      
          CustomerEntity user = cdao.findCustomerByLoginAndPwd(id, email);
          assertEquals("Jumbo Eagle Corp", user.getName());
      }
     
-
+     @Test
+     public void TestfindCustomer() throws DAOException {
+     
+         CustomerEntity user = cdao.findCustomer(id);
+         assertEquals("Jumbo Eagle Corp",user.getName());
+     }
+     
+     @Test
+     public void TestfindAllCustomer()throws DAOException {
+     
+         CustomerEntity user = (CustomerEntity) cdao.findAllCustomer();
+         assertEquals("Jumbo Eagle Corp", user.getName());
+     }
+     
+     
 
 }
