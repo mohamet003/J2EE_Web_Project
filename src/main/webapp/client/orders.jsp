@@ -74,7 +74,7 @@
                                     <ul class="cart-header" id="{{order_num}}">
                                             <div class="close1" data-toggle="modal" data-target="#exampleModal"  data-id="{{order_num}}"> </div>
                                                     <li class="ring-in">
-                                                    <a href="#" data-id="{{product_ID}}" data-qte="{{quantity}}" class="detail">
+                                                    <a href="#" data-id="{{product_ID}}" data-idorder="{{order_num}}" data-qte="{{quantity}}" class="detail">
                                                     <img src="client/images/order.png" style="width: 86px;" class="img-responsive" alt="">
                                                     </a>
                                                     </li>
@@ -130,8 +130,9 @@ $.ajax({
 $(".detail").click(function(){
     
     id = $(this).data('id');
+    var idorder = $(this).data('idorder');
     var qte = $(this).data('qte');
- 
+ console.log("depuis details "+idorder);
 $.ajax({
     url: "SingleProductController?idProduct="+id,
     dataType: "json",
@@ -141,6 +142,7 @@ $.ajax({
             datas["txt_btn"]= "Modifier la Commande"; 
             datas["txt_alert"]= "Votre commande a bien été modifiée ?";
             datas["qte"]= qte;
+            datas["idorder"]= idorder;
             datas["action"]= "updatepurchase";
 
             console.log(datas);

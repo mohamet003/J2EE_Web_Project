@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/database/DAOException.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/DAO/CAZoneGeographiqueDAO.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/UserControlleur.java
@@ -29,68 +28,3 @@
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/controllers/AdminController.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/NewMain.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/main/java/models/CustomerEntity.java
-=======
-<<<<<<< HEAD
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\DAO\ShippingCustomerDAO.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\models\CustomerEntity.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\UserControlleur.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\DAO\ProductCodeDAO.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\SingleProductController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\OrderController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\StateController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\DAO\MicroMarketDAO.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\DAO\DiscountDAO.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\CAcustomerController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\models\Product.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\database\DAOException.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\models\Product_Code.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\DAO\CustomerDAO.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\ProductController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\models\Purchase_Order.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\DAO\ProductDAO.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\database\Database.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\models\ShippingForCustomer.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\DAO\CACategorieDAO.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\CACategorieController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\CAZoneGeoController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\NewMain.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\CategorysController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\models\Micro_Market.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\models\Discount_code.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\DAO\CAZoneGeographiqueDAO.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\LoginController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\controllers\AdminController.java
-C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\main\java\DAO\PurchaseOrderDAO.java
-=======
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/ProductDAO.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/database/DAOException.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/OrderController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/ProductController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/CAcustomerController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/CAZoneGeoController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/PurchaseOrderDAO.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/database/Database.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/models/Micro_Market.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/CAZoneGeographiqueDAO.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/models/Product_Code.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/LoginController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/SingleProductController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/AdminController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/models/CustomerEntity.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/ShippingCustomerDAO.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/UserControlleur.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/models/ShippingForCustomer.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/CategorysController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/models/Purchase_Order.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/DiscountDAO.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/MicroMarketDAO.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/models/Product.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/models/Discount_code.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/ZoneController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/ProductCodeDAO.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/CustomerDAO.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/DAO/CACategorieDAO.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/controllers/CACategorieController.java
-/Users/kevin/NetBeansProjects/projetWeb/src/main/java/NewMain.java
->>>>>>> ce5799d56a684743bc277e7719f7eac75c86c62b
->>>>>>> 6e52379b70225b1303928022d9f8ce7b0842202e

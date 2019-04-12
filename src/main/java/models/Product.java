@@ -18,11 +18,20 @@ public class Product {
     float markup;
     boolean available;
     String description;
+    float rate;
 
 public Product (){}
 
     public int getProduct_ID() {
         return product_ID;
+    }
+
+    public float getRate() {
+        return rate;
+    }
+
+    public void setRate(float rate) {
+        this.rate = rate;
     }
 
     public int getManufacturer_ID() {
