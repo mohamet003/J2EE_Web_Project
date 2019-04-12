@@ -6,7 +6,7 @@
 
 import DAO.DiscountDAO;
 import database.DAOException;
-//import models.Discount_Code;
+import models.Discount_code;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
  */
 public class JUnitTestDiscountDAO {
     private DiscountDAO Ddao;
-    private char DCode ;
+    private String DCode ;
     public JUnitTestDiscountDAO() {
     }
     
@@ -34,16 +34,16 @@ public class JUnitTestDiscountDAO {
     
     @Before
     public void setUp() {
-     DCode = 'H';   
+     DCode = "H";   
     }
     
     @After
     public void tearDown() {
     }
 
-    /*@Test
+    @Test
     public void testGetDiscountByID() throws DAOException {
-       Discount_Code DCode = Ddao.GetDiscountByID(DCode);
-        assertEquals("Accounting Application", product.getDescription());
-    }*/
+       Discount_code discount = Ddao.GetDiscountByID(DCode);
+        assertSame (16, discount.getRate());
+    }
 }
