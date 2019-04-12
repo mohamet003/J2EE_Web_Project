@@ -11,6 +11,7 @@ import database.DAOException;
 import database.Database;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -103,11 +104,11 @@ public class CAZoneGeoController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public List<ShippingForCustomer> CaForZone(String State,String dateD, String dateF) throws DAOException{
+    public List<ShippingForCustomer> CaForZone(String zone,String dateD, String dateF) throws DAOException{
         
         try {   
             CAZoneGeographiqueDAO caU = new CAZoneGeographiqueDAO(Database.getDataSource());
-            return caU.GetCaByZoneGeo(State,dateD,dateF); 
+            return caU.GetCaByZoneGeo(zone,dateD,dateF); 
         } catch (Exception e) {
             
         }

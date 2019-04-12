@@ -25,6 +25,7 @@ function changeIcon(event){
      
 function affcherGraphique(event){
     $("#botChange").attr("hidden", "hidden");
+    $(".saga").attr("hidden", "hidden");
     $('#myPieChart').html("");
     $("#dateD").val('');
     $("#dateF").val('');
@@ -33,7 +34,6 @@ function affcherGraphique(event){
      
         $("#valider").click(affiche)
         function affiche(event){
-            $("#botChange").removeAttr("hidden");
             let dateD = $("#dateD").val();
             let dateF = $("#dateF").val();
             let url = "CAcustomerController?id="+id+"&dateD="+dateD+"&dateF="+dateF;
@@ -63,7 +63,7 @@ function graphique(result) {
     }
     // mise en option des caractéristiques des charts
     let options = {'legend':'left',
-                   'title':'My Big Pie Chart',
+                   'title':'Chiffre d\'affaire par client ',
                    'is3D':true,
                    'width':800,
                    'height':500};
@@ -71,6 +71,8 @@ function graphique(result) {
     let chart = new google.visualization.ScatterChart(document.getElementById('myPieChart'));
     chart.draw(data, null);
     chart.draw(data, options); 
+    $("#botChange").removeAttr("hidden");
+    $(".saga").removeAttr("hidden");
     $("#graph1").click(graphDiff);
     $("#graph2").click(graphDiff);
     $("#graph3").click(graphDiff);

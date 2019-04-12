@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <div class="container mt-4">
     <div class="row">
         <div class="col">
@@ -63,18 +64,18 @@
                     <a id="botChange" class="tm-product-delete-link" style="background: #3D4E62; margin-left: -16px" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <i id="imagine" class="fas fa-plus" style="color:white"></i>
                     </a>
-                    <div class="collapse row" id="collapseExample" style="width: 40px;">
+                    <div class="saga collapse row" id="collapseExample" style="width: 40px;">
                         <a href="#" id="graph1" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
                             <i class="fas fa-chart-area" style="color:white"></i>
                         </a>
                         <a href="#" id="graph2" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
-                            <i class="fas fa-chart-line" style="color:white"></i>
-                        </a>
-                        <a href="#" id="graph3" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
                             <i class="fas fa-chart-bar" style="color:white"></i>
                         </a>
+                        <a href="#" id="graph3" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
+                            <i class="fas fa-chart-line" style="color:white"></i>
+                        </a>
                         <a href="#" id="graph4" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
-                            <i class="fas fa-diagnoses" style="color:white"></i>
+                            <i class="fas fa-chart-pie" style="color:white"></i>
                         </a>
                     </div>
                 </div>
@@ -90,7 +91,7 @@
                     <input type="date" class="form-control border border-info rounded" id="dateF" style="background: white; color: #3D4E62;">
                 </div>
                 <div class="col form-group">
-                    <button type="button" class="fa fa-paper-plane btn btn-primary rounded-pill" id="valider" class="form-control rounded-pill" style="color: white; margin-bottom: -90px;"> visualiser</button>
+                    <button type="button" class="fa fa-paper-plane btn btn-primary rounded-pill" id="valider" class="form-control rounded-pill" style="color: black; margin-bottom: -90px;"> visualiser</button>
                 </div>
               </div>
           </div>
@@ -98,4 +99,4 @@
     </div>
   </div>
 </div>
-<script src="Admin/js/customerCAjS.js"></script>
+<script src="Admin/js/clientJS.js"></script>

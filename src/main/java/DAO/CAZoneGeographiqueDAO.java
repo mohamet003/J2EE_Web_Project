@@ -31,15 +31,15 @@ public class CAZoneGeographiqueDAO {
         this.myDataSource = myDataSource;
     }
     
-    public List<ShippingForCustomer> GetCaByZoneGeo(String STATE,String dateD, String dateF) throws DAOException, ParseException {
+    public List<ShippingForCustomer> GetCaByZoneGeo(String zone,String dateD, String dateF) throws DAOException, ParseException {
                 List<ShippingForCustomer> LShipping = new LinkedList<>();
-		String sql = "SELECT PURCHASE_ORDER.SALES_DATE,\n" +
-"SUM(((PURCHASE_ORDER.QUANTITY * PRODUCT.PURCHASE_COST) - ((PURCHASE_ORDER.QUANTITY * PRODUCT.PURCHASE_COST )*RATE)/100) + SHIPPING_COST) as CA\n" +
-"FROM CUSTOMER INNER JOIN PURCHASE_ORDER USING(CUSTOMER_ID)\n" +
+		String sql = "SELECT PURCHASE_ORDER.SALES_DATE, \n" +
+"SUM(((PURCHASE_ORDER.QUANTITY * PRODUCT.PURCHASE_COST) - ((PURCHASE_ORDER.QUANTITY * PRODUCT.PURCHASE_COST )*RATE)/100) + SHIPPING_COST) as CA \n" +
+"FROM CUSTOMER INNER JOIN PURCHASE_ORDER USING(CUSTOMER_ID) \n" +
 "INNER JOIN PRODUCT USING(PRODUCT_ID)\n" +
 "INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE)\n" +
-"INNER JOIN DISCOUNT_CODE ON (DISCOUNT_CODE.DISCOUNT_CODE = PRODUCT_CODE.DISCOUNT_CODE) \n" +
-"WHERE ZIP = ? AND PURCHASE_ORDER.SALES_DATE BETWEEN ? AND ?\n" +
+"INNER JOIN DISCOUNT_CODE ON (DISCOUNT_CODE.DISCOUNT_CODE = PRODUCT_CODE.DISCOUNT_CODE)\n" +
+"WHERE ZIP = ? AND PURCHASE_ORDER.SALES_DATE BETWEEN ? AND ? \n" +
 "GROUP BY (SALES_DATE)";
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -49,7 +49,7 @@ public class CAZoneGeographiqueDAO {
                         String dde = sdf.format(dateDe); 
                         String dfi = sdf.format(dateFi); 
 
-			stmt.setString(1, STATE);
+			stmt.setString(1, zone);
                         stmt.setString(2, dateD );
                         stmt.setString(3, dateF );
 			try (ResultSet rs = stmt.executeQuery()) {
@@ -68,25 +68,4 @@ public class CAZoneGeographiqueDAO {
 		return LShipping;
 	} 
     
-    
-    
-    public  List<String> findAllState() throws DAOException {
-		List<String> LState = new LinkedList<>();
-		String sql = "SELECT DISTINCT(STATE) FROM APP.CUSTOMER";
-                
-		try (Connection connection = myDataSource.getConnection(); 
-			PreparedStatement stmt = connection.prepareStatement(sql)) {
-
-			try (ResultSet rs = stmt.executeQuery()) {
-				while (rs.next()) {                   
-                                        LState.add(rs.getString("STATE"));
-				} 
-			}
-		}  catch (SQLException ex) {
-			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
-			throw new DAOException(ex.getMessage());
-		}
-
-		return LState;
-	}
 }
