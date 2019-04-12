@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 
+import DAO.ProductCodeDAO;
+import database.DAOException;
+import database.Database;
+import java.util.List;
+import models.Product_Code;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,15 +22,16 @@ import static org.junit.Assert.*;
  */
 public class JUnitTestProductCodeDAO {
     
-    
-    
-    public JUnitTestProductCodeDAO() {
-       /* 
-        private ProductCodeDAO PCDAO;
+    private ProductCodeDAO PCDAO;
+        List<Product_Code> LProduitsCode ;
         String Prod_Code;
         String discount_code;
         String description;
-        */
+        
+    
+    public JUnitTestProductCodeDAO() {
+    
+        
     }
     
     @BeforeClass
@@ -38,26 +44,26 @@ public class JUnitTestProductCodeDAO {
     
     @Before
     public void setUp() {
-      /*PCDAO= new ProductCodeDAO(Database.getDataSource());
-        Prod_Code = ;
-        discount_code = ;
-        description = ;
-       */ 
+        PCDAO= new ProductCodeDAO(Database.getDataSource());
+        Prod_Code =  "SW" ;
+        discount_code = "M";
+        description =  "Software";
     }
     
     @After
     public void tearDown() {
     }
-/* 
+ 
     @Test
     public void TestGetProductCodeByID() throws DAOException { 
-         Product_Code user = PCDAO.GetProductCodeByID(Prod_Code);
-         assertEquals("// ???", user.getName()); ????????
+         Product_Code ProduitCode = PCDAO.GetProductCodeByID(Prod_Code);
+         assertEquals("Software", ProduitCode.getDescription());
+    }
+    
+    
     @Test
     public void TestGetAllProductCodes() throws DAOException { 
-         Product_Code user = PCDAO.GetGetAllProductCodes();
-         assertEquals("// ???", user.getName()); ????????
-    
-    
-    */
+         LProduitsCode = (List<Product_Code>) PCDAO.GetAllProductCodes();
+         assertNotEquals(0,LProduitsCode.size());
+    }
 }
