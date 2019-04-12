@@ -97,32 +97,29 @@ public class OrderController extends HttpServlet {
 
                         id = Integer.parseInt(request.getParameter("idOrder"));
                         qte = Integer.parseInt(request.getParameter("qte"));
-                        Purchase_Order ord = purcharseOrderDAO.GetPurchaseOrderByID(id);
-                        ord.setQuantity(qte);
-                        //purcharseOrderDAO.UpdatePurchaseOrder(ord.getOrder_num());
-
+                        System.out.println(id+" ---------------  "+qte);
+                        purcharseOrderDAO.UpdatePurchaseOrder(id , qte);
                         break;
 
                     case "deleteorder":
 
                         id = Integer.parseInt(request.getParameter("idOrder"));
                         purcharseOrderDAO.DeletePurchaseOrder(id);
-
                         break;
                 }
 
             }
 
-                    if (lorders != null){
+            if (lorders != null){
 
-                                response.setContentType("application/json;charset=UTF-8");
-                                Properties resultat = new Properties();
-                                // On récupére les commandes de l'utilisateur courant 
-                                resultat.put("orders", lorders);
-                                // Générer du JSON
-                                Gson gson = new Gson();
-                                out.println(gson.toJson(resultat));
-                    }
+                response.setContentType("application/json;charset=UTF-8");
+                Properties resultat = new Properties();
+                // On récupére les commandes de l'utilisateur courant 
+                resultat.put("orders", lorders);
+                // Générer du JSON
+                Gson gson = new Gson();
+                out.println(gson.toJson(resultat));
+            }
 
 
         }

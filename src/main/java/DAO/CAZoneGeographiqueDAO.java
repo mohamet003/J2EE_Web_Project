@@ -39,7 +39,7 @@ public class CAZoneGeographiqueDAO {
 "INNER JOIN PRODUCT USING(PRODUCT_ID)\n" +
 "INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE)\n" +
 "INNER JOIN DISCOUNT_CODE ON (DISCOUNT_CODE.DISCOUNT_CODE = PRODUCT_CODE.DISCOUNT_CODE) \n" +
-"WHERE STATE = ? AND PURCHASE_ORDER.SALES_DATE BETWEEN ? AND ?\n" +
+"WHERE ZIP = ? AND PURCHASE_ORDER.SALES_DATE BETWEEN ? AND ?\n" +
 "GROUP BY (SALES_DATE)";
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -72,7 +72,7 @@ public class CAZoneGeographiqueDAO {
     
     public  List<String> findAllState() throws DAOException {
 		List<String> LState = new LinkedList<>();
-		String sql = "SELECT DISTINCT(STATE) FROM APP.MANUFACTURER";
+		String sql = "SELECT DISTINCT(STATE) FROM APP.CUSTOMER";
                 
 		try (Connection connection = myDataSource.getConnection(); 
 			PreparedStatement stmt = connection.prepareStatement(sql)) {

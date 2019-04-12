@@ -122,26 +122,26 @@ public class ProductController extends HttpServlet {
     }// </editor-fold>
 
     
-        public List<List<Product>>  productOrganize(List<Product> Lproducts){
-        
-            List<List<Product>> products = new  LinkedList<>();
-            int cpt = 0;
-            List<Product> By4products = new  LinkedList<>();
-            
-            for (Product p : Lproducts){
-              
-                if (cpt == 4) {
-                    cpt = 0;
-                    By4products = new  LinkedList<>();
-                    products.add(By4products);
-                }
-                cpt++;
-                By4products.add(p);   
-                
+    public List<List<Product>>  productOrganize(List<Product> Lproducts){
 
+        List<List<Product>> products = new  LinkedList<>();
+        int cpt = 0;
+        List<Product> By4products = new  LinkedList<>();
+        
+        for (Product p : Lproducts){
+
+            if (cpt == 4) {
+                cpt = 0;
+                By4products = new  LinkedList<>();
+                products.add(By4products);
             }
-            
-            return products;
+            cpt++;
+            By4products.add(p);   
+
+
+        }
+
+        return products;
     }
         
         public CustomerEntity findUserInSession(HttpServletRequest request) {
