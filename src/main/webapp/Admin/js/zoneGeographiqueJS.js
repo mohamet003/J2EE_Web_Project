@@ -26,6 +26,7 @@ function changeIcon(event){
 }
 
 function affcherGraphique(event){
+    $("#botChange").attr("hidden", "hidden");
     let id = this.id;
     console.log("fdfdfdf  "+id)
     $("#valider").click(affiche)
@@ -50,8 +51,6 @@ function afficherErreur(error) {
 
 //remplissage et affichage du graphique
 function graphique(result) {
-    console.log("bin");
-    console.log(result);
     let items = result.ca;
     let data = new google.visualization.DataTable();
     data.addColumn('string', 'date');
@@ -61,7 +60,7 @@ function graphique(result) {
     }
     // mise en option des caractéristiques des charts
     let options = {'legend':'left',
-                   'title':'My Big Pie Chart',
+                   'title':'Chiffre d\'affaire par zone géographique',
                    'is3D':true,
                    'width':1000,
                    'height':400};
@@ -69,6 +68,7 @@ function graphique(result) {
     let chart = new google.visualization.ScatterChart(document.getElementById('chart'));
     chart.draw(data, null);
     chart.draw(data, options); 
+    $("#botChange").removeAttr("hidden");
     $("#graph1").click(graphDiff);
     $("#graph2").click(graphDiff);
     $("#graph3").click(graphDiff);
