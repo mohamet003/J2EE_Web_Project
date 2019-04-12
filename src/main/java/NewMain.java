@@ -37,8 +37,9 @@ public class NewMain {
     /**
      * @param args the command line arguments
      */
-
+    
     public static void main(String[] args) throws DAOException, ParseException {
+        
         // TODO code application logic here
 
         /*
@@ -71,7 +72,7 @@ public class NewMain {
       
 
         
-        PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
+        /*PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
         Purchase_Order order = new Purchase_Order();
         
         order.setCustomer_ID(3);
@@ -92,6 +93,16 @@ public class NewMain {
         //Purchase_Order order2 = dao.GetPurchaseOrderByID(10398001);
         
         //System.out.println("pol "+order);
+
+
+ /*DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
+
+float rate = ddao.GetDiscountByID("M").getRate();
+   System.out.println("rate  "+rate);   
+        //System.out.println("test"+cust.getName()); */
+       
+         ProductDAO dao = new ProductDAO(Database.getDataSource());
+   List<Product> LProduits = new LinkedList<>();
 
         DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
 
@@ -120,7 +131,15 @@ public class NewMain {
             System.out.println("data  "+customer.getDate()+"   ca "+customer.getCA());
         }
         
+           LProduits = dao.FindProduct("%ment%");
+        for (Product produit : LProduits) {
+           System.out.println("les produits correspondants sont"+ produit.getDescription());  
+        }
+    }
+        
         //System.out.println("test"+cust.getName()); 
     }
-   
-}
+    
+
+    
+ 

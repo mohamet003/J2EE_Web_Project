@@ -24,6 +24,7 @@ function changeIcon(event){
 }
      
 function affcherGraphique(event){
+    $("#botChange").attr("hidden", "hidden");
     $('#myPieChart').html("");
     $("#dateD").val('');
     $("#dateF").val('');
@@ -32,6 +33,7 @@ function affcherGraphique(event){
      
         $("#valider").click(affiche)
         function affiche(event){
+            $("#botChange").removeAttr("hidden");
             let dateD = $("#dateD").val();
             let dateF = $("#dateF").val();
             let url = "CAcustomerController?id="+id+"&dateD="+dateD+"&dateF="+dateF;
