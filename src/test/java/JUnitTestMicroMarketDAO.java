@@ -5,6 +5,10 @@
  */
 
 import DAO.MicroMarketDAO;
+import database.DAOException;
+import database.Database;
+import java.util.List;
+import models.Micro_Market;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,9 +23,10 @@ import static org.junit.Assert.*;
 public class JUnitTestMicroMarketDAO {
     
     private MicroMarketDAO MMDAO;
-    int radius;
-    int area_length;
-    int area_width;
+        List<Micro_Market> LMicroMarkets; 
+        int radius;
+        int area_length;
+        int area_width;
      
     public JUnitTestMicroMarketDAO() {
     }
@@ -36,10 +41,10 @@ public class JUnitTestMicroMarketDAO {
     
     @Before
     public void setUp() {
-        /*MMDAO= new MicroMarketDAO(Database.getDataSource());
-        radius =;????????
-        area_length =;???????
-        area_length = ;*/
+        MMDAO= new MicroMarketDAO(Database.getDataSource());
+        radius =(int) 255.59;
+        area_length = (int) 689.856;
+        area_width = (int) 478.479;
     }
     
     @After
@@ -47,15 +52,16 @@ public class JUnitTestMicroMarketDAO {
     }
 
     
-    /*@Test
+    @Test
     public void TestGetMicroMarketByID() throws DAOException { 
-         Micro_Market user = MMDAO.GetMicroMarketByID(radius);
-         assertEquals("// ???", user.getName()); ????????
+         Micro_Market  MM = MMDAO.GetMicroMarketByID(radius);
+         assertEquals("689.856", MM.getArea_length());
      }
-     @Test
+  
+    @Test
     public void TestGetAllMicroMarkets() throws DAOException { 
-         Micro_Market user = MMDAO.GetAllMicroMarkets();
-         assertEquals("// ???", user.getName()); ????????
+        LMicroMarkets =  (List<Micro_Market>)MMDAO.GetAllMicroMarkets();
+         assertNotEquals(0,LMicroMarkets.size());
     
-    */
+    }
 }
