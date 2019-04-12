@@ -14,6 +14,15 @@ public class Micro_Market {
     private int radius;
     private int area_length;
     private int area_width;
+    private int zip_Code;
+
+    public int getZip() {
+        return zip_Code;
+    }
+
+    public void setZip(int zip_Code) {
+        this.zip_Code = zip_Code;
+    }
 
     public int getRadius() {
         return radius;

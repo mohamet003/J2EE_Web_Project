@@ -45,7 +45,7 @@
          <option selected>Choose...</option> 
         
          {{#state}}
-            <option class="infosZone" id ="{{.}}">{{.}}</option>
+            <option class="infosZone" id ="{{zip_Code}}">{{zip_Code}}</option>
          {{/state}}
       </select>
     </div>

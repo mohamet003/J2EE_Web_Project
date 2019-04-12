@@ -5,7 +5,7 @@
  */
 package controllers;
 
-import DAO.CAZoneGeographiqueDAO;
+import DAO.MicroMarketDAO;
 import com.google.gson.Gson;
 import database.DAOException;
 import database.Database;
@@ -20,15 +20,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Product_Code;
+import models.Micro_Market;
 
 /**
  *
  * @author kevin
  */
-@WebServlet(name = "StateController", urlPatterns = {"/StateController"})
-public class StateController extends HttpServlet {
-    CAZoneGeographiqueDAO daop = new CAZoneGeographiqueDAO(Database.getDataSource());
+@WebServlet(name = "ZoneController", urlPatterns = {"/ZoneController"})
+public class ZoneController extends HttpServlet {
+    MicroMarketDAO daop = new MicroMarketDAO(Database.getDataSource());
     Properties resultat = new Properties();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,7 +44,7 @@ public class StateController extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            List<String> StateList = daop.findAllState();
+            List<Micro_Market> StateList = daop.GetAllMicroMarkets();
             resultat.put("state",StateList);
             // Générer du JSON
             Gson gson = new Gson();
@@ -68,7 +68,7 @@ public class StateController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (DAOException ex) {
-            Logger.getLogger(StateController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ZoneController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -86,7 +86,7 @@ public class StateController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (DAOException ex) {
-            Logger.getLogger(StateController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ZoneController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -99,5 +99,7 @@ public class StateController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    
 
 }

@@ -65,6 +65,7 @@ public class MicroMarketDAO {
 			try (ResultSet rs = stmt.executeQuery()) {
 				while (rs.next()) { // On a trouvé
                                         Micro_Market MM = new Micro_Market();
+                                        MM.setZip(rs.getInt("ZIP_CODE"));
 					MM.setArea_length(rs.getInt("AREA_LENGTH"));
                                         MM.setArea_width(rs.getInt("AREA_WIDTH"));
                                         LMicroMarkets.add(MM);

@@ -43,10 +43,11 @@ function showGraphique() {
 }
 function showGraphique2() {
     $.ajax({
-        url: "StateController",
+        url: "ZoneController",
         dataType: "json",
         success: 
                 function (result) {
+                    console.log(result);
                     $("#client").removeClass("active");
                     $("#graphiqueCat").removeClass("active");
                     $("#graphiqueGeo").addClass("active");

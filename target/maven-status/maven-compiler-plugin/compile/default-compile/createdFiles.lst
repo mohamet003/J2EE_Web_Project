@@ -24,7 +24,7 @@ controllers/AdminController.class
 DAO/DiscountDAO.class
 models/Micro_Market.class
 DAO/PurchaseOrderDAO.class
+controllers/ZoneController.class
 models/ShippingForCustomer.class
 DAO/ShippingCustomerDAO.class
 controllers/CAZoneGeoController.class
-controllers/StateController.class
