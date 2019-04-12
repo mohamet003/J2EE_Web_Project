@@ -207,6 +207,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         $("#updatepurchase").click(function(){
         //console.log($(this));
         let id = $(this).data("idproduct");
+        qte = $("#qte").val();
         $.ajax({
             url: "OrderController?target=updateorder&idOrder="+id+"&qte="+qte+"&frais="+fraisExpedition,
             dataType: "json",
