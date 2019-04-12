@@ -8,8 +8,10 @@
 $(document).ready(function(){
        google.charts.load('current', {packages: ['corechart']});
        google.charts.setOnLoadCallback(affcherGraphique);
+       
         $(".infosZone").click(affcherGraphique);
         $("#botChange").click(changeIcon);
+        
 })
 
 function changeIcon(event){
@@ -25,6 +27,7 @@ function changeIcon(event){
 
 function affcherGraphique(event){
     let id = this.id;
+    console.log("fdfdfdf  "+id)
     $("#valider").click(affiche)
     function affiche(event){
         let dateD = $("#dateD").val();
@@ -47,6 +50,7 @@ function afficherErreur(error) {
 
 //remplissage et affichage du graphique
 function graphique(result) {
+    console.log("bin");
     console.log(result);
     let items = result.ca;
     let data = new google.visualization.DataTable();
