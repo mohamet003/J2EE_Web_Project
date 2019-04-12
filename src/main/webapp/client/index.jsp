@@ -112,7 +112,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-3 header-right"> 
 				<div class="search-bar">
-					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                                    <input type="text" placeholder="Recherche" id="recherche">
 				</div>
 			</div>
 			<div class="clearfix"> </div>
@@ -181,8 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         
         <div class="product" id="container">  </div>
-        
-  
+
         <div class="loader" style="display:none;"></div>
         
 	<!--information-starts-->

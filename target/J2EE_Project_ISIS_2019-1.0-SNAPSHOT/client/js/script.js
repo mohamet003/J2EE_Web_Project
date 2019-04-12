@@ -46,7 +46,26 @@ $(document).ready(function(){
     }
     
     
+    $("#recherche").keyup(function() {
+       let resultat = $(this).val();
+       console.log(resultat);
+       $.ajax({
+            url: "ProductController?resultat="+resultat,
+            dataType: "json",
+            success:function (result) {
+                
+                        $.get("client/products.jsp", function(template){
+                            console.log(result);
+                        var processedTemplate = Mustache.to_html(template, result);
+                        $("#globalContainer").hide();
+                         $(".loader").show();
+                        $('#container').html(processedTemplate);
+                         $(".loader").hide();
+                        }); 
 
+                    }
+        });
+    });
 
 // Afficher les commandes de l'utilisateur
 $("#orders").click(showOrders);

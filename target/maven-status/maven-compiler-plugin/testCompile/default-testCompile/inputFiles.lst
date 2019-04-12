@@ -1,6 +1,24 @@
+<<<<<<< HEAD
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestDiscountDAO.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestProductDAO.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestProductCodeDAO.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestMicroMarketDAO.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestPurchaseOrderDAO.java
 /Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestCustumerDAO.java
+=======
+<<<<<<< HEAD
+C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestCustumerDAO.java
+C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestPurchaseOrderDAO.java
+C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestMicroMarketDAO.java
+C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestProductDAO.java
+C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestProductCodeDAO.java
+C:\Users\KAMDOM Merveille\Documents\J2EE_Web_Project\src\test\java\JUnitTestDiscountDAO.java
+=======
+/Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestPurchaseOrderDAO.java
+/Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestCustumerDAO.java
+/Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestProductCodeDAO.java
+/Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestMicroMarketDAO.java
+/Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestDiscountDAO.java
+/Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestProductDAO.java
+>>>>>>> ce5799d56a684743bc277e7719f7eac75c86c62b
+>>>>>>> 6e52379b70225b1303928022d9f8ce7b0842202e
