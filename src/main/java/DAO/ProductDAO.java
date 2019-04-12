@@ -29,14 +29,19 @@ public class ProductDAO {
         this.myDataSource = myDataSource;
     }
 
+    public ProductDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public List<Product> GetAllProduct() throws DAOException {
         List<Product> LProduits = new LinkedList<>();
-        String sql = "SELECT * FROM PRODUCT ";
+        String sql = "SELECT PRODUCT_ID,MANUFACTURER_ID,PRODUCT_CODE,PURCHASE_COST,QUANTITY_ON_HAND,MARKUP,AVAILABLE,PRODUCT.DESCRIPTION,RATE \n"
+                + "FROM PRODUCT INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE) INNER JOIN DISCOUNT_CODE ON DISCOUNT_CODE.DISCOUNT_CODE = PRODUCT_CODE.DISCOUNT_CODE\n";
 
-        try ( Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
-                  PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            try ( ResultSet rs = stmt.executeQuery()) {
+            try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Product P = new Product();
                     P.setProduct_ID(rs.getInt("PRODUCT_ID"));
@@ -61,13 +66,15 @@ public class ProductDAO {
     public Product GetProductByID(int product_ID) throws DAOException {
 
         Product p = new Product();
-        String sql = "SELECT * FROM PRODUCT WHERE PRODUCT_ID = ? ";
+        String sql = "SELECT PRODUCT_ID,MANUFACTURER_ID,PRODUCT_CODE,PURCHASE_COST,QUANTITY_ON_HAND,MARKUP,AVAILABLE,PRODUCT.DESCRIPTION,RATE \n"
+                + "FROM PRODUCT INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE) INNER JOIN DISCOUNT_CODE "
+                + "ON DISCOUNT_CODE.DISCOUNT_CODE = PRODUCT_CODE.DISCOUNT_CODE WHERE PRODUCT.PRODUCT_ID =?\n " ;
 
-        try ( Connection connection = myDataSource.getConnection(); 
-                  PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setInt(1, product_ID);
-            try ( ResultSet rs = stmt.executeQuery()) {
+            try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     p.setAvailable(rs.getBoolean("AVAILABLE"));
                     p.setDescription(rs.getString("DESCRIPTION"));
@@ -92,14 +99,15 @@ public class ProductDAO {
 
         List<Product> LProduits = new LinkedList<>();
 
-        String sql = "SELECT * FROM PRODUCT WHERE PRODUCT_CODE = ? ";
+        String sql = "SELECT PRODUCT_ID,MANUFACTURER_ID,PRODUCT_CODE,PURCHASE_COST,QUANTITY_ON_HAND,MARKUP,AVAILABLE,PRODUCT.DESCRIPTION,RATE \n"
+                + "FROM PRODUCT INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE) INNER JOIN DISCOUNT_CODE "
+                + "ON DISCOUNT_CODE.DISCOUNT_CODE = PRODUCT_CODE.DISCOUNT_CODE WHERE PRODUCT.PRODUCT_CODE =?\n ";
 
-        try ( Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
-                  PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setString(1, product_code);
-            try ( ResultSet rs = stmt.executeQuery()) {
-                
+            try (ResultSet rs = stmt.executeQuery()) {
 
                 while (rs.next()) {
                     Product p = new Product();
@@ -122,20 +130,53 @@ public class ProductDAO {
 
         return LProduits;
     }
-    public void UpdateProduct(int product_ID,int Quantity_on_hand) throws DAOException {
-           String sql = "UPDATE PRODUCT SET QUANTITY_ON_HAND = ? WHERE PRODUCT_ID = ? ";
-	
-	try (Connection connection = myDataSource.getConnection();
-			PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-                        stmt.setInt(1, product_ID); 
-                        stmt.setInt(2, Quantity_on_hand);
-                        
-                        int rs = stmt.executeUpdate();
-		
-		}  catch (SQLException ex) {
-			Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
-			throw new DAOException(ex.getMessage());
-		} 
+    public void UpdateProduct(int product_ID, int Quantity_on_hand) throws DAOException {
+        String sql = "UPDATE PRODUCT SET QUANTITY_ON_HAND = ? WHERE PRODUCT_ID = ? ";
+
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setInt(1, Quantity_on_hand);
+            stmt.setInt(2, product_ID);
+
+            int rs = stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+            throw new DAOException(ex.getMessage());
+        }
+    }
+
+    public List<Product> FindProduct(String nom) throws DAOException {
+
+        String sql = "SELECT PRODUCT_ID,MANUFACTURER_ID,PRODUCT_CODE,PURCHASE_COST,QUANTITY_ON_HAND,MARKUP,AVAILABLE,PRODUCT.DESCRIPTION,RATE \n"
+                + "FROM PRODUCT INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE) INNER JOIN DISCOUNT_CODE ON DISCOUNT_CODE.DISCOUNT_CODE = PRODUCT_CODE.DISCOUNT_CODE\n"
+                + "WHERE lower (PRODUCT.DESCRIPTION) LIKE ?\n";
+
+        List<Product> LProduits = new LinkedList();
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, nom);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Product P = new Product();
+                    P.setProduct_ID(rs.getInt("PRODUCT_ID"));
+                    P.setPurchase_cost(rs.getInt("PURCHASE_COST"));
+                    P.setProduct_code(rs.getString("PRODUCT_CODE"));
+                    P.setPurchase_cost(rs.getFloat("PURCHASE_COST"));
+                    P.setQuantity_on_hand(rs.getInt("QUANTITY_ON_HAND"));
+                    P.setMarkup(rs.getFloat("MARKUP"));
+                    P.setAvailable(rs.getBoolean("AVAILABLE"));
+                    P.setDescription(rs.getString("DESCRIPTION"));
+                    LProduits.add(P);
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+            throw new DAOException(ex.getMessage());
+        }
+        return LProduits;
     }
 }

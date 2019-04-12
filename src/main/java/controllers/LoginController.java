@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controllers;
 
 import DAO.CustomerDAO;
@@ -28,13 +27,16 @@ import java.util.List;
  *
  * @author mohametkone
  */
-@WebServlet(name="LoginController", urlPatterns={"/LoginController"})
+@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
+
     CustomerDAO dao = new CustomerDAO(Database.getDataSource());
     ProductCodeDAO daop = new ProductCodeDAO(Database.getDataSource());
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -42,67 +44,72 @@ public class LoginController extends HttpServlet {
      * @throws database.DAOException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException, DAOException {
+            throws ServletException, IOException, DAOException {
         response.setContentType("text/html;charset=UTF-8");
 
-            String email = "";
-            int pwd = 0;
-            String action = "";
-            String adminLog = "admin@admin.com";
-            int  adminPwd = 123;    
+        String email = "";
+        int pwd = 0;
+        String action = "";
+        String adminLog = "admin@admin.com";
+        int adminPwd = 123;
 
-            // je recupere l'ensemble des catégories
-            List<Product_Code> categorys = daop.GetAllProductCodes();
-            request.setAttribute("categorys",categorys);
+        // je recupere l'ensemble des catégories
+        List<Product_Code> categorys = daop.GetAllProductCodes();
+        request.setAttribute("categorys", categorys);
 
-       try {
-            action = request.getParameter("connexion");
-            email = request.getParameter("email");
-            pwd = Integer.parseInt(request.getParameter("password"));
-            
-           } catch (Exception e) {
-            if (email != null){
-                request.setAttribute("result","error");
+        if (request.getParameter("connexion") != null) {
+
+            try {
+                action = request.getParameter("connexion");
+                email = request.getParameter("email");
+                pwd = Integer.parseInt(request.getParameter("password"));
+
+            } catch (Exception e) {
+                if (email != null) {
+                    request.setAttribute("result", "error");
+                }
             }
+        }else{
 
-            // Si l'utilisateur est toujours connecté, on le renvoie à la page principale 
-            if( this.findUserInSession(request) != null && action == null){
-
+            if (this.findUserInSession(request) != null){
                 request.getRequestDispatcher("client/index.jsp").forward(request, response);
+            }else{
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            
         }
-            switch (action){
-                
-                case "connexion":
-                    if(email==adminLog ||  pwd==adminPwd){
-                        request.getRequestDispatcher("Admin/index.jsp").forward(request, response);
+
+        switch (action) {
+
+            case "connexion":
+                if (email == adminLog || pwd == adminPwd) {
+                    request.getRequestDispatcher("Admin/index.jsp").forward(request, response);
+                } else {
+                    if (connexion(email, pwd, request)) {
+                        CustomerEntity customerEntity = this.findUserInSession(request);
+                        request.setAttribute("user", customerEntity);
+                        request.getRequestDispatcher("client/index.jsp").forward(request, response);
+                    } else {
+                        request.setAttribute("result", "error");
                     }
-                    else{
-                        if (connexion(email, pwd ,request)) {
-                            CustomerEntity customerEntity = this.findUserInSession(request);
-                            request.setAttribute("user",customerEntity);	
-                            request.getRequestDispatcher("client/index.jsp").forward(request, response);
-                        }else{                         
-                            request.setAttribute("result","error");
-                        }
-                    }
-                    break;
-                case "deconnexion":
-                        if (deconnexion(request)) {	
-                         request.getRequestDispatcher("login.jsp").forward(request,response);
-                    }
-                    break;
-            }            
+                }
+                break;
+            case "deconnexion":
+                if (deconnexion(request)) {
+ System.out.println("deconnexion");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                }
+                break;
+        }
         //request.getRequestDispatcher("login.jsp").forward(request, response);
-    } 
-	// On continue vers la page JSP sélectionnée
-	//request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
+    // On continue vers la page JSP sélectionnée
+    //request.getRequestDispatcher("index.jsp").forward(request, response);
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -110,16 +117,17 @@ public class LoginController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (DAOException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -127,7 +135,7 @@ public class LoginController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (DAOException ex) {
@@ -135,8 +143,9 @@ public class LoginController extends HttpServlet {
         }
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override
@@ -144,52 +153,47 @@ public class LoginController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-
-
     // creer une session pour l'utilisateur
-    public boolean connexion(String email, int ID, HttpServletRequest request) throws DAOException{
-        
+    public boolean connexion(String email, int ID, HttpServletRequest request) throws DAOException {
+
         try {
             CustomerEntity customerEntity = this.dao.findCustomerByLoginAndPwd(ID, email);
 
-	HttpSession session = request.getSession(true); // démarre la session
-	session.setAttribute("user", customerEntity);
-        
-        return customerEntity != null; 
+            HttpSession session = request.getSession(true); // démarre la session
+            session.setAttribute("user", customerEntity);
+
+            return customerEntity != null;
         } catch (Exception e) {
-            
+
         }
         return false;
 
     }
 
+    // detruire la session pour l'utilisateur
+    public boolean deconnexion(HttpServletRequest request) throws DAOException {
 
-      // detruire la session pour l'utilisateur
-    public boolean deconnexion(HttpServletRequest request) throws DAOException{
-        
         try {
-           
 
             HttpSession session = request.getSession(false); // fermer la session
 
-            if (session != null) session.invalidate();
+            if (session != null) {
+                session.invalidate();
+            }
             return true;
-	
+
         } catch (Exception e) {
-            
+
         }
-            return false;
+        return false;
 
     }
-    
 
     // trouver l'utilisateur connecté 
     public CustomerEntity findUserInSession(HttpServletRequest request) {
 
-		HttpSession session = request.getSession(false);
-		return (session == null) ? null : (CustomerEntity) session.getAttribute("user");
+        HttpSession session = request.getSession(false);
+        return (session == null) ? null : (CustomerEntity) session.getAttribute("user");
     }
-    
-    
 
 }

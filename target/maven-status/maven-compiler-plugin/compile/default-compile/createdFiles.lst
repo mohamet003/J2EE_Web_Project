@@ -1,8 +1,11 @@
+DAO/CAZoneGeographiqueDAO.class
+controllers/CACategorieController.class
 DAO/ProductDAO.class
 models/Product_Code.class
 database/DAOException.class
 DAO/ProductCodeDAO.class
 controllers/UserControlleur.class
+DAO/CACategorieDAO.class
 database/Database.class
 models/Discount_code.class
 controllers/SingleProductController.class
@@ -23,3 +26,5 @@ models/Micro_Market.class
 DAO/PurchaseOrderDAO.class
 models/ShippingForCustomer.class
 DAO/ShippingCustomerDAO.class
+controllers/CAZoneGeoController.class
+controllers/StateController.class

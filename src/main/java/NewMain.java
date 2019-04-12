@@ -1,4 +1,6 @@
 
+import DAO.CACategorieDAO;
+import DAO.CAZoneGeographiqueDAO;
 import DAO.DiscountDAO;
 import DAO.CustomerDAO;
 import DAO.ProductCodeDAO;
@@ -17,6 +19,9 @@ import java.util.List;
 import jdk.nashorn.internal.parser.JSONParser;
 import models.Product;
 import DAO.DiscountDAO;
+import DAO.ShippingCustomerDAO;
+import java.text.ParseException;
+import models.ShippingForCustomer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,8 +37,9 @@ public class NewMain {
     /**
      * @param args the command line arguments
      */
-
-    public static void main(String[] args) throws DAOException {
+    
+    public static void main(String[] args) throws DAOException, ParseException {
+        
         // TODO code application logic here
 
         /*
@@ -66,7 +72,7 @@ public class NewMain {
       
 
         
-        PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
+        /*PurchaseOrderDAO dao = new PurchaseOrderDAO(Database.getDataSource());
         Purchase_Order order = new Purchase_Order();
         
         order.setCustomer_ID(3);
@@ -88,16 +94,52 @@ public class NewMain {
         
         //System.out.println("pol "+order);
 
- DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
+
+ /*DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
 
 float rate = ddao.GetDiscountByID("M").getRate();
-   System.out.println("rate  "+rate);
+   System.out.println("rate  "+rate);   
+        //System.out.println("test"+cust.getName()); */
+       
+         ProductDAO dao = new ProductDAO(Database.getDataSource());
+   List<Product> LProduits = new LinkedList<>();
 
+        DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
+
+        float rate = ddao.GetDiscountByID("M").getRate();
+        System.out.println("rate  "+rate);
+
+        CACategorieDAO cacdao = new CACategorieDAO(Database.getDataSource());
+        List<ShippingForCustomer> lca = cacdao.GetCaByCategorie("HW", "2011-05-24", "2019-04-11");
         
-
+        for (ShippingForCustomer shippingForCustomer : lca) {
+            System.out.println("Ressss "+shippingForCustomer.getCA()+"   dddada  "+shippingForCustomer.getDate());
+        }
+        
+        ShippingCustomerDAO scdao = new ShippingCustomerDAO(Database.getDataSource());
+        List<ShippingForCustomer> li = scdao.GetCaByIDCustomer(1, "2011-05-24", "2019-04-11");
+        
+        for (ShippingForCustomer shippingForCustomer : li) {
+            System.out.println("res "+shippingForCustomer.getDate()+"  ca "+shippingForCustomer.getCA());
+        }
+        
+        
+        CAZoneGeographiqueDAO cazgdao = new CAZoneGeographiqueDAO(Database.getDataSource());
+        List<ShippingForCustomer> customers = cazgdao.GetCaByZoneGeo("FL", "2011-05-24", "2019-04-11");
+        
+        for (ShippingForCustomer customer : customers) {
+            System.out.println("data  "+customer.getDate()+"   ca "+customer.getCA());
+        }
+        
+           LProduits = dao.FindProduct("%ment%");
+        for (Product produit : LProduits) {
+           System.out.println("les produits correspondants sont"+ produit.getDescription());  
+        }
+    }
         
         //System.out.println("test"+cust.getName()); 
-        
     }
-   
-}
+    
+
+    
+ 

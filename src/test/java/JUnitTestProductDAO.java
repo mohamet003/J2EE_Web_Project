@@ -7,6 +7,7 @@
 import DAO.ProductDAO;
 import database.DAOException;
 import database.Database;
+import java.util.List;
 import models.Product;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -23,6 +24,10 @@ public class JUnitTestProductDAO {
     
     private ProductDAO pdao;
     int idProduct;
+    List<Product> LProduct;
+    String product_code;
+    int quantity_on_hand;
+    Product product;
     
     public JUnitTestProductDAO() {
     }
@@ -36,26 +41,43 @@ public class JUnitTestProductDAO {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws DAOException {
         pdao = new ProductDAO(Database.getDataSource());
         idProduct = 980005;
+        product_code = "SW";
+        quantity_on_hand= 13;
     }
     
     @After
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
-   
-            
+    @Test
+    public void testGetAllProduct() throws DAOException {
+        LProduct = (List<Product>) pdao.GetAllProduct();
+        assertNotEquals(0,LProduct.size());
+    }
     
     @Test
     public void testGetProductById() throws DAOException {
-        Product product = pdao.GetProductByID(idProduct);
-        assertEquals("Accounting Application", product.getDescription());
+        Product produit = pdao.GetProductByID(idProduct);
+        assertEquals("Accounting Application", produit.getDescription());
+    }
+    
+    @Test
+    public void testGetAllProductsByProductCode() throws DAOException {
+        LProduct = pdao.GetAllProductsByProductCode(product_code);
+        assertNotEquals(0,LProduct.size());
+    }
+    
+    /**
+     *
+     * @throws DAOException
+     */
+    @Test
+    public void testUpdateProduct() throws DAOException {
+        pdao.UpdateProduct(idProduct, quantity_on_hand); 
+        product = pdao.GetProductByID(idProduct);
+        assertEquals(13,product.getQuantity_on_hand());
     }
 }

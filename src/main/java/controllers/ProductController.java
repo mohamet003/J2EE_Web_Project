@@ -22,6 +22,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.CustomerEntity;
 import models.Product;
 
 /**
@@ -47,7 +49,11 @@ public class ProductController extends HttpServlet {
             throws ServletException, IOException, DAOException {
         
         try ( PrintWriter out = response.getWriter()) {
-          
+                      // Si l'utilisateur n'est plus  connecté, on le renvoie vers la page de connexion 
+            if (this.findUserInSession(request) == null) {
+
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
    
             response.setContentType("application/json;charset=UTF-8");
             Properties resultat = new Properties();
@@ -138,7 +144,11 @@ public class ProductController extends HttpServlet {
             return products;
     }
         
-                
+        public CustomerEntity findUserInSession(HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+        return (session == null) ? null : (CustomerEntity) session.getAttribute("user");
+    }            
         
 
 }

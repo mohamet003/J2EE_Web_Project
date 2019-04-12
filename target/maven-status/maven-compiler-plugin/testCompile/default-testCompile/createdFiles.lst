@@ -1,2 +1,4 @@
 JUnitTestCustumerDAO.class
+JUnitTestPurchaseOrderDAO.class
 JUnitTestProductDAO.class
+JUnitTestDiscountDAO.class
