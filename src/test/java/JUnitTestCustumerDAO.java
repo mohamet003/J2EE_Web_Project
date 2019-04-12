@@ -7,6 +7,7 @@
 import DAO.CustomerDAO;
 import database.DAOException;
 import database.Database;
+import java.util.List;
 import models.CustomerEntity;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,18 +23,20 @@ import static org.junit.Assert.*;
 public class JUnitTestCustumerDAO {
     
     private CustomerDAO cdao;
-    int id;
+    int customerId;
     String email;
+    String addressLine1;
+    List<CustomerEntity> LCustomerEntity;
     
-
     public JUnitTestCustumerDAO() {
         
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
+    
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
@@ -42,7 +45,7 @@ public class JUnitTestCustumerDAO {
     public void setUp() {
                 
         cdao = new CustomerDAO(Database.getDataSource());
-        id = 1;
+        customerId= 1;
         email = "jumboeagle@example.com";
     }
 
@@ -57,12 +60,23 @@ public class JUnitTestCustumerDAO {
     // public void hello() {}
     
      @Test
-     public void TestGetCustomerByIdAndPwd() throws DAOException {
+     public void TestfindCustomerByLoginAndPwd() throws DAOException {
      
-         CustomerEntity user = cdao.findCustomerByLoginAndPwd(id, email);
+         CustomerEntity user = cdao.findCustomerByLoginAndPwd(customerId, email);
          assertEquals("Jumbo Eagle Corp", user.getName());
      }
     
-
-
+     @Test
+     public void TestfindCustomer() throws DAOException {
+     
+         CustomerEntity user = cdao.findCustomer(customerId);
+         assertEquals("Jumbo Eagle Corp",user.getName());
+     }
+     
+     @Test
+     public void TestfindAllCustomer()throws DAOException { 
+         LCustomerEntity  = (List<CustomerEntity>) cdao.findAllCustomer();
+         assertNotEquals(0,LCustomerEntity.size());
+     }
+    
 }

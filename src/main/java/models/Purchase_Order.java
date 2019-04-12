@@ -20,6 +20,23 @@ public class Purchase_Order {
     Date sales_date;
     Date shipping_date;
     String freight_company;
+    float cost;
+
+    public Date getShipping_date() {
+        return shipping_date;
+    }
+
+    public void setShipping_date(Date shipping_date) {
+        this.shipping_date = shipping_date;
+    }
+
+    public float getCost() {
+        return cost;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
 
   
    public Purchase_Order (){

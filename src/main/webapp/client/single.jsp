@@ -109,9 +109,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <section  class="sky-form">
                                 <h4>Montant</h4>
                                 <div class="row1 scroll-pane">
-                                    <label id="montantBrute"></label>
-                                    <label id="remise"></label>
-                                    <label id="montant"></label>		
+                                    <label class="money" id="montantBrute"></label>
+                                    <label style="color:green" class="money"  id="remise"></label>
+                                    <label style="color:red" class="money"  id="frais"></label>
+                                    <label class="money"  id="montant"></label>		
                                 </div>
                         </section>
 
@@ -127,6 +128,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     a{
         text-decoration: none;
     }
+    
+    .money{
+        font: 1.2rem 'AmstelvarAlpha', sans-serif;
+    }
 </style>
 	<!--end-single-->
 
@@ -134,7 +139,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             
        //le prix du produit
        var price = $("#price").data("price");
-       // la quantité du produi
+       // la quantité du produit
        var qte = 0;
        // le montant à payer
        var montant = 0;
@@ -142,6 +147,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
        var rate = $("#rate").data("rate");
        // quantité dispo
        var qteDispo = $("#price").data("qteOneHand");
+       // frais de port
+       var fraisExpedition = 0 ;
        
        
        qte = $("#qte").val();
@@ -162,24 +169,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
        // l'évenement qui permet d'effectuer la commande
         $("#purchase").click(function(){
             let id = $(this).data("idproduct");
-            Purchasing(id,qte);
+            if (verifQte (qte,qteDispo)) {
+                Purchasing(id,qte,fraisExpedition);
+            }else{
+                console.log("incorrect");
+            }
+            
+            
         });
         
         //calculer le montant en fonction de la remise
         function calculMontant(qte,price){
-            let remise = Math.round((qte*price*rate)/100);
-            montant = (qte*price) - remise.toFixed(2);
-            
-            console.log("Montant Hors remise: "+qte*price+" remise : "+remise+" montant: "+montant)
-            $("#montantBrute").text("Montant Brute : "+qte*price+" €");
-            $("#remise").text("Remise "+rate+"% :    "+remise+" €");
+            let remise =    Math.round(((qte*price*rate)/100) * 100) / 100 ;
+            montant =  Math.round(((qte*price) - remise) * 100) / 100;
+            fraisExpedition  =  Math.round((qte*4.5) * 100) / 100;
+            console.log("Montant Hors remise: "+Math.round((qte*price) * 100) / 100+" remise : "+remise+" montant: "+montant)
+            $("#montantBrute").text("Montant Brut  : "+Math.round((qte*price) * 100) / 100+" €");
+            $("#remise").text("Remise "+rate+"% :    - "+remise+" €");
+            $("#frais").text("Frais d'envoi    :    + "+fraisExpedition+" €");
+            montant = Math.round((montant + fraisExpedition) * 100) / 100 ;
             $("#montant").text("Montant à payer : "+montant+" €");
         }
         
         // verif quantité à commender
         
         function verifQte (qte,qteDispo){
-            
+            if (qte <= qteDispo || qte === 0) {
+                
+                
+                return false;
+            }
+            return true;
         }
         
         
@@ -188,7 +208,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         //console.log($(this));
         let id = $(this).data("idproduct");
         $.ajax({
-            url: "OrderController?target=updateorder&idOrder="+id+"&qte="+qte,
+            url: "OrderController?target=updateorder&idOrder="+id+"&qte="+qte+"&frais="+fraisExpedition,
             dataType: "json",
             success: function () {
                    
@@ -222,10 +242,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         });
 
-        // methode qui permet effectue la commande       
-        function Purchasing(id,qte) {
+        // methode qui permet d'effectue la commande       
+        function Purchasing(id,qte,fraisExpedition) {
         $.ajax({
-            url: "OrderController?target=addorder&idProduct="+id+"&qte="+qte,
+            url: "OrderController?target=addorder&idProduct="+id+"&qte="+qte+"&frais="+fraisExpedition,
             dataType: "json",
             success: function () {
                    

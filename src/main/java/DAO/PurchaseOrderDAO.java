@@ -63,7 +63,16 @@ public class PurchaseOrderDAO {
    public List<Purchase_Order> GetPurchaseOrderByCustomer(int customer_ID) throws DAOException {
 
 List<Purchase_Order> orders = new LinkedList<>();
-		String sql = "SELECT * FROM PURCHASE_ORDER WHERE CUSTOMER_ID = ? ";
+		String sql = "SELECT PURCHASE_ORDER.ORDER_NUM,PURCHASE_ORDER.CUSTOMER_ID,PURCHASE_ORDER.PRODUCT_ID,PURCHASE_ORDER.QUANTITY,\n" +
+"PURCHASE_ORDER.SHIPPING_COST,PURCHASE_ORDER.SALES_DATE,PURCHASE_ORDER.SHIPPING_DATE,PURCHASE_ORDER.FREIGHT_COMPANY,\n" +
+"((PURCHASE_ORDER.QUANTITY * PRODUCT.PURCHASE_COST ) - ((PURCHASE_ORDER.QUANTITY * PRODUCT.PURCHASE_COST )*RATE)/100) + SHIPPING_COST\n" +
+"\n" +
+"as \"COST\" \n" +
+"FROM PURCHASE_ORDER \n" +
+"INNER JOIN PRODUCT USING(PRODUCT_ID)\n" +
+"INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE)\n" +
+"INNER JOIN DISCOUNT_CODE USING (DISCOUNT_CODE)\n" +
+"WHERE CUSTOMER_ID = ?";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -80,6 +89,7 @@ List<Purchase_Order> orders = new LinkedList<>();
                                         order.setSales_date(rs.getDate("SALES_DATE"));
                                         order.setshipping_date(rs.getDate("SHIPPING_DATE"));
                                         order.setFreight_company(rs.getString("FREIGHT_COMPANY"));
+                                        order.setCost(rs.getFloat("COST"));
                                         orders.add(order);
 					// On crée l'objet "entity"
 				
@@ -125,10 +135,10 @@ List<Purchase_Order> orders = new LinkedList<>();
 		return orders;
 	}
    public void AddPurchaseOrder (Purchase_Order order ) throws DAOException {
-		//DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");`
+		
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd");
                         String date = sdf.format(new Date()); 
-                 System.out.println("tesdgdgdsggdf    " + date);
+    
         String sql = "INSERT INTO PURCHASE_ORDER VALUES (?,?,?,?,?,?,?,?)";
 	
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête

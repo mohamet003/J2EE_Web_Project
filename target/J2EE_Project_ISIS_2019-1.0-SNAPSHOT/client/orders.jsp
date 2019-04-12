@@ -79,7 +79,7 @@
                                                     </a>
                                                     </li>
                                                     <li><span class="cost">{{quantity}}</span></li>
-                                                    <li><span class="cost">{{shipping_cost}} €</span></li>
+                                                    <li><span class="cost">{{cost}} €</span></li>
                                                     <li><span class="cost">{{shipping_date}}</li>
                                                    
                                                     
@@ -132,7 +132,7 @@ $(".detail").click(function(){
     id = $(this).data('id');
     var qte = $(this).data('qte');
  
-    $.ajax({
+$.ajax({
     url: "SingleProductController?idProduct="+id,
     dataType: "json",
     success: function (datas) {

@@ -1,33 +1,11 @@
-<<<<<<< HEAD
-controllers\OrderController.class
-NewMain.class
-DAO\CustomerDAO.class
-database\Database.class
-database\DAOException.class
-controllers\AdminController.class
-DAO\DiscountDAO.class
-DAO\MicroMarketDAO.class
-DAO\PurchaseOrderDAO.class
-models\CustomerEntity.class
-models\Micro_Market.class
-models\Discount_code.class
-controllers\SingleProductController.class
-DAO\ProductDAO.class
-controllers\UserControlleur.class
-controllers\LoginController.class
-models\Product.class
-DAO\ProductCodeDAO.class
-DAO\StatDAO.class
-models\Product_Code.class
-models\Purchase_Order.class
-controllers\CategorysController.class
-controllers\ProductController.class
-=======
+DAO/CAZoneGeographiqueDAO.class
+controllers/CACategorieController.class
 DAO/ProductDAO.class
 models/Product_Code.class
 database/DAOException.class
 DAO/ProductCodeDAO.class
 controllers/UserControlleur.class
+DAO/CACategorieDAO.class
 database/Database.class
 models/Discount_code.class
 controllers/SingleProductController.class
@@ -48,4 +26,5 @@ models/Micro_Market.class
 DAO/PurchaseOrderDAO.class
 models/ShippingForCustomer.class
 DAO/ShippingCustomerDAO.class
->>>>>>> 622b17725fe888ed41ba8a49b9e204755dca2fcb
+controllers/CAZoneGeoController.class
+controllers/StateController.class

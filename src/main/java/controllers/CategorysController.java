@@ -21,6 +21,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.CustomerEntity;
 import models.Product_Code;
 
 /**
@@ -42,10 +44,19 @@ public class CategorysController extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException, DAOException {
-        response.setContentType("application/json;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
+            // Si l'utilisateur n'est plus  connecté, on le renvoie à la page de connexion 
+            if (this.findUserInSession(request) == null) {
+                System.out.println("On redirige vers la connexion");
+                response.setContentType("text/html;charset=UTF-8");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
 
+
+            response.setContentType("application/json;charset=UTF-8");
             List<Product_Code> categorys = daop.GetAllProductCodes();
             resultat.put("categorys",categorys);
             // Générer du JSON
@@ -99,4 +110,10 @@ public class CategorysController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+        // trouver l'utilisateur connecté 
+    public CustomerEntity findUserInSession(HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+        return (session == null) ? null : (CustomerEntity) session.getAttribute("user");
+    }
 }
