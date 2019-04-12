@@ -59,6 +59,7 @@ public class SingleProductController extends HttpServlet {
             List<Product> product = new  LinkedList<>();
             List<Product> tabProd = new  LinkedList<>();
             List<Product> products = new  LinkedList<>();
+            
             tabProd = daop.GetAllProductsByProductCode(p.getProduct_code());
             product.add(p);
             for (int i = 0; i < tabProd.size(); i++) {
