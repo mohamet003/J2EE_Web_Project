@@ -1,5 +1,6 @@
 
 import DAO.CACategorieDAO;
+import DAO.CAZoneGeographiqueDAO;
 import DAO.DiscountDAO;
 import DAO.CustomerDAO;
 import DAO.ProductCodeDAO;
@@ -18,6 +19,7 @@ import java.util.List;
 import jdk.nashorn.internal.parser.JSONParser;
 import models.Product;
 import DAO.DiscountDAO;
+import DAO.ShippingCustomerDAO;
 import java.text.ParseException;
 import models.ShippingForCustomer;
 
@@ -102,6 +104,22 @@ public class NewMain {
         for (ShippingForCustomer shippingForCustomer : lca) {
             System.out.println("Ressss "+shippingForCustomer.getCA()+"   dddada  "+shippingForCustomer.getDate());
         }
+        
+        ShippingCustomerDAO scdao = new ShippingCustomerDAO(Database.getDataSource());
+        List<ShippingForCustomer> li = scdao.GetCaByIDCustomer(1, "2011-05-24", "2019-04-11");
+        
+        for (ShippingForCustomer shippingForCustomer : li) {
+            System.out.println("res "+shippingForCustomer.getDate()+"  ca "+shippingForCustomer.getCA());
+        }
+        
+        
+        CAZoneGeographiqueDAO cazgdao = new CAZoneGeographiqueDAO(Database.getDataSource());
+        List<ShippingForCustomer> customers = cazgdao.GetCaByZoneGeo("FL", "2011-05-24", "2019-04-11");
+        
+        for (ShippingForCustomer customer : customers) {
+            System.out.println("data  "+customer.getDate()+"   ca "+customer.getCA());
+        }
+        
         //System.out.println("test"+cust.getName()); 
     }
    

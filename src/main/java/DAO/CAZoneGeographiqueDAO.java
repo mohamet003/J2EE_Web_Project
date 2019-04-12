@@ -10,12 +10,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
-import models.CustomerEntity;
 import models.ShippingForCustomer;
 
 /**
@@ -29,20 +31,32 @@ public class CAZoneGeographiqueDAO {
         this.myDataSource = myDataSource;
     }
     
-    public List<ShippingForCustomer> GetCaByZoneGeo(String STATE,String dateD, String dateF) throws DAOException {
+    public List<ShippingForCustomer> GetCaByZoneGeo(String STATE,String dateD, String dateF) throws DAOException, ParseException {
                 List<ShippingForCustomer> LShipping = new LinkedList<>();
-		String sql = "SELECT SHIPPING_DATE, STATE, SUM(SHIPPING_COST*QUANTITY) AS PRIX FROM APP.PURCHASE_ORDER INNER JOIN (APP.PRODUCT INNER JOIN APP.MANUFACTURER USING (MANUFACTURER_ID))USING(PRODUCT_ID) GROUP BY STATE, SHIPPING_DATE HAVING STATE = ? AND SHIPPING_DATE > ? AND SHIPPING_DATE < ? ";
+		String sql = "SELECT PURCHASE_ORDER.SALES_DATE,\n" +
+"SUM(((PURCHASE_ORDER.QUANTITY * PRODUCT.PURCHASE_COST) - ((PURCHASE_ORDER.QUANTITY * PRODUCT.PURCHASE_COST )*RATE)/100) + SHIPPING_COST) as CA\n" +
+"FROM CUSTOMER INNER JOIN PURCHASE_ORDER USING(CUSTOMER_ID)\n" +
+"INNER JOIN PRODUCT USING(PRODUCT_ID)\n" +
+"INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE)\n" +
+"INNER JOIN DISCOUNT_CODE ON (DISCOUNT_CODE.DISCOUNT_CODE = PRODUCT_CODE.DISCOUNT_CODE) \n" +
+"WHERE STATE = ? AND PURCHASE_ORDER.SALES_DATE BETWEEN ? AND ?\n" +
+"GROUP BY (SALES_DATE)";
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd");
+                        Date dateDe = sdf.parse(dateD);
+                        Date dateFi = sdf.parse(dateF);
+                        String dde = sdf.format(dateDe); 
+                        String dfi = sdf.format(dateFi); 
 
 			stmt.setString(1, STATE);
                         stmt.setString(2, dateD );
-                         stmt.setString(3, dateF );
+                        stmt.setString(3, dateF );
 			try (ResultSet rs = stmt.executeQuery()) {
 				while (rs.next()) {
                                         ShippingForCustomer d = new ShippingForCustomer();
-                                        d.SetCA(rs.getInt("PRIX"));
-					d.SetDate(rs.getString("SHIPPING_DATE"));
+                                        d.SetCA(rs.getInt("CA"));
+					d.SetDate(rs.getString("SALES_DATE"));
                                         LShipping.add(d);
 				} 
 			}
