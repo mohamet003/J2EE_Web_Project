@@ -16,6 +16,7 @@ controllers\LoginController.class
 DAO\ShippingCustomerDAO.class
 controllers\ProductController.class
 NewMain.class
+<<<<<<< HEAD
 database\Database.class
 controllers\AdminController.class
 DAO\MicroMarketDAO.class
@@ -28,3 +29,14 @@ models\Product_Code.class
 models\Purchase_Order.class
 controllers\CategorysController.class
 controllers\CACategorieController.class
+=======
+models/Product.class
+controllers/AdminController.class
+DAO/DiscountDAO.class
+models/Micro_Market.class
+DAO/PurchaseOrderDAO.class
+controllers/ZoneController.class
+models/ShippingForCustomer.class
+DAO/ShippingCustomerDAO.class
+controllers/CAZoneGeoController.class
+>>>>>>> ce5799d56a684743bc277e7719f7eac75c86c62b

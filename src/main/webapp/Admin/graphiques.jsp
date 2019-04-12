@@ -18,13 +18,13 @@
                 <i class="fas fa-chart-area" style="color:white"></i>
             </a>
             <a href="#" id="graph2" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
-                <i class="fas fa-chart-line" style="color:white"></i>
-            </a>
-            <a href="#" id="graph3" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
                 <i class="fas fa-chart-bar" style="color:white"></i>
             </a>
+            <a href="#" id="graph3" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
+                <i class="fas fa-chart-line" style="color:white"></i>
+            </a>
             <a href="#" id="graph4" class="tm-product-delete-link col-lg-12" style="background: #3D4E62;">
-                <i class="fas fa-diagnoses" style="color:white"></i>
+                <i class="fas fa-chart-pie" style="color:white"></i>
             </a>
         </div>
     </div>
@@ -48,7 +48,7 @@
       </select>
     </div>
     <div class="form-group col-lg-3">
-        <button type="button" class="btn btn-primary" class="form-control fa fa-paper-plane btn btn-primary rounded-pill" id="valider" style="color: white; margin-top: 32px;">visualiser</button>
+        <button type="button" class="form-control fa fa-paper-plane btn btn-primary rounded-pill" id="valider" style="color: white; margin-top: 32px;">visualiser</button>
     </div>
   </div>
 </div>

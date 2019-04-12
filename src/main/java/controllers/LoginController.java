@@ -83,7 +83,14 @@ public class LoginController extends HttpServlet {
 
             case "connexion":
                 if (email == adminLog || pwd == adminPwd) {
-                    request.getRequestDispatcher("Admin/index.jsp").forward(request, response);
+                    if (connexion(email, pwd, request)) {
+                        CustomerEntity customerEntity = this.findUserInSession(request);
+                        request.setAttribute("user", customerEntity);
+                        request.getRequestDispatcher("Admin/index.jsp").forward(request, response);
+                    }
+                    else{
+                        request.setAttribute("result", "error");
+                    }
                 } else {
                     if (connexion(email, pwd, request)) {
                         CustomerEntity customerEntity = this.findUserInSession(request);
@@ -157,10 +164,20 @@ public class LoginController extends HttpServlet {
     public boolean connexion(String email, int ID, HttpServletRequest request) throws DAOException {
 
         try {
-            CustomerEntity customerEntity = this.dao.findCustomerByLoginAndPwd(ID, email);
+                CustomerEntity customerEntity = new CustomerEntity();
+            if((email == "admin@admin.com") || (ID == 123)){
+                customerEntity.setCustomerId(ID);
+                customerEntity.setEmail(email);
+                HttpSession session = request.getSession(true); // démarre la session
+                session.setAttribute("user", customerEntity);
+            }
+            else{
+                customerEntity = this.dao.findCustomerByLoginAndPwd(ID, email);
 
-            HttpSession session = request.getSession(true); // démarre la session
-            session.setAttribute("user", customerEntity);
+                 HttpSession session = request.getSession(true); // démarre la session
+                 session.setAttribute("user", customerEntity);
+            
+            }
 
             return customerEntity != null;
         } catch (Exception e) {
