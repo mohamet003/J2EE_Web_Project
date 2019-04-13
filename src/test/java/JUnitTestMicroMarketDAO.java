@@ -24,6 +24,7 @@ public class JUnitTestMicroMarketDAO {
     
     private MicroMarketDAO MMDAO;
         List<Micro_Market> LMicroMarkets; 
+        int zip_Code;
         int radius;
         int area_length;
         int area_width;
@@ -42,6 +43,7 @@ public class JUnitTestMicroMarketDAO {
     @Before
     public void setUp() {
         MMDAO= new MicroMarketDAO(Database.getDataSource());
+        zip_Code = 95051;
         radius =(int) 255.59;
         area_length = (int) 689.856;
         area_width = (int) 478.479;
@@ -50,12 +52,11 @@ public class JUnitTestMicroMarketDAO {
     @After
     public void tearDown() {
     }
-
     
     @Test
     public void TestGetMicroMarketByID() throws DAOException { 
-         Micro_Market  MM = MMDAO.GetMicroMarketByID(radius);
-         assertEquals("689.856", MM.getArea_length());
+         Micro_Market  MM = MMDAO.GetMicroMarketByID(zip_Code);
+         assertEquals("255.59", MM.getRadius());
      }
   
     @Test
