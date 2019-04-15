@@ -12,11 +12,9 @@ $(document).ready(function(){
         
 })
 
+var id = 0;
 function affcherGraphique(event){
-    $("#botChange").attr("hidden", "hidden");
-    let id = this.id;
-    $("#valider").click(affiche)
-    
+     id = this.id;    
     //recuperer la longitude et la latitude
     $.ajax({
         url: "http://nominatim.openstreetmap.org/search?state=France&units=metric&lang=fr&format=json&addressdetails=1&city=castres&q="+id,
@@ -43,6 +41,7 @@ function affcherGraphique(event){
                     
         });
                 
+<<<<<<< HEAD
     
     //afficher le graphique 
     function affiche(event){
@@ -77,6 +76,13 @@ function affcherGraphique(event){
     console.log("fdfdfdf  "+id);
 }
 
+=======
+       
+        // Create a map object and specify the DOM element
+        // for display.
+        
+   
+>>>>>>> 81b4f4cdbf7918a966551a46f307c63a9a9393dc
 $("#valider").click(function(event){
     let dateD = $("#dateD").val();
     let dateF = $("#dateF").val();
@@ -154,4 +160,4 @@ function graphique(result) {
                
 }
 
-
+}

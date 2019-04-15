@@ -52,4 +52,4 @@
     </div>
   </div>
 </div>
-<script src="Admin/js/graphiques.js"></script>
+<script src="Admin/js/graphiqueCat.js"></script>
