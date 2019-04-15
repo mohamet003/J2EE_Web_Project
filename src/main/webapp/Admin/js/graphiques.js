@@ -9,19 +9,8 @@ $(document).ready(function(){
        google.charts.load('current', {packages: ['corechart']});
        google.charts.setOnLoadCallback(affcherGraphique);
         $(".infosCat").click(affcherGraphique);
-        $("#botChange").click(changeIcon);
 })
 
-function changeIcon(event){
-    if($("#bimagine").hasClass("fa-plus")){
-        $("#bimagine").removeClass("fa-plus");
-        $("#bimagine").addClass("fa-minus");
-    }
-    else{
-        $("#bimagine").removeClass("fa-minus");
-        $("#bimagine").addClass("fa-plus");
-    }
-}
      
 function affcherGraphique(event){
     $("#botChange").attr("hidden", "hidden");

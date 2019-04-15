@@ -9,7 +9,8 @@
 <div class="container">
 <br/><br/>
 <div class="row">
-    <div id="chart" class="col-lg-11"></div>
+    <div id="map" class="col-lg-4"></div>
+    <div id="chart" class="col-lg-7"></div>
     <div class="col-lg-1 btn btn-group-vertical" role="group" aria-label="First group">
         <a id="botChange" class="tm-product-delete-link" style="background: #3D4E62; margin-left: -16px" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             <i id="imagine" class="fas fa-plus" style="color:white"></i>
@@ -40,7 +41,7 @@
       <input type="date" class="form-control border border-info rounded" id="dateF" style="background: white; color: #3D4E62;">
     </div>
     <div class="form-group col-md-3">
-      <label for="zone">Zone</label>
+      <label for="zone">Code postal</label>
       <select id="zone" class="form-control" style="background: white; color: #3D4E62; height: 50px;">
          <option selected>Choose...</option> 
         
@@ -55,3 +56,6 @@
   </div>
 </div>
 <script src="Admin/js/zoneGeographiqueJS.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrqPuGAMMkJsNzDGjzXyzc-q9e60b1seA&callback=affcherGraphique"
+     async defer></script>

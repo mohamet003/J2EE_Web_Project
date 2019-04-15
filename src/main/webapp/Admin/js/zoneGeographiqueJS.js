@@ -8,11 +8,65 @@
 $(document).ready(function(){
        google.charts.load('current', {packages: ['corechart']});
        google.charts.setOnLoadCallback(affcherGraphique);
-       
         $(".infosZone").click(affcherGraphique);
-        $("#botChange").click(changeIcon);
         
 })
+<<<<<<< HEAD
+
+function affcherGraphique(event){
+    $("#botChange").attr("hidden", "hidden");
+    let id = this.id;
+    $("#valider").click(affiche)
+    
+    //recuperer la longitude et la latitude
+    $.ajax({
+        url: "http://nominatim.openstreetmap.org/search?state=France&units=metric&lang=fr&format=json&addressdetails=1&city=castres&q="+id,
+        dataType : "json",
+        success: 
+                function initMap (result) {
+                    console.log(result);
+                    let  lat = result[1].lat;
+                    let  lon = result[1].lon;
+                    var myLatLng = {lat: -25.363, lng: 131.044};
+                    myLatLng.lng =parseFloat(lon);
+                    myLatLng.lat = parseFloat(lat);
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: myLatLng,
+                        zoom: 12
+                    });
+                    
+                    var marker = new google.maps.Marker({
+                    map: map,
+                    position: myLatLng,
+                    title: 'zone selectionné'
+                    });
+                    }
+                    
+                });
+                
+    // afficher la map
+   
+       
+        // Create a map object and specify the DOM element
+        // for display.
+        
+    
+    //afficher le graphique 
+    function affiche(event){
+        let dateD = $("#dateD").val();
+        let dateF = $("#dateF").val();
+        let url = "CAZoneGeoController?id="+id+"&dateD="+dateD+"&dateF="+dateF;
+        $.ajax({
+            url: url,
+            type : "GET",
+            dataType: "json",
+            success: graphique,
+            error : afficherErreur,
+        }) ;
+    }
+}
+
+=======
 var id = 0;
 function changeIcon(event){
     if($("#bimagine").hasClass("fa-plus")){
@@ -43,6 +97,7 @@ $("#valider").click(function(event){
         error : afficherErreur,
     }) ;
 })
+>>>>>>> 32440a58bfaf1af38d94c52c0bfd24e1e6dc06cf
 
 
 //afficher l'erreur 
@@ -63,7 +118,7 @@ function graphique(result) {
     let options = {'legend':'left',
                    'title':'Chiffre d\'affaire par zone géographique',
                    'is3D':true,
-                   'width':1000,
+                   'width':650,
                    'height':400};
     // Instantiate and draw the chart.
     let chart = new google.visualization.ScatterChart(document.getElementById('chart'));
