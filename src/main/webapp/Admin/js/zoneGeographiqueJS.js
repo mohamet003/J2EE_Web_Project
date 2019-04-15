@@ -8,28 +8,49 @@
 $(document).ready(function(){
        google.charts.load('current', {packages: ['corechart']});
        google.charts.setOnLoadCallback(affcherGraphique);
-       
         $(".infosZone").click(affcherGraphique);
-        $("#botChange").click(changeIcon);
         
 })
-
-function changeIcon(event){
-    if($("#bimagine").hasClass("fa-plus")){
-        $("#bimagine").removeClass("fa-plus");
-        $("#bimagine").addClass("fa-minus");
-    }
-    else{
-        $("#bimagine").removeClass("fa-minus");
-        $("#bimagine").addClass("fa-plus");
-    }
-}
 
 function affcherGraphique(event){
     $("#botChange").attr("hidden", "hidden");
     let id = this.id;
-    console.log("fdfdfdf  "+id)
     $("#valider").click(affiche)
+    
+    //recuperer la longitude et la latitude
+    $.ajax({
+        url: "http://nominatim.openstreetmap.org/search?state=France&units=metric&lang=fr&format=json&addressdetails=1&city=castres&q="+id,
+        dataType : "json",
+        success: 
+                function initMap (result) {
+                    console.log(result);
+                    let  lat = result[1].lat;
+                    let  lon = result[1].lon;
+                    var myLatLng = {lat: -25.363, lng: 131.044};
+                    myLatLng.lng =parseFloat(lon);
+                    myLatLng.lat = parseFloat(lat);
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: myLatLng,
+                        zoom: 12
+                    });
+                    
+                    var marker = new google.maps.Marker({
+                    map: map,
+                    position: myLatLng,
+                    title: 'zone selectionné'
+                    });
+                    }
+                    
+                });
+                
+    // afficher la map
+   
+       
+        // Create a map object and specify the DOM element
+        // for display.
+        
+    
+    //afficher le graphique 
     function affiche(event){
         let dateD = $("#dateD").val();
         let dateF = $("#dateF").val();
@@ -43,6 +64,8 @@ function affcherGraphique(event){
         }) ;
     }
 }
+
+
 
 //afficher l'erreur 
 function afficherErreur(error) {
@@ -62,7 +85,7 @@ function graphique(result) {
     let options = {'legend':'left',
                    'title':'Chiffre d\'affaire par zone géographique',
                    'is3D':true,
-                   'width':1000,
+                   'width':650,
                    'height':400};
     // Instantiate and draw the chart.
     let chart = new google.visualization.ScatterChart(document.getElementById('chart'));
