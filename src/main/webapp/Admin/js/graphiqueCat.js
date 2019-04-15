@@ -11,11 +11,12 @@ $(document).ready(function(){
         $(".infosCat").click(affcherGraphique);
 })
 
-     
+     let id = 0 ;
 function affcherGraphique(event){
-    $("#botChange").attr("hidden", "hidden");
-    let id = this.id;
-     $("#valider").click(affiche)
+     id = this.id;
+}
+
+$("#valider").click(affiche)
      function affiche(event){
         let dateD = $("#dateD").val();
         let dateF = $("#dateF").val();
@@ -28,8 +29,6 @@ function affcherGraphique(event){
             error : afficherErreur,
          }) ;
    }
-}
-
 //afficher l'erreur 
 function afficherErreur(error) {
     console.log(error)
@@ -54,12 +53,11 @@ function graphique(result) {
     let chart = new google.visualization.ScatterChart(document.getElementById('chart1'));
     chart.draw(data, null);
     chart.draw(data, options); 
-    $("#botChange").removeAttr("hidden");
     $("#graph1").click(graphDiff);
     $("#graph2").click(graphDiff);
     $("#graph3").click(graphDiff);
     $("#graph4").click(graphDiff);
-    
+   
     //appels des diferent graphiques
     function graphDiff(event){
     switch (this.id){

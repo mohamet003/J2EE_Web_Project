@@ -11,13 +11,10 @@ $(document).ready(function(){
         $(".infosZone").click(affcherGraphique);
         
 })
-<<<<<<< HEAD
 
+var id = 0;
 function affcherGraphique(event){
-    $("#botChange").attr("hidden", "hidden");
-    let id = this.id;
-    $("#valider").click(affiche)
-    
+     id = this.id;    
     //recuperer la longitude et la latitude
     $.ajax({
         url: "http://nominatim.openstreetmap.org/search?state=France&units=metric&lang=fr&format=json&addressdetails=1&city=castres&q="+id,
@@ -44,47 +41,11 @@ function affcherGraphique(event){
                     
                 });
                 
-    // afficher la map
-   
        
         // Create a map object and specify the DOM element
         // for display.
         
-    
-    //afficher le graphique 
-    function affiche(event){
-        let dateD = $("#dateD").val();
-        let dateF = $("#dateF").val();
-        let url = "CAZoneGeoController?id="+id+"&dateD="+dateD+"&dateF="+dateF;
-        $.ajax({
-            url: url,
-            type : "GET",
-            dataType: "json",
-            success: graphique,
-            error : afficherErreur,
-        }) ;
-    }
-}
-
-=======
-var id = 0;
-function changeIcon(event){
-    if($("#bimagine").hasClass("fa-plus")){
-        $("#bimagine").removeClass("fa-plus");
-        $("#bimagine").addClass("fa-minus");
-    }
-    else{
-        $("#bimagine").removeClass("fa-minus");
-        $("#bimagine").addClass("fa-plus");
-    }
-}
-
-function affcherGraphique(event){
-    $("#botChange").attr("hidden", "hidden");
-    id = this.id;
-    console.log("fdfdfdf  "+id);
-}
-
+   
 $("#valider").click(function(event){
     let dateD = $("#dateD").val();
     let dateF = $("#dateF").val();
@@ -97,7 +58,7 @@ $("#valider").click(function(event){
         error : afficherErreur,
     }) ;
 })
->>>>>>> 32440a58bfaf1af38d94c52c0bfd24e1e6dc06cf
+
 
 
 //afficher l'erreur 
@@ -162,4 +123,4 @@ function graphique(result) {
                
 }
 
-
+}
