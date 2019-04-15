@@ -7,6 +7,7 @@
 import DAO.CACategorieDAO;
 import database.DAOException;
 import database.Database;
+import java.text.ParseException;
 import java.util.List;
 import models.ShippingForCustomer;
 import org.junit.After;
@@ -23,9 +24,9 @@ import static org.junit.Assert.*;
 public class JUnitTestCACategorie {
     private CACategorieDAO CACatDAO ;
     List<ShippingForCustomer> LShipping;
-    String PRODUCT_CODE;
-    String dateD;
-    String dateF;
+    String PRODUCT_CODE ="SW";
+    String dateD = "2011-04-23";
+    String dateF = "2019-04-23";
     
     public JUnitTestCACategorie() {
     }
@@ -49,8 +50,8 @@ public class JUnitTestCACategorie {
 
     
      @Test
-     public void TestGetCaByCategorie()throws DAOException { 
-         LShipping = (List<ShippingForCustomer>) CACatDAO.GetCaByCategorie( PRODUCT_CODE, dateD, dateF);
+     public void TestGetCaByCategorie()throws DAOException, ParseException { 
+         LShipping = (List<ShippingForCustomer>) CACatDAO.GetCaByCategorie(PRODUCT_CODE, dateD, dateF);
          assertNotEquals(0,LShipping.size());
     }
     // TODO add test methods here.
