@@ -210,14 +210,14 @@ List<Purchase_Order> orders = new LinkedList<>();
         
          public int FindLastPurchaseOrderInsert() throws DAOException {
             int NUM= 0;
-        String sql = "SELECT MAX (ORDER_NUM) AS NUM FROM PUCHASE_ORDER";
+        String sql = "SELECT MAX (ORDER_NUM) AS NUM FROM PURCHASE_ORDER";
        Purchase_Order order = new Purchase_Order();
         try (Connection connection = myDataSource.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
         
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                 rs.getInt(NUM);
+                 NUM = rs.getInt("NUM");
                 }
             }
         } catch (SQLException ex) {

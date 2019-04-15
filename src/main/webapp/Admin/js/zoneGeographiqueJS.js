@@ -11,7 +11,6 @@ $(document).ready(function(){
         $(".infosZone").click(affcherGraphique);
         
 })
-<<<<<<< HEAD
 
 function affcherGraphique(event){
     $("#botChange").attr("hidden", "hidden");
@@ -42,14 +41,8 @@ function affcherGraphique(event){
                     });
                     }
                     
-                });
+        });
                 
-    // afficher la map
-   
-       
-        // Create a map object and specify the DOM element
-        // for display.
-        
     
     //afficher le graphique 
     function affiche(event){
@@ -66,7 +59,6 @@ function affcherGraphique(event){
     }
 }
 
-=======
 var id = 0;
 function changeIcon(event){
     if($("#bimagine").hasClass("fa-plus")){
@@ -97,7 +89,7 @@ $("#valider").click(function(event){
         error : afficherErreur,
     }) ;
 })
->>>>>>> 32440a58bfaf1af38d94c52c0bfd24e1e6dc06cf
+
 
 
 //afficher l'erreur 
