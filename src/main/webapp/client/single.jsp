@@ -65,13 +65,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                         <h5 class="item_price" id="price" data-price="{{purchase_cost}}" data-qteOneHand="{{quantity_on_hand}}"> {{purchase_cost}} € </h5>
 
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                                <p>{{idorder}} Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
 
                                                 <ul class="tag-men">
                                                     <input type="number" id="qte" value="{{qte}}" placeholder="Quantité" min="1" class="form-control" >
                                                     <div id="alert"></div>
                                                 </ul>
-                                            <a href="#" class="add-cart item_add" data-toggle="modal" data-target="#exampleModal" id="{{action}}" data-idProduct="{{product_ID}}" >{{txt_btn}}</a>
+                                            <a href="#" class="add-cart item_add" data-toggle="modal" data-target="#exampleModal" id="{{action}}" data-idorder="{{idorder}}" data-idProduct="{{product_ID}}" >{{txt_btn}}</a>
                                         </div>
 
                                     {{/product}}  
@@ -169,6 +169,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
        // l'évenement qui permet d'effectuer la commande
         $("#purchase").click(function(){
             let id = $(this).data("idproduct");
+            
             if (verifQte (qte,qteDispo)) {
                 Purchasing(id,qte,fraisExpedition);
             }else{
@@ -206,7 +207,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         // mettre a jour la commande
         $("#updatepurchase").click(function(){
         //console.log($(this));
-        let id = $(this).data("idproduct");
+        let id = $(this).data("idorder");
+        console.log("update order "+id);
+        qte = $("#qte").val();
         $.ajax({
             url: "OrderController?target=updateorder&idOrder="+id+"&qte="+qte+"&frais="+fraisExpedition,
             dataType: "json",
@@ -252,9 +255,4 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             }
         });
     }
-
-                
-                
-                
-   
         </script>

@@ -199,7 +199,7 @@ List<Purchase_Order> orders = new LinkedList<>();
                         int rs = stmt.executeUpdate();
 
                         if (rs==1) {
-                            System.out.println("okay");
+                            System.out.println("okay Update Order");
                         }
 		
 		}  catch (SQLException ex) {
