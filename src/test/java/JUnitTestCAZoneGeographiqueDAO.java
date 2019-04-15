@@ -6,6 +6,7 @@
 
 import DAO.CAZoneGeographiqueDAO;
 import database.DAOException;
+import database.Database;
 import java.text.ParseException;
 import java.util.List;
 import models.ShippingForCustomer;
@@ -41,6 +42,8 @@ public class JUnitTestCAZoneGeographiqueDAO {
     
     @Before
     public void setUp() {
+        CAZGDAO= new CAZoneGeographiqueDAO(Database.getDataSource());
+
     }
     
     @After
