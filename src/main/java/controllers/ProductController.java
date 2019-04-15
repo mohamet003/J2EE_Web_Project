@@ -147,7 +147,6 @@ public class ProductController extends HttpServlet {
 
 
         }
-
         return products;
     }
         

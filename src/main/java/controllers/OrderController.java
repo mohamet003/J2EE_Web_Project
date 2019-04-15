@@ -89,7 +89,7 @@ public class OrderController extends HttpServlet {
                         order.setQuantity(qte);
                         order.setFreight_company("ISIS");
                         order.setShipping_cost(frais);
-                        order.setOrder_num(id + 10 * 3);
+                        order.setOrder_num(daop.LastInsertID()+1);
                         purcharseOrderDAO.AddPurchaseOrder(order);
                         break;
 
