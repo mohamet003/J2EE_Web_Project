@@ -207,5 +207,24 @@ List<Purchase_Order> orders = new LinkedList<>();
 			throw new DAOException(ex.getMessage());
 		} 
         }
+        
+         public int FindLastPurchaseOrderInsert() throws DAOException {
+            int NUM= 0;
+        String sql = "SELECT MAX (ORDER_NUM) AS NUM FROM PUCHASE_ORDER";
+       Purchase_Order order = new Purchase_Order();
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+        
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                 rs.getInt(NUM);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+            throw new DAOException(ex.getMessage());
+        }
+        return NUM;
+    }
 }   
 
