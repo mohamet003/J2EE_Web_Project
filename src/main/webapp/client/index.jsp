@@ -52,17 +52,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"></div>
 					</div>
 				</div>
-				<div class="col-md-6 top-header-left">
-					<div class="cart box_1">
-						<a href="checkout.html">
-							<div class="total">
-								<span class="simpleCart_total"></span></div>
-								<img src="client/images/cart-1.png" alt="" />
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
@@ -112,7 +101,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-3 header-right"> 
 				<div class="search-bar">
-					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                                    <input type="text" placeholder="Recherche" id="recherche">
 				</div>
 			</div>
 			<div class="clearfix"> </div>
@@ -181,8 +170,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         
         <div class="product" id="container">  </div>
-        
-  
+
         <div class="loader" style="display:none;"></div>
         
 	<!--information-starts-->

@@ -53,6 +53,7 @@
 					</div>
 
 				</form>
+                            
                                 <c:if test = "${result == 'error'}">
                                     <br>
                                     <div class="alert alert-danger" role="alert">

@@ -28,17 +28,19 @@ public class MicroMarketDAO {
         public MicroMarketDAO(DataSource myDataSource) {
         this.myDataSource = myDataSource;
     }
-    public Micro_Market GetMicroMarketByID(int radius) throws DAOException {
+    public Micro_Market GetMicroMarketByID(int zip_Code) throws DAOException {
             
         Micro_Market M = new Micro_Market();
-		String sql = "SELECT * FROM MICRO_MARKET WHERE radius = ? ";
+		String sql = "SELECT * FROM MICRO_MARKET WHERE zip_Code = ? ";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
     
-			stmt.setInt(1, radius);
+			stmt.setInt(1, zip_Code);
 			try (ResultSet rs = stmt.executeQuery()) {
 				if (rs.next()) { // On a trouvé
+                                M.setZip(rs.getInt("ZIP_CODE"));
+                                M.setRadius(rs.getInt("RADIUS"));
                                 M.setArea_length(rs.getInt("AREA_LENGTH"));
                                 M.setArea_width(rs.getInt("AREA_WIDTH"));
 				} 

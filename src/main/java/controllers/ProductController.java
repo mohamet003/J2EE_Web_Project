@@ -54,9 +54,13 @@ public class ProductController extends HttpServlet {
 
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-   
-            response.setContentType("application/json;charset=UTF-8");
             Properties resultat = new Properties();
+            response.setContentType("application/json;charset=UTF-8");
+            if (request.getParameter("resultat") != null) {
+                 String result = request.getParameter("resultat");
+                 resultat.put("products", productOrganize(daop.FindProduct("%"+result+"%")));
+            }else{
+            
             String code = request.getParameter("idCategory");
             String idd = request.getParameter("idd");
             
@@ -66,10 +70,13 @@ public class ProductController extends HttpServlet {
 
             resultat.put("products",productOrganize(daop.GetAllProductsByProductCode(code)));
             resultat.put("rate", rate);
-
+            }
+            
             // Générer du JSON
             Gson gson = new Gson();
             out.println(gson.toJson(resultat));
+            
+
 
         }
     }

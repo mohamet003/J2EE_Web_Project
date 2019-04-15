@@ -52,6 +52,7 @@ public class ProductDAO {
                     P.setMarkup(rs.getFloat("MARKUP"));
                     P.setAvailable(rs.getBoolean("AVAILABLE"));
                     P.setDescription(rs.getString("DESCRIPTION"));
+                    P.setRate(rs.getFloat("RATE"));
                     LProduits.add(P);
                 }
             }
@@ -84,6 +85,7 @@ public class ProductDAO {
                     p.setProduct_code(rs.getString("PRODUCT_CODE"));
                     p.setPurchase_cost(rs.getFloat("PURCHASE_COST"));
                     p.setQuantity_on_hand(rs.getInt("QUANTITY_ON_HAND"));
+                    p.setRate(rs.getFloat("RATE"));
                 }
 
             }
@@ -119,6 +121,7 @@ public class ProductDAO {
                     p.setPurchase_cost(rs.getFloat("PURCHASE_COST"));
                     p.setProduct_code(rs.getString("PRODUCT_CODE"));
                     p.setQuantity_on_hand(rs.getInt("QUANTITY_ON_HAND"));
+                    p.setRate(rs.getFloat("RATE"));
                     LProduits.add(p);
                 }
 
@@ -169,6 +172,7 @@ public class ProductDAO {
                     P.setMarkup(rs.getFloat("MARKUP"));
                     P.setAvailable(rs.getBoolean("AVAILABLE"));
                     P.setDescription(rs.getString("DESCRIPTION"));
+                    P.setRate(rs.getFloat("RATE"));
                     LProduits.add(P);
                 }
             }
@@ -179,4 +183,6 @@ public class ProductDAO {
         }
         return LProduits;
     }
+    
+   
 }
