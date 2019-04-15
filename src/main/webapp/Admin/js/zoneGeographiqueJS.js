@@ -17,13 +17,13 @@ function affcherGraphique(event){
      id = this.id;    
     //recuperer la longitude et la latitude
     $.ajax({
-        url: "http://nominatim.openstreetmap.org/search?state=France&units=metric&lang=fr&format=json&addressdetails=1&city=castres&q="+id,
+        url: "http://nominatim.openstreetmap.org/search?state=USA&units=metric&lang=fr&format=json&addressdetails=1&city=castres&q="+id,
         dataType : "json",
         success: 
                 function initMap (result) {
                     console.log(result);
-                    let  lat = result[1].lat;
-                    let  lon = result[1].lon;
+                    let  lat = result[0].lat;
+                    let  lon = result[0].lon;
                     var myLatLng = {lat: -25.363, lng: 131.044};
                     myLatLng.lng =parseFloat(lon);
                     myLatLng.lat = parseFloat(lat);
