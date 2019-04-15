@@ -97,6 +97,28 @@ public class ProductDAO {
         return p;
     }
 
+
+    public int LastInsertID() throws DAOException {
+
+        String sql = "SELECT MAX(ORDER_NUM) as num FROM PURCHASE_ORDER" ;
+        int num = 0;
+        try (Connection connection = myDataSource.getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    num = rs.getInt("num");
+                }
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
+            throw new DAOException(ex.getMessage());
+        }
+
+        return num;
+    }
+
+
     public List<Product> GetAllProductsByProductCode(String product_code) throws DAOException {
 
         List<Product> LProduits = new LinkedList<>();
@@ -139,12 +161,9 @@ public class ProductDAO {
 
         try (Connection connection = myDataSource.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
-
             stmt.setInt(1, Quantity_on_hand);
             stmt.setInt(2, product_ID);
-
             int rs = stmt.executeUpdate();
-
         } catch (SQLException ex) {
             Logger.getLogger("DAO").log(Level.SEVERE, null, ex);
             throw new DAOException(ex.getMessage());
