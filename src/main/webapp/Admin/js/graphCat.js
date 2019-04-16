@@ -11,13 +11,11 @@ $(document).ready(function(){
         $(".infosCat").click(affcherGraphique);
 })
 
-     let id = 0 ;
+     var id = 0 ;
 function affcherGraphique(event){
      id = this.id;
-}
 
-$("#valider").click(affiche)
-     function affiche(event){
+$("#valider").click(function(event){
         let dateD = $("#dateD").val();
         let dateF = $("#dateF").val();
         let url = "CACategorieController?id="+id+"&dateD="+dateD+"&dateF="+dateF;
@@ -28,7 +26,7 @@ $("#valider").click(affiche)
             success: graphique,
             error : afficherErreur,
          }) ;
-   }
+   })
 //afficher l'erreur 
 function afficherErreur(error) {
     console.log(error)
@@ -36,6 +34,7 @@ function afficherErreur(error) {
 
 //remplissage et affichage du graphique
 function graphique(result) {
+    console.log(result);
     let items = result.ca;
     let data = new google.visualization.DataTable();
     data.addColumn('string', 'date');
@@ -90,4 +89,5 @@ function graphique(result) {
                
 }
 
+}
 

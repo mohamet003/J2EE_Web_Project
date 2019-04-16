@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
                 <a class="navbar-brand" href="index.jsp">
-                    <h1 class="tm-site-title mb-0">COMMERCE</h1>
+                    <h1 class="tm-site-title mb-0">CAPUCINS ISIS</h1>
                 </a>
                 <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,8 +88,6 @@
     <script src="Admin/js/routing.js"></script>
     <!--gestion du routing -->
     <script src="Admin/js/moment.min.js"></script>
-    <!-- gestion des notifications dans l'application -->
-    <script src="Admin/js/push.min.js"></script>
     <!-- https://momentjs.com/ -->
     <!-- http://www.chartjs.org/docs/latest/ -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -97,20 +95,4 @@
     <script src="Admin/js/tooplate-scripts.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 </body>
-
-<script>
-    function helloPush(){
-        Push.create("connexion", {
-            body: "Bienvenue monsieur",
-            icon: 'Admin/img/bin.jpg',
-            timeout: 5000,
-            onClick: function () {
-                window.focus();
-                this.close();
-            }
-    });
-        }
-        helloPush();
-</script>
-
 </html>

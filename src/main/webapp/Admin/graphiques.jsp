@@ -32,15 +32,15 @@
   <div class="form-row">
     <div class="form-group col-lg-3">
       <label for="dateFin">Date début</label>
-      <input type="date" class="form-control border border-info rounded" id="dateD" style="background: white; color: #3D4E62;">
+      <input type="date" class="form-control border border-info rounded" id="dateD" style="background: white; color: #3D4E62; height: 56px;">
     </div>
     <div class="form-group col-lg-3">
       <label for="dateDebut">Date fin</label>
-      <input type="date" class="form-control border border-info rounded" id="dateF" style="background: white; color: #3D4E62;">
+      <input type="date" class="form-control border border-info rounded" id="dateF" style="background: white; color: #3D4E62; height: 56px;">
     </div>
     <div class="form-group col-lg-3">
       <label for="categorie">Catégorie</label>
-      <select id="categorie" class="form-control" style="background: white; color: #3D4E62; height: 50px;">
+      <select id="categorie" class="form-control border border-info rounded" style="background: white; color: #3D4E62; height: 56px;">
          <option selected>Choose...</option>
         {{#categorys}}
         <option class="infosCat" id="{{Prod_Code}}">{{description}}</option>
@@ -48,8 +48,8 @@
       </select>
     </div>
     <div class="form-group col-lg-3">
-        <button type="button" class="form-control fa fa-paper-plane btn btn-primary rounded-pill" id="valider" style="color: white; margin-top: 32px;">visualiser</button>
+        <button type="button" class="form-control fa fa-paper-plane btn btn-primary rounded-pill" id="valider" style="color: white; margin-top: 35px;">visualiser</button>
     </div>
   </div>
 </div>
-<script src="Admin/js/graphiqueCat.js"></script>
+<script src="Admin/js/graphCat.js"></script>
