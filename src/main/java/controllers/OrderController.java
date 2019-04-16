@@ -89,8 +89,9 @@ public class OrderController extends HttpServlet {
                         order.setQuantity(qte);
                         order.setFreight_company("ISIS");
                         order.setShipping_cost(frais);
-                        order.setOrder_num(daop.LastInsertID()+1);
+                        order.setOrder_num(purcharseOrderDAO.FindLastPurchaseOrderInsert()+1);
                         purcharseOrderDAO.AddPurchaseOrder(order);
+                        daop.UpdateProduct(id, p.getQuantity_on_hand() - qte);
                         break;
 
                     case "updateorder":

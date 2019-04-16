@@ -39,13 +39,47 @@ function affcherGraphique(event){
                     });
                     }
                     
-                });
+        });
                 
+
+    //afficher le graphique 
+    function affiche(event){
+        let dateD = $("#dateD").val();
+        let dateF = $("#dateF").val();
+        let url = "CAZoneGeoController?id="+id+"&dateD="+dateD+"&dateF="+dateF;
+        $.ajax({
+            url: url,
+            type : "GET",
+            dataType: "json",
+            success: graphique,
+            error : afficherErreur,
+        }) ;
+    }
+}
+
+var id = 0;
+function changeIcon(event){
+    if($("#bimagine").hasClass("fa-plus")){
+        $("#bimagine").removeClass("fa-plus");
+        $("#bimagine").addClass("fa-minus");
+    }
+    else{
+        $("#bimagine").removeClass("fa-minus");
+        $("#bimagine").addClass("fa-plus");
+    }
+}
+
+function affcherGraphique(event){
+    $("#botChange").attr("hidden", "hidden");
+    id = this.id;
+    console.log("fdfdfdf  "+id);
+}
+
+
        
         // Create a map object and specify the DOM element
         // for display.
         
-   
 $("#valider").click(function(event){
     let dateD = $("#dateD").val();
     let dateF = $("#dateF").val();
@@ -122,4 +156,4 @@ function graphique(result) {
                
 }
 
-}
+

@@ -52,7 +52,7 @@
 			</div>
 			<div class="ckeckout-top">
 			<div class="cart-items">
-			 <h3>My Shopping Bag </h3>
+			
 
 				
 			<div class="in-check" >

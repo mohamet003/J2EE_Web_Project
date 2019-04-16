@@ -32,7 +32,7 @@ public class PurchaseOrderDAO {
 
 	public Purchase_Order GetPurchaseOrderByID(int order_num) throws DAOException {
         Purchase_Order order = new Purchase_Order();
-		String sql = "SELECT * FROM PURCHASE_ORDER WHERE ORDER_NUM = ? ";
+		String sql = "SELECT * FROM PURCHASE_ORDER WHERE ORDER_NUM = ? ORDER BY ORDER_NUM DESC";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -72,7 +72,7 @@ List<Purchase_Order> orders = new LinkedList<>();
 "INNER JOIN PRODUCT USING(PRODUCT_ID)\n" +
 "INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE)\n" +
 "INNER JOIN DISCOUNT_CODE USING (DISCOUNT_CODE)\n" +
-"WHERE CUSTOMER_ID = ?";
+"WHERE CUSTOMER_ID = ? ORDER BY ORDER_NUM DESC";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -210,14 +210,14 @@ List<Purchase_Order> orders = new LinkedList<>();
         
          public int FindLastPurchaseOrderInsert() throws DAOException {
             int NUM= 0;
-        String sql = "SELECT MAX (ORDER_NUM) AS NUM FROM PUCHASE_ORDER";
+        String sql = "SELECT MAX (ORDER_NUM) AS NUM FROM PURCHASE_ORDER";
        Purchase_Order order = new Purchase_Order();
         try (Connection connection = myDataSource.getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
         
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                 rs.getInt(NUM);
+                 NUM = rs.getInt("NUM");
                 }
             }
         } catch (SQLException ex) {

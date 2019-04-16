@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestPurchaseOrderDAO.java
 /Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestShippingCustomerDAO.java
 /Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestCustumerDAO.java
@@ -7,3 +8,14 @@
 /Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestCAZoneGeographiqueDAO.java
 /Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestDiscountDAO.java
 /Users/kevin/NetBeansProjects/projetWeb/src/test/java/JUnitTestProductDAO.java
+=======
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestCACategorie.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestDiscountDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestProductDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestShippingCustomerDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestCAZoneGeographiqueDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestProductCodeDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestMicroMarketDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestPurchaseOrderDAO.java
+/Users/mohametkone/Desktop/PROJETS/examISIS/J2EE_Web_Project/src/test/java/JUnitTestCustumerDAO.java
+>>>>>>> 210e4dc0efc76241191f58ddf8e42781aeb50b83
