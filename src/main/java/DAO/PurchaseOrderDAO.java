@@ -32,7 +32,7 @@ public class PurchaseOrderDAO {
 
 	public Purchase_Order GetPurchaseOrderByID(int order_num) throws DAOException {
         Purchase_Order order = new Purchase_Order();
-		String sql = "SELECT * FROM PURCHASE_ORDER WHERE ORDER_NUM = ? ";
+		String sql = "SELECT * FROM PURCHASE_ORDER WHERE ORDER_NUM = ? ORDER BY ORDER_NUM DESC";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -72,7 +72,7 @@ List<Purchase_Order> orders = new LinkedList<>();
 "INNER JOIN PRODUCT USING(PRODUCT_ID)\n" +
 "INNER JOIN PRODUCT_CODE ON (PRODUCT_CODE = PROD_CODE)\n" +
 "INNER JOIN DISCOUNT_CODE USING (DISCOUNT_CODE)\n" +
-"WHERE CUSTOMER_ID = ?";
+"WHERE CUSTOMER_ID = ? ORDER BY ORDER_NUM DESC";
 		
 	try (Connection connection = myDataSource.getConnection(); // On crée un statement pour exécuter une requête
 			PreparedStatement stmt = connection.prepareStatement(sql)) {

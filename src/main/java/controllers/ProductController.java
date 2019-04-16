@@ -67,8 +67,8 @@ public class ProductController extends HttpServlet {
             float rate = ddao.GetDiscountByID(idd).getRate();
             
             
-
-            resultat.put("products",productOrganize(daop.GetAllProductsByProductCode(code)));
+            List<List<Product>> products = productOrganize(daop.GetAllProductsByProductCode(code));
+            resultat.put("products",products);
             resultat.put("rate", rate);
             }
             
@@ -130,23 +130,32 @@ public class ProductController extends HttpServlet {
 
     
     public List<List<Product>>  productOrganize(List<Product> Lproducts){
-
+        
         List<List<Product>> products = new  LinkedList<>();
         int cpt = 0;
+        int i = 0;
         List<Product> By4products = new  LinkedList<>();
         
         for (Product p : Lproducts){
+            i++;
+           System.out.println(p.getDescription());
 
             if (cpt == 4) {
                 cpt = 0;
-                By4products = new  LinkedList<>();
                 products.add(By4products);
+                By4products = new  LinkedList<>();
+               
+            }else{
+                if (i==Lproducts.size()) {
+                    products.add(By4products);
+                }
             }
             cpt++;
             By4products.add(p);   
 
 
         }
+System.out.println("taille "+products.size());
         return products;
     }
         

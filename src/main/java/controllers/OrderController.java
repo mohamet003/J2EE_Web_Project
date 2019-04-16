@@ -91,6 +91,7 @@ public class OrderController extends HttpServlet {
                         order.setShipping_cost(frais);
                         order.setOrder_num(purcharseOrderDAO.FindLastPurchaseOrderInsert()+1);
                         purcharseOrderDAO.AddPurchaseOrder(order);
+                        daop.UpdateProduct(id, p.getQuantity_on_hand() - qte);
                         break;
 
                     case "updateorder":

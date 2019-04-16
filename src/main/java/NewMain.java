@@ -102,7 +102,12 @@ float rate = ddao.GetDiscountByID("M").getRate();
         //System.out.println("test"+cust.getName()); */
        
          ProductDAO dao = new ProductDAO(Database.getDataSource());
-   List<Product> LProduits = new LinkedList<>();
+        List<Product> LProduits = dao.GetAllProductsByProductCode("SW");
+        
+        for (Product LProduit : LProduits) {
+            System.out.println("out "+LProduit.getDescription());
+        }
+   
 
         DiscountDAO ddao = new DiscountDAO(Database.getDataSource());
 
@@ -137,7 +142,8 @@ float rate = ddao.GetDiscountByID("M").getRate();
         }
     }
         
-        //System.out.println("test"+cust.getName()); 
+     
+
     }
     
 

@@ -2,5 +2,8 @@ JUnitTestCustumerDAO.class
 JUnitTestMicroMarketDAO.class
 JUnitTestPurchaseOrderDAO.class
 JUnitTestProductDAO.class
+JUnitTestCAZoneGeographiqueDAO.class
+JUnitTestCACategorie.class
+JUnitTestShippingCustomerDAO.class
 JUnitTestDiscountDAO.class
 JUnitTestProductCodeDAO.class
